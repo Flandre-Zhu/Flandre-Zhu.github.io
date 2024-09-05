@@ -1,0 +1,588 @@
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .big-title{
+            width: 700px;
+            height: 200px;
+            padding: 10px;
+            font-size: 80px;
+            line-height: 100px;
+            text-align: center;
+        }
+
+        .about{
+            position: absolute; left: 750px; top: 30px;
+            width: 650px; height: 250px;
+            line-height: 24px; font-size: 18px;
+            font-family:"华文仿宋";
+            font-weight:bold;
+            padding: 10px;
+            border: 3px dashed #cccccc;
+            border-radius: 15px;
+        }
+
+        .color-picker{
+            position: absolute; left: 50px;top:200px;
+            width: 330px;
+            height: 442px;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 10px 40px rgba(10, 20, 70, 0.25);
+            background-color: #ffffff;
+        }
+
+        .sv-picker-sets{
+            position: relative;
+            height: 300px;
+            width: 300px;
+            -webkit-user-drag: none;
+            user-select: none;
+        }
+        .svpicker{
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            margin-left: -6px;
+            margin-top: -6px;
+            background-color: transparent;
+            z-index: 4;
+            border-radius: 50%;
+            transform: translate3d(300px, 0, 0);
+            box-shadow: 0 0 0 3px white, 0 1px 3px 3px rgba(5, 10, 70, 0.33);
+        }
+        .svpicker:hover {cursor: pointer;}
+        .svpicker:active {transform: scale(1.15);}
+        .white-bg,
+        .black-bg,
+        .color-bg {
+            top: 0;
+            left: 0;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        .color-bg{background: cyan; z-index: 0;}
+        .white-bg{background: linear-gradient(to right, #fff 0%, rgba(255, 255, 255, 0) 100%); z-index: 1;}
+        .black-bg{background: linear-gradient(to bottom, transparent 0%, #000 100%); z-index: 2;}
+
+        .h-picker{
+            height: 15px;
+            width: 100%;
+            margin-top: 15px;
+            background: linear-gradient(to right, red 0%, #ff0 17%, lime 33%, cyan 50%, blue 66%, #f0f 83%, red 100%);
+		    box-shadow: inset 0 0 0 3px white, 0 1px 4px rgba(5, 10, 70, 0.25);
+        }
+        .h-picker input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            margin: 0;
+            background: transparent;
+        }
+        .h-picker input[type="range"]:focus {
+            outline: none;
+        }
+        .h-picker input[type="range"]::-webkit-slider-runnable-track {
+            background: transparent;
+            border: none;
+        }
+        .h-picker input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 12px;
+            height: 12px;
+            margin-bottom: 3px;
+            background-color: transparent;
+            border-radius: 50%;
+            box-shadow: 0 0 0 3px white, 0 1px 3px 3px rgba(5, 10, 70, 0.33);
+        }
+
+        .color-output{
+            display: flex;
+            margin-top: 15px;
+            background-position: 3px 4px;
+        }
+        .color-output input{
+            box-shadow: inset 0 0 0 3px white, 0 1px 4px rgba(5, 10, 70, 0.1);
+            border: none;
+            width: 190px;
+            font-size: 16px;
+            font-family: "Menlo", monospace;
+            padding: 0 15px;
+            outline: none;
+            background-color: rgb(255, 255, 255);
+        }
+        .selected-col {
+            width: 100%;
+            height: 44px;
+            box-shadow: inset 0 0 0 3px #f9f9f9, 0 1px 4px rgba(5, 10, 70, 0.1);
+            background-color: cyan;
+        }
+
+        .rgb-and-button{
+            position: absolute; left: 400; top: 200px;
+            width: 300px;
+            height: 60px;
+        }
+        .rgb-input{
+            position: relative; left: 20px; top: 10%;
+            height: 40px;
+            width: 100px;
+            font-size: 20px;
+        }
+        #btn{
+            position: relative; left: 20px; top: 12%;
+            width:75px;
+            height:40px;
+            padding: 0px 0px;
+            font-size: 20px;
+            font-family:"华文仿宋";
+            font-weight:bold;
+            border-radius: 15px;
+            background-color:white;
+            color:black;
+        }
+
+        .colors{
+            position: absolute; left: 400px; top: 300px;
+            height: 450; width: 700px;
+        }
+        .cols-line{
+            height: 100px; width: 1000px;
+        }
+        .col-info{
+            float: left;
+            width: 300px; height: 100px;
+            margin-right: 10px;
+            text-align: center; line-height: 100px;
+            font-size: 20px;
+        }
+        .colbx{
+            float: left;
+            width: 100px; height: 100px;
+            margin-right: 10px;
+            border-radius: 10px;
+            text-align: center; line-height: 100px;
+            font-size: 20px;
+        }
+        .coltext{
+            float: left;
+            width: 100px; height: 40px;
+            margin-bottom: 10px; margin-left: 10px;
+            line-height: 40px; font-size: 20px; text-align: center;
+        }
+        .gen-img{
+            float: left;
+            width: 100px; height: 100px;
+            vertical-align: middle;
+            background-image: none;
+        }
+        #genbtn1,#genbtn2,#genbtn3{
+            position: relative; left: 25px; top: 25px;
+            width: 50px; height: 50px; border-radius: 25px;
+            text-align: center; line-height: 50px;
+            font-size: 20px; font-family:"华文仿宋"; font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="big-title">
+    <img src="https://cdn.luogu.com.cn/upload/image_hosting/jgzs8ul1.png" alt="title-img" style="position: relative; top: 0%; left: -3%; zoom: 38%;"/>
+</div>
+<div class="about">
+    使用方法: <br><br>
+    选择颜色：鼠标拖动取色器，或者直接输入十六进制颜色码以选择您的颜色。<br><br>
+    生成配色：按【设置】生成三种不同的配色方案 <br><br>
+    制作图片：按【G】制作图片。若要重做，请刷新 <br><br>
+
+    <a href="https://baike.baidu.com/item/%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E9%A2%9C%E8%89%B2%E7%A0%81/10894232"> 什么是十六进制颜色码？ </a>
+</div>
+
+<div class="color-picker">
+    <div class="sv-picker-sets" id="sv-picker-sets" draggable="false">
+        <div class="svpicker" id="svpicker" draggable="false"></div>
+        <div class="color-bg" id="color-bg"></div>
+        <div class="white-bg"></div>
+        <div class="black-bg"></div>
+    </div>
+    <div class="h-picker">
+        <input id="hpicker" min="0" max="360" value="180" type="range">
+    </div>
+    <div class="color-output">
+        <div class="selected-col" id="selected-col"></div>
+        <input type="text" id="hexoutput" disabled="disabled">
+    </div>
+</div>
+
+<div class="rgb-and-button">
+    <input class="rgb-input" id="rgb-input" type="text">
+    <input id="btn" type="button" value="设置">
+</div>
+
+
+<div class="colors">
+    <div class="cols-line">
+        <div id="info1" class="col-info">
+            <img src="https://cdn.luogu.com.cn/upload/image_hosting/8tmcvutd.png" alt="1" style="zoom: 18%; position: relative; left: 40px;"/>
+        </div>
+        <div id="col11" class="colbx"></div>
+        <div id="col12" class="colbx"></div>
+        <div id="col13" class="colbx"></div>
+        <div id="col14" class="colbx"></div>
+        <div id="gen1" class="gen-img"><canvas id="canvas1" width="100" height="100"></canvas></div>
+        <input id="genbtn1" type="button" value="G">
+    </div>
+    <div style="width: 800px; height: 40px; margin-bottom: 10px;">
+        <div style="width: 300; height: 40px; float:left;"></div>
+        <div id="ct11" class="coltext"></div>
+        <div id="ct12" class="coltext"></div>
+        <div id="ct13" class="coltext"></div>
+        <div id="ct14" class="coltext"></div>
+    </div>
+    <div class="cols-line">
+        <div id="info2" class="col-info"> 
+            <img src="https://cdn.luogu.com.cn/upload/image_hosting/a5yuh56p.png" alt="2" style="zoom: 18%; position: relative; left: 40px;"/>
+        </div>
+        <div id="col21" class="colbx"></div>
+        <div id="col22" class="colbx"></div>
+        <div id="col23" class="colbx"></div>
+        <div id="col24" class="colbx"></div>
+        <div id="gen2" class="gen-img"><canvas id="canvas2" width="700" height="700"></canvas></div>
+        <input id="genbtn2" type="button" value="G">
+    </div>
+    <div style="width: 800px; height: 40px; margin-bottom: 10px;">
+        <div style="width: 300; height: 40px; float:left;"></div>
+        <div id="ct21" class="coltext"></div>
+        <div id="ct22" class="coltext"></div>
+        <div id="ct23" class="coltext"></div>
+        <div id="ct24" class="coltext"></div>
+    </div>
+    <div class="cols-line">
+        <div id="info3" class="col-info"> 
+            <img src="https://cdn.luogu.com.cn/upload/image_hosting/3h2djobi.png" alt="2" style="zoom: 18%; position: relative; left: 40px;"/>
+        </div>
+        <div id="col31" class="colbx"></div>
+        <div id="col32" class="colbx"></div>
+        <div id="col33" class="colbx"></div>
+        <div id="col34" class="colbx"></div>
+        <div id="gen3" class="gen-img"><canvas id="canvas3" width="700" height="700"></canvas></div>
+        <input id="genbtn3" type="button" value="G">
+    </div>
+    <div style="width: 800px; height: 40px; margin-bottom: 10px;">
+        <div style="width: 300; height: 40px; float:left;"></div>
+        <div id="ct31" class="coltext"></div>
+        <div id="ct32" class="coltext"></div>
+        <div id="ct33" class="coltext"></div>
+        <div id="ct34" class="coltext"></div>
+    </div>
+</div>
+
+
+</body>
+
+<script>
+
+function A0(s){if(s.length==1)return "0"+s; return s;}
+function rgbtohsv(r,g,b)
+{ 
+    r/=255;g/=255;b/=255;
+    mn=Math.min(r,g,b);
+    var h=0,s=0,v=Math.max(r,g,b);
+    if(v){s=(v-mn)/v;}else{s=0;}
+    if(v==r)h=60*(g-b)/(v-mn);
+    if(v==g)h=120+60*(b-r)/(v-mn);
+    if(v==b)h=240+60*(r-g)/(v-mn);
+    return [(h%360+360)%360,s*100,v*100];
+};
+function hsvtorgb(h,s,v) 
+{
+    v=Math.min(v,100); s=Math.min(s,100); h=(h%360+360)%360;
+    var f,g,p,q,t;
+    s/=100;v/=100; 
+    g=parseInt(h/60.0); f=h/60.0-g; p=v*(1-s); q=v*(1-f*s); t=v*(1-(1-f)*s);
+    var l;
+    if(g==0)l=[v,t,p]; if(g==1)l=[q,v,p]; if(g==2)l=[p,v,t]; 
+    if(g==3)l=[p,q,v]; if(g==4)l=[t,p,v]; if(g==5)l=[v,p,q];
+    for(var i=0;i<=2;++i)l[i]=parseInt(l[i]*255);
+    return l;
+};
+function rgbtostr(r,g,b)
+{
+    return "#"+A0(r.toString(16))+A0(g.toString(16))+A0(b.toString(16));
+}
+function strtorgb(s)
+{
+    r=parseInt("0x"+s[1]+s[2]); g=parseInt("0x"+s[3]+s[4]); b=parseInt("0x"+s[5]+s[6]);
+    return [r,g,b];
+}
+// 基本函数: 颜色之间的转换
+
+// part1: 处理取色器
+var text_input=document.getElementById("rgb-input");
+var col_bg=document.getElementById("color-bg"); // 渐变的色彩层
+var hpick=document.getElementById("hpicker"); // hue选择器
+var svpick=document.getElementById("svpicker"); // sat,val选择器（一个小圆圈）
+var svp_bg=document.getElementById("sv-picker-sets"); // 整个选择区域
+var X0=svp_bg.offsetLeft,Y0=svp_bg.offsetTop; // 选择区域的左上角坐标; 用于确定当前的相对位置，从而获得s,v值
+X0+=svp_bg.offsetParent.offsetLeft; Y0+=svp_bg.offsetParent.offsetTop; 
+var selcol_col=document.getElementById("selected-col");
+var selcol_text=document.getElementById("hexoutput"); // 当前颜色显示; 这俩分别是色块显示和文字显示
+var W=300,H=300; // 窗口大小
+var curhsv=[180,100,50]; // 当前颜色(hsv); 统一用整数
+var mouseDown=false;
+
+function getcurcol(){return hsvtorgb(curhsv[0],curhsv[1],curhsv[2]);}
+function updatecol() // 更新当前颜色; 这里只更新色块显示和文字显示
+{
+    var r,g,b; [r,g,b]=getcurcol();
+    selcol_col.setAttribute('style', `background-color: rgb(${getcurcol()})`);
+    selcol_text.value=rgbtostr(r,g,b);
+}
+text_input.onchange=function() // 输入文本直接更新，这里要更新色彩矩阵
+{
+    s=text_input.value.toString();
+    if(s[0]!='#') s='#'+s;
+    var r,g,b; [r,g,b]=strtorgb(s);
+    curhsv=rgbtohsv(r,g,b);
+    col_bg.setAttribute('style', `background: rgb(${hsvtorgb(curhsv[0], 100, 100)})`);
+    updatecol(); selcol_text.value=s;
+	var x=parseInt((curhsv[1]/100)*W),y=parseInt((1-curhsv[2]/100)*H);
+    svpick.setAttribute('style', `transform: translate3d(${x}px, ${y}px, 1px)`);
+}
+hpick.oninput=function() // 当hue选择器更新时，色彩矩阵也要更新
+{ 
+    curhsv[0]=hpick.value;
+    col_bg.setAttribute('style', `background: rgb(${hsvtorgb(curhsv[0], 100, 100)})`);
+    updatecol();
+}
+function svpicker_events() // 处理sat,val选择器的事件 （此时h值不变，色彩矩阵不更新）
+{
+    function set_sv_pos(xx,yy) // 根据鼠标位置确定 s,v 值并更新当前颜色
+    {
+        var x=xx-X0,y=yy-Y0;
+        x=Math.max(x,0);x=Math.min(x,W);
+        y=Math.max(y,0);y=Math.min(y,H);
+        curhsv[1]=parseInt((x/W)*100);  curhsv[2]=parseInt((1-y/H)*100);
+        var r,g,b; [r,g,b]=getcurcol(); selcol_text.value=rgbtostr(r,g,b);
+		svpick.setAttribute('style', `transform: translate3d(${x}px, ${y}px, 1px)`);
+    }
+    document.onmousemove=e=>{if(mouseDown){set_sv_pos(e.pageX,e.pageY); updatecol();}}
+    svp_bg.onmouseup=function(){mouseDown=false;}
+    svp_bg.onmousedown=e=>{mouseDown=true; set_sv_pos(e.pageX,e.pageY); updatecol();}
+    document.onmouseup=function(){mouseDown=false;} // 处理鼠标点击
+    updatecol();
+}
+window.onresize=svpicker_events;
+svpicker_events();
+
+// part2: 处理色块与图片生成
+window.onload=function()
+{
+	var oBtn=document.getElementById("btn");
+
+	//鼠标事件
+	oBtn.onclick=function()
+	{
+		var r1,g1,b1; [r1,g1,b1]=getcurcol();
+		var col0=rgbtostr(r1,g1,b1);
+		var h1,s1,v1; [h1,s1,v1]=rgbtohsv(r1,g1,b1);
+
+		function rrnd(l,r) // 生成 [l,r] 区间随机数
+		{
+			return parseInt(Math.random()*(r-l)+l);
+		}
+		function get_colors(l,r,hl,hr,sl,sr,vl,vr,th,ts,tv,inv_end=1) // 根据技术参数生成配色方案
+		{
+            // hl,hr: h的区间; sl,sr: s的区间; vl,vr: v的区间; t: t=1表示相对hsv1的差，t=0表示直接使用值 （Relative / Absolute）
+            // inv_end: 将最后一个颜色反色 （用于背景）
+			var cols=new Array(5); cols[0]=col0;
+			for(var i=l;i<=r;i++)
+			{
+				var _h,_s,_v;
+				_h=h1*th[i-l]+rrnd(hl[i-l],hr[i-l]); _h=(_h%360+360)%360;
+				_s=s1*ts[i-l]+rrnd(sl[i-l],sr[i-l]); _v=v1*tv[i-l]+rrnd(vl[i-l],vr[i-l]);
+				var _r,_g,_b; [_r,_g,_b]=hsvtorgb(_h,_s,_v);
+				if(i==r && inv_end) {_r=(~_r)&255;_g=(~_g)&255;_b=(~_b)&255;}
+				col=rgbtostr(_r,_g,_b); cols[i]=col;
+			}
+			return cols;
+		}
+        cols_1=get_colors(1,3,[-15,-15,-15],[15,15,15],[-15,-15,-15],[15,15,15],[-15,-15,-15],[15,15,15],[1,1,1],[1,1,1],[1,1,1],0);
+		cols_2=get_colors(1,3,[145,-65,75],[155,-55,85],[-15,-15,-15],[15,15,15],[-30,-30,-30],[30,30,30],[1,1,1],[1,1,1],[1,1,1],0);
+        cols_3=get_colors(1,3,[-10,-10,-10],[10,10,10],[10,50,33],[20,60,66],[80,30,-10],[90,40,10],[1,1,1],[0,0,1],[0,0,1],0);
+		function fill_colbx(bid,colors) // 填充显示的配色色块
+        {
+            for(var i=1;i<=4;++i)
+            {
+                var c=colors[i-1];
+                var colbox=document.getElementById("col"+bid.toString()+i.toString());
+                colbox.style.backgroundColor=c;
+                var texbox=document.getElementById("ct"+bid.toString()+i.toString());
+                texbox.innerText=c; texbox.style.color=c;
+                var r,g,b; [r,g,b]=strtorgb(c);
+                var gray=parseInt(0.299*r+0.587*g+0.114*b);
+                if(gray>=180) texbox.style.color="#000000"; 
+            }
+        }
+        fill_colbx(1,cols_1); fill_colbx(2,cols_2); fill_colbx(3,cols_3);
+
+		var H=699,W=687;
+		var img=new Image(); img.src="https://s2.loli.net/2022/12/17/aGiFlYzSU2wt8sb.png"; 
+		img.height=H; img.width=W; img.crossOrigin='';
+		// 玛丽莲梦露的图片
+        function cirdis(a,b) {return Math.min(Math.abs(a-b),360-Math.abs(a-b));} // 环上距离: 取两条弧中较短的那一条
+		function get_v(gray) {return parseInt((gray/255)*100);}
+		function turn_v(s,_v) // s为rgb串，形如 #abcdef；将s转化为hsv后调整其v值后还原
+		{
+			[r,g,b]=strtorgb(s);
+			[h,s,v]=rgbtohsv(r,g,b);
+			v=parseInt((v+_v)/2);
+			[r,g,b]=hsvtorgb(h,s,v);
+			return rgbtostr(r,g,b);
+		}
+		function color_type_graph(data) // 获取每个位置的颜色种类
+		{
+			var gr=new Array(H);
+			for(var i=0;i<H;++i)
+			{
+				gr[i]=new Array(W);
+				for(var j=0;j<W;++j)
+				{
+					var p=4*(i*W+j);
+					var r=data[p],g=data[p+1],b=data[p+2];
+					var gray=parseInt(0.299*r+0.587*g+0.114*b);
+					var _h,_s,_v; [_h,_s,_v]=rgbtohsv(r,g,b);
+					gr[i][j]=0;
+					if(cirdis(_h,45)<=13) gr[i][j]=2; // 头发
+					if(cirdis(_h,355)<=10) gr[i][j]=1; // 脸
+					if(cirdis(_h,175)<=13 && _s<=40) gr[i][j]=4; // 背景
+					if(cirdis(_h,200)<=10) gr[i][j]=3; // 眉毛
+				}
+			}
+			return gr;
+		}
+		function denoise(gr) // 降噪
+		{
+			vis=new Array(700); for(i=0;i<700;++i){vis[i]=new Array(700); for(j=0;j<700;++j)vis[i][j]=0;}
+			function BFS(_x,_y)
+			{
+				var x=_x,y=_y;
+				var gg=gr[x][y];
+				var dx=[1,-1,0,0],dy=[0,0,1,-1];
+				var Q=new Array(700*700),hd=1,tl=0;
+				Q[++tl]=[x,y];
+				while(hd<=tl)
+				{
+					var x,y; [x,y]=Q[hd]; ++hd;
+					vis[x][y]=1;
+					for(var i=0;i<4;++i)
+					{
+						nx=x+dx[i],ny=y+dy[i];
+						if(0<=nx && nx<H && 0<=ny && ny<W) 
+						{
+							if(!vis[nx][ny])if(gr[nx][ny]==gg) 
+							{
+								vis[nx][ny]=1;
+								Q[++tl]=[nx,ny];
+							}
+						}
+					}
+				}
+				if(tl<=1500)
+				{
+					for(var i=1;i<=tl;++i)
+					{
+						[x,y]=Q[i];
+						gr[x][y]=0;
+					}
+				}
+			}
+			for(var i=0;i<H;++i)for(var j=0;j<W;++j)if(!vis[i][j]) BFS(i,j);
+			return gr;
+		}
+		function make_marilyn(canvas_id,colors) // 生成安迪沃霍尔式的玛丽莲梦露图片
+		{
+			// console.log("make image canvas-id: %s",canvas_id);
+			// console.log("cols: ",colors);
+			var cc=document.getElementById(canvas_id);
+			var ctx=cc.getContext('2d');
+			ctx.clearRect(0,0,W,H); ctx.restore(); ctx.drawImage(img,0,0);
+			var imgdata=ctx.getImageData(0,0,W,H);
+			var dt2=imgdata.data;
+            /*
+            imgdata: 存储每个像素的rgba (a表示透明度，这里没用)
+            具体的，设图片为 H*W，第 i 行第 j 列的像素 (行列都是0开始编号) 的信息存储于
+            imgdata.data[(4*W*i+j)+0...3]
+            四个位置。分别对应i行j列像素的 r,g,b,a 
+            */
+
+			var gr=color_type_graph(dt2);
+			gr=denoise(gr);
+			mat=new Array(H);for(var i=0;i<H;++i)mat[i]=new Array(W);
+			for(var i=0;i<dt2.length;i+=4)
+			{
+				var x=parseInt((i/4)/W),y=(i/4)-x*W;
+
+				r=dt2[i],g=dt2[i+1],b=dt2[i+2]; var gray=parseInt(0.299*r+0.587*g+0.114*b); // 灰度计算公式，见参考
+				col=rgbtostr(r,g,b);
+				if(gr[x][y] && gray>=90) col=turn_v(colors[gr[x][y]-1],get_v(gray));
+                // 这里用原图的灰度进行调整，使我们生成的图片也有明暗变化而不是单调的颜色
+                // 这里gray的判定，目的是防止我们误判比较黑的像素
+				mat[x][y]=strtorgb(col);
+			}
+            // mat为生成的rgb矩阵
+
+            // 进行一个模糊处理，可以让图片的小问题不那么明显
+            // 这个模糊处理其实就是每个块和周围八个块的rgb取平均值，很水
+            function dim()
+            {
+                for(var i=1;i+1<H;++i)for(var j=1;j+1<W;++j)
+                {
+                    var rs=0,gs=0,bs=0; [rs,gs,bs]=mat[i][j];
+                    dx=[1,-1,0,0,1,1,-1,-1],dy=[0,0,1,-1,1,-1,1,-1];
+                    for(var k=0;k<8;++k){var ii=i+dx[k],jj=j+dy[k]; rs+=mat[ii][jj][0]; gs+=mat[ii][jj][1]; bs+=mat[ii][jj][2];}
+                    rs=parseInt(rs/9); gs=parseInt(gs/9); bs=parseInt(bs/9);
+                    mat[i][j]=[rs,gs,bs];
+                }
+            }
+            dim(); 
+
+			for(var i=0;i<H;++i)for(var j=0;j<W;++j)mat[parseInt(i/7)][parseInt(j/7)]=mat[i][j];
+			for(var i=0;i<H;++i)for(var j=0;j<W;++j)if(i*7>=H || j*7>=W)mat[i][j]=[255,255,255];
+			for(var i=0;i<H;++i)for(var j=0;j<W;++j){var p=4*(W*i+j); c=(mat[i][j]); for(k=0;k<3;++k)dt2[p+k]=c[k];}
+			imgdata.data=dt2;
+            // 这里是缩小7倍后转存到data里
+            // 缩小7倍是因为原图约为 699*687，缩小7倍后正好差不多放进 100*100 的预留空间里
+			cc.width=parseInt(W/7); cc.height=parseInt(H/7);
+			ctx=cc.getContext('2d');
+			ctx.putImageData(imgdata,0,0); // 写入imagedata
+		}
+        function make_img1(canvas_id,colors) // 生成渐变 （直接用自带的linear-gradient即可）
+        {
+            id="gen"+canvas_id[canvas_id.length-1];
+            console.log(id);
+            var tmp=document.getElementById(id);
+            console.log(tmp);
+            tmp.setAttribute("style",`background-image: linear-gradient(to right bottom,${colors[0]} 20%,${colors[1]} 50%,${colors[2]} 70%,${colors[3]} 100%);`);
+            console.log(tmp.style.backgroundImage);
+        }
+        img.onload=function()
+		{
+            click_cnt=[0,0,0,0]; // 由于种种原因，这里按钮只允许被按一次（因为按多了会有bug）
+            gb1=document.getElementById("genbtn1"); gb2=document.getElementById("genbtn2"); gb3=document.getElementById("genbtn3");
+			gb1.onclick=function(){make_img1("canvas1",cols_1);};
+            gb2.onclick=function(){++click_cnt[2]; if(click_cnt[2]==1)make_marilyn("canvas2",cols_2);};
+            gb3.onclick=function(){++click_cnt[3]; if(click_cnt[3]==1)make_marilyn("canvas3",cols_3);};
+		} 
+	}
+}
+
+</script>
+
+</html>
