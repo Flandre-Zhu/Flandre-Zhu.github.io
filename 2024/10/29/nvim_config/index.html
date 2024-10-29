@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"flandre-zhu.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"activeClass":"utterances"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="本文会先介绍一下 nvim 的配置文件的结构，然后讲我自己的配置，纯新手向。 我的配置思路是，导入 vim 中已经有的基础配置，并延续使用某些插件。而nvim有更多更加强大的插件（主要是语言支持之类的），我们另外折腾。 本配置已同步发布于 github仓库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nvim 的配置">
+<meta property="og:url" content="http://flandre-zhu.github.io/2024/10/29/nvim_config/index.html">
+<meta property="og:site_name" content="Flandre 的小屋">
+<meta property="og:description" content="本文会先介绍一下 nvim 的配置文件的结构，然后讲我自己的配置，纯新手向。 我的配置思路是，导入 vim 中已经有的基础配置，并延续使用某些插件。而nvim有更多更加强大的插件（主要是语言支持之类的），我们另外折腾。 本配置已同步发布于 github仓库">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-10-29T02:55:56.524Z">
+<meta property="article:modified_time" content="2024-10-29T02:55:56.524Z">
+<meta property="article:author" content="Flandre Zhu">
+<meta property="article:tag" content="nvim">
+<meta property="article:tag" content="lua">
+<meta property="article:tag" content="配置">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://flandre-zhu.github.io/2024/10/29/nvim_config/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://flandre-zhu.github.io/2024/10/29/nvim_config/","path":"2024/10/29/nvim_config/","title":"nvim 的配置"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>nvim 的配置 | Flandre 的小屋</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Flandre 的小屋</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-guestbook"><a href="/guestbook/" rel="section"><i class="fa fa-book fa-fw"></i>留言板</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#nvim-%E6%98%AF%E6%80%8E%E4%B9%88%E9%85%8D%E7%BD%AE%E7%9A%84"><span class="nav-number">1.</span> <span class="nav-text"> nvim 是怎么配置的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%BC%E5%85%A5vim%E5%B7%B2%E6%9C%89%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text"> 导入vim已有配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nvim-%E8%87%AA%E5%B7%B1%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text"> nvim 自己的配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86-packernvim"><span class="nav-number">3.1.</span> <span class="nav-text"> 插件管理: packer.nvim</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE"><span class="nav-number">3.2.</span> <span class="nav-text"> 主题配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="nav-number">3.3.</span> <span class="nav-text"> 插件安装与配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%AD%E8%A8%80%E6%94%AF%E6%8C%81lsp"><span class="nav-number">3.4.</span> <span class="nav-text"> 语言支持：lsp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#markdown%E5%92%8Ctex%E7%9A%84%E9%A2%84%E8%A7%88"><span class="nav-number">3.5.</span> <span class="nav-text"> Markdown和Tex的预览</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE-%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8C%E6%96%B9%E5%BC%8F%E7%9A%84%E4%BF%AE%E6%94%B9"><span class="nav-number">3.6.</span> <span class="nav-text"> 快捷键、编译运行方式的修改</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Flandre Zhu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://flandre-zhu.github.io/2024/10/29/nvim_config/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Flandre Zhu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Flandre 的小屋">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="nvim 的配置 | Flandre 的小屋">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          nvim 的配置
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-10-29 10:55:56" itemprop="dateCreated datePublished" datetime="2024-10-29T10:55:56+08:00">2024-10-29</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>本文会先介绍一下 nvim 的配置文件的结构，然后讲我自己的配置，纯新手向。</p>
+<p>我的配置思路是，导入 vim 中已经有的基础配置，并延续使用某些插件。而nvim有更多更加强大的插件（主要是语言支持之类的），我们另外折腾。</p>
+<p>本配置已同步发布于 <a target="_blank" rel="noopener" href="https://github.com/Flandre-Zhu/nvim-config">github仓库</a></p>
+<span id="more"></span>
+<h2 id="nvim-是怎么配置的"><a class="markdownIt-Anchor" href="#nvim-是怎么配置的"></a> nvim 是怎么配置的</h2>
+<p>Linux 下，nvim 的配置文件目录在 <code>~/.config/nvim</code>，如果没有这个目录就新建一个。</p>
+<blockquote>
+<p>注：该目录是我们默认的根目录，下面所有的目录都是在这个根目录下说的。</p>
+<p>比如我们说 <code>lua/plugins.lua</code>，其实指的是 <code>~/.config/nvim/lua/plugins.lua</code></p>
+</blockquote>
+<p>该目录下有一个 <code>init.lua</code>，这是所有配置的入口，通过这个文件来导入其它的配置文件。到最后 nvim 启动的时候，就只调用这一个 init.lua 文件。（根据资料，似乎还有别的目录的配置文件，但这些基本上是nvim自带的，我们不去动它）</p>
+<p>因此理论上我们可以把所有配置都挤在 init.lua 里面，但这样太臃肿了。现在流行的做法是结构化的管理。因此我们把各种功能的配置文件按照某种结构排好，并在 init.lua 里面依次调用它们</p>
+<h2 id="导入vim已有配置"><a class="markdownIt-Anchor" href="#导入vim已有配置"></a> 导入vim已有配置</h2>
+<p>最开始我不知道这怎么做，但我发现一件事：首先 nvim 中也可以用 <code>source</code> 命令来加载某个配置文件，并且在 lua 文件里面可以用 <code>vim.cmd('...')</code> 来执行一个 vim 中的命令，相当于 vim 中写 <code>:xxx</code>。</p>
+<p>因此，比如，我们现在有一个 .vimrc，我们可以直接用 <code>vim.cmd('source .vimrc')</code> 来加载这个 vimrc 配置文件。</p>
+<p>然后我们就可以直接用大部分的 vim 原来的配置使得我们可以快速的使用 nvim</p>
+<h2 id="nvim-自己的配置"><a class="markdownIt-Anchor" href="#nvim-自己的配置"></a> nvim 自己的配置</h2>
+<h3 id="插件管理-packernvim"><a class="markdownIt-Anchor" href="#插件管理-packernvim"></a> 插件管理: packer.nvim</h3>
+<p><a target="_blank" rel="noopener" href="https://github.com/wbthomason/packer.nvim">github链接</a></p>
+<p>看这里的 “Quickstart” 一栏，我们知道，大概就是先 <code>git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim</code> 把这东西抓下来，在 <code>init.lua</code> 里面写一行 <code>vim.cmd [[packadd packer.nvim]]</code>，就安装好了 packer.nvim。</p>
+<p>接下来，用这段代码安装插件</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="built_in">require</span>(<span class="string">&#x27;packer&#x27;</span>).startup(<span class="function"><span class="keyword">function</span><span class="params">(use)</span></span></span><br><span class="line">  use <span class="string">&#x27;插件的 github作者/github仓库名&#x27;</span> </span><br><span class="line"><span class="keyword">end</span>)</span><br></pre></td></tr></table></figure>
+<p>写很多个 <code>use ...</code> 来安装多个插件，里面也可以用一个花括号写一些插件的配置。我们把这段代码放在 <code>lua/plugins.lua</code> 目录下。</p>
+<p>我们需要把 packer.nvim 自己先给装上去，写 <code>use 'wbthomason/packer.nvim'</code></p>
+<h3 id="主题配置"><a class="markdownIt-Anchor" href="#主题配置"></a> 主题配置</h3>
+<p>我用的是 <a target="_blank" rel="noopener" href="https://github.com/doki-theme/doki-theme-vim">doki-theme</a> 中的 natsuki_light，一个非常死宅的主题。写</p>
+<p><code>use 'doki-theme/doki-theme-vim'</code>，然后在 <code>vimrc</code> 中写 <code>colors natsuki_light</code></p>
+<h3 id="插件安装与配置"><a class="markdownIt-Anchor" href="#插件安装与配置"></a> 插件安装与配置</h3>
+<ul>
+<li>vim-airline：以前在 vim 里面就用的状态栏，确实好用。<code>use 'vim-airline/vim-airline'</code></li>
+<li>nvim-tree：比 nerdtree 更为牛逼。<code>use &#123;'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons'&#125;</code></li>
+<li>语言支持：详见后文</li>
+<li>markdown和tex的预览：详见后文</li>
+</ul>
+<p>我的插件的配置目录在 <code>lua/plugin-config</code> 里面。这些配置多数也是抄的网上的。</p>
+<h3 id="语言支持lsp"><a class="markdownIt-Anchor" href="#语言支持lsp"></a> 语言支持：lsp</h3>
+<p>lsp不是那个lsp，是 Language Server Protocol。</p>
+<p>我参考了 <a target="_blank" rel="noopener" href="https://linovox.com/configuring-language-server-protocol-lsp-in-neovim/">这篇文章</a></p>
+<p>基本上都是抄的，所以我没啥好说的，看这个就行。</p>
+<h3 id="markdown和tex的预览"><a class="markdownIt-Anchor" href="#markdown和tex的预览"></a> Markdown和Tex的预览</h3>
+<p>稍微摸索了一下，找到这两个好用的。</p>
+<p>首先我安装了一下 texlive。这个部分省略。</p>
+<p>然后 <code>use 'lervag/vimtex'</code> 即可预览 tex 了，具体用法详见这个插件的 github 仓库</p>
+<p>markdown 的预览：</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span>(&#123;</span><br><span class="line">    <span class="string">&quot;iamcco/markdown-preview.nvim&quot;</span>,</span><br><span class="line">    run = <span class="keyword">function</span>() vim.fn[<span class="string">&quot;mkdp#util#install&quot;</span>]() <span class="keyword">end</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">use</span>(&#123; <span class="string">&quot;iamcco/markdown-preview.nvim&quot;</span>, run = <span class="string">&quot;cd app &amp;&amp; npm install&quot;</span>, setup = <span class="keyword">function</span>() vim.g.mkdp_filetypes = &#123; <span class="string">&quot;markdown&quot;</span> &#125; <span class="keyword">end</span>, ft = &#123; <span class="string">&quot;markdown&quot;</span> &#125;, &#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="快捷键-编译运行方式的修改"><a class="markdownIt-Anchor" href="#快捷键-编译运行方式的修改"></a> 快捷键、编译运行方式的修改</h3>
+<p>我们把绑定快捷键的配置统一放在 <code>lua/keybind.lua</code>，包括以前的 vim 的配置里面的一些快捷键也放这。</p>
+<p>以及，说一件事，在 nvim 里面，使用 <code>:! 系统命令</code> 依然可以执行，但如果要这样调用编译好的可执行文件，似乎很难输入数据。所以，我搜到了一个新的方法。就是我们先开一个分屏，在分屏里面开终端，然后跑程序。代码如下</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title">Create_term_buf</span><span class="params">(_type, size)</span></span><br><span class="line">  <span class="keyword">set</span> splitbelow</span><br><span class="line">  <span class="keyword">set</span> splitright</span><br><span class="line">  <span class="keyword">if</span> <span class="variable">a:_type</span> ==# <span class="string">&#x27;v&#x27;</span></span><br><span class="line">    <span class="keyword">vnew</span></span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">new</span></span><br><span class="line">  <span class="keyword">endif</span></span><br><span class="line">  <span class="keyword">execute</span> <span class="string">&#x27;resize &#x27;</span> . <span class="variable">a:size</span></span><br><span class="line"><span class="keyword">endfunction</span></span><br><span class="line"><span class="comment">&quot; 这个用来新建一个窗口</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title">NewBufRunCmd</span><span class="params">(cmd)</span></span><br><span class="line">	exec <span class="string">&#x27;w&#x27;</span></span><br><span class="line">	<span class="keyword">call</span> Create_term_buf(<span class="string">&#x27;v&#x27;</span>, <span class="number">80</span>)</span><br><span class="line">	<span class="keyword">execute</span> <span class="built_in">printf</span>(<span class="string">&quot;term %s&quot;</span>,<span class="variable">a:cmd</span>)</span><br><span class="line">	<span class="keyword">startinsert</span></span><br><span class="line"><span class="keyword">endfunction</span></span><br><span class="line"><span class="comment">&quot; 这个用在自动化的编译运行中，进终端再运行命令 cmd</span></span><br></pre></td></tr></table></figure>
+<p>然后，比如，C++ 的配置就是调用 <code>NewBufRunCmd(&quot;g++ ... -o ... &amp;&amp; ./...&quot;)</code> 就可以了</p>
+<p>同时，这个开终端也是非常好用的功能。我绑定了快捷键 F1 表示开一个空的终端，然后手动输入命令来运行。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/nvim/" rel="tag"><i class="fa fa-tag"></i> nvim</a>
+              <a href="/tags/lua/" rel="tag"><i class="fa fa-tag"></i> lua</a>
+              <a href="/tags/%E9%85%8D%E7%BD%AE/" rel="tag"><i class="fa fa-tag"></i> 配置</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/10/29/calculus_note/" rel="prev" title="微积分笔记">
+                  <i class="fa fa-angle-left"></i> 微积分笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Flandre Zhu</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"Flandre-Zhu/Flandre-Zhu.github.io","issue_term":"pathname","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
