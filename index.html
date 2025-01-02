@@ -118,13 +118,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -150,7 +150,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://flandre-zhu.github.io/2025/01/02/linear_algebra_note/">
+    <link itemprop="mainEntityOfPage" href="http://flandre-zhu.github.io/2024/12/06/taylor_trick/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -168,7 +168,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/01/02/linear_algebra_note/" class="post-title-link" itemprop="url">线性代数笔记</a>
+          <a href="/2024/12/06/taylor_trick/" class="post-title-link" itemprop="url">用泰勒展开做一类导数题的办法</a>
         </h2>
 
         <div class="post-meta-container">
@@ -179,7 +179,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2025-01-02 20:14:11" itemprop="dateCreated datePublished" datetime="2025-01-02T20:14:11+08:00">2025-01-02</time>
+      <time title="创建时间：2024-12-06 23:49:18" itemprop="dateCreated datePublished" datetime="2024-12-06T23:49:18+08:00">2024-12-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-11-18 19:08:01" itemprop="dateModified" datetime="2024-11-18T19:08:01+08:00">2024-11-18</time>
     </span>
 
   
@@ -192,16 +199,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>前言: 什么顺序讲?</p>
-<p>其实最需要想一下的是怎么写行列式。</p>
-<p>南大课本（指一层次线性代数的那本蓝色的书）上是行列式起手的讲法。这是臭名昭著的，我肯定不这样讲。《Linear Algebra Done Right》中是先从向量空间引入的，但这样就导致行列式的定义在很后面。</p>
-<p>说实话，其实我也不是很清楚行列式到底是怎么被搞出来的，我只知道怎么算并且怎么用，但还没有理解到本质。因此这篇文章会比较唐突的引出行列式。我也不想这样但我水平真的有限。</p>
-<p>总的来说，我会参考LADR，从向量开始介绍。</p>
-<p>另外，本篇面向的是那些，“觉得线性代数有点枯燥但还是要学” 的大学生，或许能使你激发对知识的探索欲。</p>
-<p>本篇的行文风格是，对于一个新内容，尽量启发性的去发现这件事，然后再写出形式化的描述并证明</p>
+          <p>我发现最近做习题和考试里多次遇到这个，并且我不太会，于是整理一下这个东西。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2025/01/02/linear_algebra_note/#more" rel="contents">
+              <a class="btn" href="/2024/12/06/taylor_trick/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -287,89 +288,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2024/12/06/nvim_config/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://flandre-zhu.github.io/2024/12/06/taylor_trick/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Flandre Zhu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Flandre 的小屋">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Flandre 的小屋">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/12/06/taylor_trick/" class="post-title-link" itemprop="url">用泰勒展开做一类导数题的办法</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-12-06 23:49:18" itemprop="dateCreated datePublished" datetime="2024-12-06T23:49:18+08:00">2024-12-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-11-18 19:08:01" itemprop="dateModified" datetime="2024-11-18T19:08:01+08:00">2024-11-18</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>我发现最近做习题和考试里多次遇到这个，并且我不太会，于是整理一下这个东西。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/12/06/taylor_trick/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
