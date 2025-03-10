@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"flandre-zhu.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.21.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="我发现最近做习题和考试里多次遇到这个，并且我不太会，于是整理一下这个东西。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用泰勒展开做一类导数题的办法">
+<meta property="og:url" content="http://flandre-zhu.github.io/2025/02/04/taylor_trick/index.html">
+<meta property="og:site_name" content="Flandre 的小屋">
+<meta property="og:description" content="我发现最近做习题和考试里多次遇到这个，并且我不太会，于是整理一下这个东西。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-02-04T06:27:20.396Z">
+<meta property="article:modified_time" content="2025-02-04T06:27:20.396Z">
+<meta property="article:author" content="Flandre Zhu">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="微积分">
+<meta property="article:tag" content="方法总结">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://flandre-zhu.github.io/2025/02/04/taylor_trick/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://flandre-zhu.github.io/2025/02/04/taylor_trick/","path":"2025/02/04/taylor_trick/","title":"用泰勒展开做一类导数题的办法"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>用泰勒展开做一类导数题的办法 | Flandre 的小屋</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Flandre 的小屋</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-guestbook"><a href="/guestbook/" rel="section"><i class="fa fa-book fa-fw"></i>留言板</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%8B%E9%A2%981"><span class="nav-number">1.</span> <span class="nav-text">例题1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%8B%E9%A2%982"><span class="nav-number">2.</span> <span class="nav-text">例题2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93%E5%8F%8D%E6%80%9D"><span class="nav-number">3.</span> <span class="nav-text">总结反思</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8E%E8%AF%9D"><span class="nav-number">4.</span> <span class="nav-text">后话</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Flandre Zhu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://flandre-zhu.github.io/2025/02/04/taylor_trick/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Flandre Zhu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Flandre 的小屋">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="用泰勒展开做一类导数题的办法 | Flandre 的小屋">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          用泰勒展开做一类导数题的办法
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-02-04 14:27:20" itemprop="dateCreated datePublished" datetime="2025-02-04T14:27:20+08:00">2025-02-04</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>我发现最近做习题和考试里多次遇到这个，并且我不太会，于是整理一下这个东西。</p>
+<span id="more"></span>
+<h2 id="例题1"><a href="#例题1" class="headerlink" title="例题1"></a>例题1</h2><p>$f(x)$ 在$[-1,1]$ 有三阶连续导数,$f(-1)=0,f(1)=1,f’(0)=0$</p>
+<p>证明： $\exist \xi\in[-1,1],f’’’(\xi)=3$</p>
+<p>$f(x)=f(0)+0+\dfrac{f’’(0)x^2}{2}+\dfrac{f’’’(\xi)x^3}{6}$</p>
+<p>$x=1,f(0)+\dfrac{f’’(0)}{2}+\dfrac{f’’’(\xi_1)}{6}=1$</p>
+<p>$x=-1,f(0)+\dfrac{f’’(0)}{2}-\dfrac{f’’’(\xi_2)}{6}=0$</p>
+<p>两式相减,我们发现两个 $f(0)$ 抵消掉了，$f’’(0)$ 也被抵消掉了，于是只剩下了一个 $f’’’(0)$ 之间的关系：</p>
+<p>$\dfrac{f’’’(\xi_1)+f’’’(\xi_2)}{6}=1$</p>
+<p>$f’’’(\xi_1)+f’’’(\xi_2)=6$</p>
+<p>接下来就容易见得了：要么两个都为3, 要么一个大于3一个小于3，则根据介值定理，中间必然有个3</p>
+<h2 id="例题2"><a href="#例题2" class="headerlink" title="例题2"></a>例题2</h2><p>$f(0)=f(1)=0,|f’’(x)|\le 1 \Rightarrow |f’(x)|\le \dfrac{1}{2}$</p>
+<p>在t处展开： $f(x)=f(t)+f’(t)(x-t)+\dfrac{f’’(\xi)(x-t)^2}{2}$</p>
+<p>$f(0)=f(t)+(-t)f’(t)+\dfrac{f’’(\xi_1)t^2}{2}=0$</p>
+<p>$f(1)=f(t)+(1-t)f’(t)+\dfrac{f’’(\xi_2)(t-1)^2}{2}=0$</p>
+<p>相减, 两个 $f(t)$ 被消掉了，现在剩下了一个 $f’(t)$ 和 $f’’(t)$ 的关系：</p>
+<p>$-f’(t)+\dfrac{1}{2}(f’’(\xi_1)t^2-f’’(\xi_2)(t-1)^2)=0$</p>
+<p>$|f’’(\xi_1)t^2-f’’(\xi_2)(t-1)^2|=|2f’(t)|$</p>
+<p>我们虽然无法知道 $\xi_1,\xi_2$ 的具体值，但我们知道这个二阶导的绝对值 $\le 1$。于是我们可以直接把这两个东西看成有界变量 $A,B$，其中 $|A|,|B|\le 1$</p>
+<p>$|f’(t)|=\dfrac{1}{2}|At^2-B(t-1)^2|$</p>
+<p>$A=1,B=-1$ 时该绝对值取到最大值为 $\dfrac{1}{2}(2t^2-2t+1)$，这个二次函数 $\le \dfrac{1}{2}$</p>
+<p>$\therefore \forall x\in [0,1],|f’(x)|\le \dfrac{1}{2}$</p>
+<h2 id="总结反思"><a href="#总结反思" class="headerlink" title="总结反思"></a>总结反思</h2><p>我们为什么对它进行泰勒展开？</p>
+<p>我们发现，如果用传统手段，我们“很难够到高阶导的范围”，比如这两题，如果用一些中值定理，确实很难去做二阶导、三阶导，而通过泰勒，我们就可以“一步登天”，处理高阶导数的关系。</p>
+<p>用泰勒的一大障碍是后面有非常多的项，难以估计，而拉格朗日余项就很好的解决了这个问题，它把后面的一堆项全写成了一个项。即使我们不知道 $\xi$ 具体是什么，但可以很方便我们去估计它的大致范围。</p>
+<p>或许这就是拉格朗日余项要解决的根本问题，就是把一连串的余项给写成“一项”，从而帮助我们分析各种问题。</p>
+<p>这也增进了我的一个认知。一开始刚接触拉格朗日余项，我真的不知道这个东西的存在意义是什么。现在或许我有了一点点见解了。</p>
+<h2 id="后话"><a href="#后话" class="headerlink" title="后话"></a>后话</h2><p>我先在习题中见到了例题2，乱搞做了出来，然而这导致我忽略了这一种方法的训练（即使有人告诉我可以泰勒做），然后到考场上碰到了例题1，就没做出来。</p>
+<p>我的乱搞做法：反证假设有 $f’(x)\ge \dfrac{1}{2}$，由于 $f(0)=f(1)=0$，$\int_{0}^{1}f(x)dx=0$，然后我们可以通过各种放缩来证明这个积分一定大于 $0$，从而得到矛盾。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+              <a href="/tags/%E5%BE%AE%E7%A7%AF%E5%88%86/" rel="tag"># 微积分</a>
+              <a href="/tags/%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/" rel="tag"># 方法总结</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/02/04/calculus_problems/" rel="prev" title="刷题">
+                  <i class="fa fa-angle-left"></i> 刷题
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2025/02/04/%E5%85%B3%E4%BA%8E%E6%9C%AChexo%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA/" rel="next" title="关于本hexo博客的搭建">
+                  关于本hexo博客的搭建 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Flandre Zhu</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"Flandre-Zhu/Flandre-Zhu.github.io","issue_term":"pathname","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"flandre-zhu.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.21.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="临近期末，刷点题目记下一些不太trivial的题目感觉这里就是 “技巧合集”，我其实不喜欢技巧，我更喜欢观点。可惜，现在更需要技巧。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="刷题">
+<meta property="og:url" content="http://flandre-zhu.github.io/2025/02/04/calculus_problems/index.html">
+<meta property="og:site_name" content="Flandre 的小屋">
+<meta property="og:description" content="临近期末，刷点题目记下一些不太trivial的题目感觉这里就是 “技巧合集”，我其实不喜欢技巧，我更喜欢观点。可惜，现在更需要技巧。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-02-04T06:27:07.109Z">
+<meta property="article:modified_time" content="2025-02-04T06:27:07.109Z">
+<meta property="article:author" content="Flandre Zhu">
+<meta property="article:tag" content="微积分">
+<meta property="article:tag" content="刷题">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://flandre-zhu.github.io/2025/02/04/calculus_problems/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://flandre-zhu.github.io/2025/02/04/calculus_problems/","path":"2025/02/04/calculus_problems/","title":"刷题"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>刷题 | Flandre 的小屋</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Flandre 的小屋</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-guestbook"><a href="/guestbook/" rel="section"><i class="fa fa-book fa-fw"></i>留言板</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1"><span class="nav-number">1.</span> <span class="nav-text">1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">题目：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%EF%BC%9A"><span class="nav-number">1.2.</span> <span class="nav-text">解：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93%EF%BC%9A"><span class="nav-number">1.3.</span> <span class="nav-text">总结：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2"><span class="nav-number">2.</span> <span class="nav-text">2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%EF%BC%9A-1"><span class="nav-number">2.1.</span> <span class="nav-text">题目：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%EF%BC%9A-1"><span class="nav-number">2.2.</span> <span class="nav-text">解：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93%EF%BC%9A-1"><span class="nav-number">2.3.</span> <span class="nav-text">总结：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3"><span class="nav-number">3.</span> <span class="nav-text">3</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%EF%BC%9A-2"><span class="nav-number">3.1.</span> <span class="nav-text">题目：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%EF%BC%9A-2"><span class="nav-number">3.2.</span> <span class="nav-text">解：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93%EF%BC%9A-2"><span class="nav-number">3.3.</span> <span class="nav-text">总结：</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Flandre Zhu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://flandre-zhu.github.io/2025/02/04/calculus_problems/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Flandre Zhu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Flandre 的小屋">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="刷题 | Flandre 的小屋">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          刷题
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-02-04 14:27:07" itemprop="dateCreated datePublished" datetime="2025-02-04T14:27:07+08:00">2025-02-04</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>临近期末，刷点题目<br>记下一些不太trivial的题目<br>感觉这里就是 “技巧合集”，我其实不喜欢技巧，我更喜欢观点。可惜，现在更需要技巧。</p>
+<span id="more"></span>
+<h2 id="1"><a href="#1" class="headerlink" title="1"></a>1</h2><h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>$f(x)$ 在 $[0,+\infty)$ 可导且 $0\le f(x)\le \dfrac{x}{1+x^2}$。证明存在 $\xi\in(0,+\infty),f’(\xi)=\dfrac{1-\xi^2}{(1+\xi^2)^2}$</p>
+<h3 id="解："><a href="#解：" class="headerlink" title="解："></a>解：</h3><p>设 $g(x)=\dfrac{x}{1+x^2}$，发现那一坨就是 $g’(\xi)$<br>$f(0)=0=g(0)$。必然有 $f’(0)\le g’(0)$，否则在 $0$ 附近的邻域里就有 $f(x)&gt;g(x)$<br>如果有 $f’(x_0)\ge g’(x_0)$，由介值定理，在 $(0,x_0]$ 中就存在 $\xi$ 使得 $f’(\xi)=g’(\xi)$。是否存在这样的 $x_0$ 呢？<br>假设不存在，则 $\forall x,f’(x)&lt; g’(x)$。考虑 $h(x)=g(x)-f(x),\forall x,h’(x)\ge 0$<br>注意到 $x\to \infty,g(x)\to 0,f(x)\to 0\therefore h(x)\to 0$<br>那么，$h(0)=0,h’(x)&gt;0,$ 但是 $h(x)\to 0$，这显然矛盾了，一个从 $0$ 开始增长的函数怎么会收敛到 $0$ 呢。<br>严谨的，考虑 $\epsilon-K$ 语言的否命题：$\exists \epsilon,\forall K&gt;0,\exists x&gt;K,|h(x)|\ge \epsilon$。任意取一个，$\epsilon=h(1),\forall K&gt;0,\exists x=\max(1,K+1)&gt;K,|h(x)|&gt;\epsilon$<br>从而矛盾。因此一定存在 $x_0$ 使得 $f’(x_0)\ge g’(x_0)$<br>从而原命题得证。</p>
+<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p>稍微想了一会，吃饭的时候想出来的。感觉就是从直观出发。我的直观感受是 “如果f导总是小于g导，那f不可能还保持在0上面”，然后我想想 “如果f导只b小一点点，行吗？”，再想到 “那到底小多少呢？”<br>设出这个 “小的” 是多少，就想到设 $h(x)=g(x)-f(x)$，研究 $h(x)$，就发现矛盾了</p>
+<h2 id="2"><a href="#2" class="headerlink" title="2"></a>2</h2><h3 id="题目：-1"><a href="#题目：-1" class="headerlink" title="题目："></a>题目：</h3><p>$f(x),g(x)$ 在 $[a,b]$ 可导，$f(a)=f(b)=0$。求证存在 $\xi\in(a,b),f’(\xi)=g’(\xi)f(\xi)$</p>
+<h3 id="解：-1"><a href="#解：-1" class="headerlink" title="解："></a>解：</h3><p>构造 $F(x)=f(x)e^{-g(x)},F(a)=F(b)=0,F’(x)=f’(x)e^{-g(x)}-f(x)g’(x)e^{-g(x)}=e^{-g(x)}(f’(x)-g’(x)f(x))$<br>由 Rolle 中值定理，$\exists \xi\in(a,b),F’(\xi)=0$，即原式成立</p>
+<h3 id="总结：-1"><a href="#总结：-1" class="headerlink" title="总结："></a>总结：</h3><p>看起来很简洁，但这个构造函数我自己确实没想到。构造函数真是很灵活啊。</p>
+<h2 id="3"><a href="#3" class="headerlink" title="3"></a>3</h2><h3 id="题目：-2"><a href="#题目：-2" class="headerlink" title="题目："></a>题目：</h3><p>$f(x)$ 在 $[a,b]$ 可导，在 $(a,b)$ 存在二阶导，$f(a)=f(b)=0$，$f’(a)f’(b)&gt;0$，求证：$\exists \xi\in(a,b),f(\xi)=f’’(\xi)$</p>
+<h3 id="解：-2"><a href="#解：-2" class="headerlink" title="解："></a>解：</h3><p>首先一定有零点 $c\in (a,b)$，$f(c)=0$，因为在 $a$ 和 $b$ 的附近，$f(x)$ 必然一正一负<br>构造 $F(x)=e^xf(x)$，$F(a)=F(c)=F(b)=0$，则存在 $F’(x_1)=0,F’(x_2)=0,x_1\in(a,c),x_2\in(c,b)$<br>$f’(x_1)+f(x_1)=0,f’(x_2)+f(x_2)=0$<br>构造 $G(x)=e^{-x}(f’(x)+f(x))$，$G(x_1)=G(x_2)=0$<br>$G’(x)=e^{-x}(-f(x)-f’(x)+f’(x)+f’’(x))=e^{-x}(f’’(x)-f(x))$<br>$\exists \xi\in(x_1,x_2),G’(\xi)=0\therefore f’’(\xi)=f(\xi)$</p>
+<h3 id="总结：-2"><a href="#总结：-2" class="headerlink" title="总结："></a>总结：</h3><p>我草，这函数构造的，牛逼<br>根据几何直观，很容易看出来有零点。但是知道有零点以后，接下来的处理我没想出来。<br>或许我们可以先想：什么东西导了以后出来一个 $f(x)-f’’(x)$ 的结构？从而先想到 $G$<br>想到 $G$ 后，发现了 $f+f’$，就想到 $fe^x$，从而想到 $F$，再结合一个多出来的零点，将正反向的思路串联，再经过尝试，就能连通思路了</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%BE%AE%E7%A7%AF%E5%88%86/" rel="tag"># 微积分</a>
+              <a href="/tags/%E5%88%B7%E9%A2%98/" rel="tag"># 刷题</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/02/04/linear_algebra_note/" rel="prev" title="线性代数笔记">
+                  <i class="fa fa-angle-left"></i> 线性代数笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2025/02/04/taylor_trick/" rel="next" title="用泰勒展开做一类导数题的办法">
+                  用泰勒展开做一类导数题的办法 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Flandre Zhu</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"Flandre-Zhu/Flandre-Zhu.github.io","issue_term":"pathname","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>
