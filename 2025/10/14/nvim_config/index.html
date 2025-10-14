@@ -22,12 +22,12 @@
     <meta name="description" content="本文会先介绍一下 nvim 的配置文件的结构, 然后讲我自己的配置, 纯新手向.  我的配置思路是, 导入 vim 中已经有的基础配置, 并延续使用某些插件. 而nvim有更多更加强大的插件（主要是语言支持之类的）, 我们另外折腾.  本配置已同步发布于 github仓库">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nvim 的配置">
-<meta property="og:url" content="http://flandre-zhu.github.io/2025/06/15/nvim_config/index.html">
+<meta property="og:url" content="http://flandre-zhu.github.io/2025/10/14/nvim_config/index.html">
 <meta property="og:site_name" content="Flandre 的小屋">
 <meta property="og:description" content="本文会先介绍一下 nvim 的配置文件的结构, 然后讲我自己的配置, 纯新手向.  我的配置思路是, 导入 vim 中已经有的基础配置, 并延续使用某些插件. 而nvim有更多更加强大的插件（主要是语言支持之类的）, 我们另外折腾.  本配置已同步发布于 github仓库">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-06-15T10:49:09.152Z">
-<meta property="article:modified_time" content="2025-06-15T10:49:09.152Z">
+<meta property="article:published_time" content="2025-10-14T02:25:42.531Z">
+<meta property="article:modified_time" content="2025-10-14T02:25:42.531Z">
 <meta property="article:author" content="Flandre Zhu">
 <meta property="article:tag" content="nvim">
 <meta property="article:tag" content="lua">
@@ -35,10 +35,10 @@
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://flandre-zhu.github.io/2025/06/15/nvim_config/">
+<link rel="canonical" href="http://flandre-zhu.github.io/2025/10/14/nvim_config/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://flandre-zhu.github.io/2025/06/15/nvim_config/","path":"2025/06/15/nvim_config/","title":"nvim 的配置"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://flandre-zhu.github.io/2025/10/14/nvim_config/","path":"2025/10/14/nvim_config/","title":"nvim 的配置"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>nvim 的配置 | Flandre 的小屋</title>
@@ -113,7 +113,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#nvim-%E6%98%AF%E6%80%8E%E4%B9%88%E9%85%8D%E7%BD%AE%E7%9A%84"><span class="nav-number">1.</span> <span class="nav-text">nvim 是怎么配置的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%BC%E5%85%A5vim%E5%B7%B2%E6%9C%89%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">导入vim已有配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nvim-%E8%87%AA%E5%B7%B1%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">nvim 自己的配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86-packer-nvim"><span class="nav-number">3.1.</span> <span class="nav-text">插件管理: packer.nvim</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE"><span class="nav-number">3.2.</span> <span class="nav-text">主题配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6%E9%85%8D%E7%BD%AE"><span class="nav-number">3.3.</span> <span class="nav-text">插件配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%AD%E8%A8%80%E6%94%AF%E6%8C%81%EF%BC%9Alsp"><span class="nav-number">3.4.</span> <span class="nav-text">语言支持：lsp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Markdown%E5%92%8CTex%E7%9A%84%E9%A2%84%E8%A7%88"><span class="nav-number">3.5.</span> <span class="nav-text">Markdown和Tex的预览</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE%E3%80%81%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8C%E6%96%B9%E5%BC%8F%E7%9A%84%E4%BF%AE%E6%94%B9"><span class="nav-number">3.6.</span> <span class="nav-text">快捷键、编译运行方式的修改</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#nvim-%E6%98%AF%E6%80%8E%E4%B9%88%E9%85%8D%E7%BD%AE%E7%9A%84"><span class="nav-number">1.</span> <span class="nav-text">nvim 是怎么配置的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%BC%E5%85%A5vim%E5%B7%B2%E6%9C%89%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">导入vim已有配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nvim-%E8%87%AA%E5%B7%B1%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">nvim 自己的配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86-packer-nvim"><span class="nav-number">3.1.</span> <span class="nav-text">插件管理: packer.nvim</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE"><span class="nav-number">3.2.</span> <span class="nav-text">主题配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6%E9%85%8D%E7%BD%AE"><span class="nav-number">3.3.</span> <span class="nav-text">插件配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%AD%E8%A8%80%E6%94%AF%E6%8C%81%EF%BC%9Alsp"><span class="nav-number">3.4.</span> <span class="nav-text">语言支持：lsp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%AD%E8%A8%80%E6%94%AF%E6%8C%81-%E5%85%B3%E4%BA%8E-clangd-%E5%9C%A8%E5%A4%9A%E6%96%87%E4%BB%B6%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">3.5.</span> <span class="nav-text">语言支持: 关于 clangd 在多文件项目中的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%AD%E8%A8%80%E6%94%AF%E6%8C%81-%E5%85%B3%E4%BA%8E%E6%B3%A8%E9%87%8A"><span class="nav-number">3.6.</span> <span class="nav-text">语言支持: 关于注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Markdown%E5%92%8CTex%E7%9A%84%E9%A2%84%E8%A7%88"><span class="nav-number">3.7.</span> <span class="nav-text">Markdown和Tex的预览</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE%E3%80%81%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8C%E6%96%B9%E5%BC%8F%E7%9A%84%E4%BF%AE%E6%94%B9"><span class="nav-number">3.8.</span> <span class="nav-text">快捷键、编译运行方式的修改</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -126,7 +126,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -159,7 +159,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://flandre-zhu.github.io/2025/06/15/nvim_config/">
+    <link itemprop="mainEntityOfPage" href="http://flandre-zhu.github.io/2025/10/14/nvim_config/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -188,7 +188,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2025-06-15 18:49:09" itemprop="dateCreated datePublished" datetime="2025-06-15T18:49:09+08:00">2025-06-15</time>
+      <time title="创建时间：2025-10-14 10:25:42" itemprop="dateCreated datePublished" datetime="2025-10-14T10:25:42+08:00">2025-10-14</time>
     </span>
 
   
@@ -251,6 +251,12 @@
 <li>可以在根目录下 <code>coc-settings.json</code> 中进一步配置 <code>coc.nvim</code></li>
 <li>我在 <code>lua/keybind.lua</code> 中配置了相关快捷键, 详见文件</li>
 </ol>
+<h3 id="语言支持-关于-clangd-在多文件项目中的使用"><a href="#语言支持-关于-clangd-在多文件项目中的使用" class="headerlink" title="语言支持: 关于 clangd 在多文件项目中的使用"></a>语言支持: 关于 clangd 在多文件项目中的使用</h3><p>在做一些大项目的时候 (例如高程计组的PA) 往往会遇到很多的文件, 需要用 make 去组织编译的时候, clangd 似乎会不太好用.</p>
+<p>不过没有关系, 可以 <code>bear -- make</code> 生成 <code>compile_commands.json</code>, 然后 clangd 会读取这个东西然后就会认得各种东西了.</p>
+<p>有时候, 当你没这么做或者没及时更新它的时候, 可能会出现 clangd 报错过多从而崩溃的问题. 平常而言它其实挺好用的.</p>
+<h3 id="语言支持-关于注释"><a href="#语言支持-关于注释" class="headerlink" title="语言支持: 关于注释"></a>语言支持: 关于注释</h3><p>不知道 <code>coc.nvim</code> 有没有自带的注释功能, 至少我没找到简单好用的</p>
+<p>我用的是 <a target="_blank" rel="noopener" href="https://github.com/numToStr/Comment.nvim">Comment.nvim</a> 的插件, 然后需要改一下键位, 改成 <code>ctrl-/</code> 注释</p>
+<p>这里有一个很神奇的地方! 就是vim里面按下 <code>ctrl-/</code> 的时候, 系统实际检测到的键位似乎是 <code>ctrl-_</code>, 所以要把 trigger 写成这个东西. 但我不知道原因, 还在调查中</p>
 <h3 id="Markdown和Tex的预览"><a href="#Markdown和Tex的预览" class="headerlink" title="Markdown和Tex的预览"></a>Markdown和Tex的预览</h3><p>稍微摸索了一下, 找到这两个好用的. </p>
 <p>首先我安装了一下 texlive. 这个部分省略. </p>
 <p>然后 <code>use &#39;lervag/vimtex&#39;</code> 即可预览 tex 了, 具体用法详见这个插件的 github 仓库, 而且还可以实时加载: 每当 <code>:w</code> 的时候就会更新一次</p>
@@ -284,6 +290,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2025/10/14/linear_algebra_note/" rel="next" title="线性代数笔记">
+                  线性代数笔记 <i class="fa fa-angle-right"></i>
+                </a>
             </div>
           </div>
     </footer>
