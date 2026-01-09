@@ -22,23 +22,23 @@
     <meta name="description" content="本文会先介绍一下 nvim 的配置文件的结构, 然后讲我自己的配置, 纯新手向.  我的配置思路是, 导入 vim 中已经有的基础配置, 并延续使用某些插件. 而nvim有更多更加强大的插件（主要是语言支持之类的）, 我们另外折腾.  本配置已同步发布于 github仓库">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nvim 的配置">
-<meta property="og:url" content="http://flandre-zhu.github.io/2025/12/17/nvim_config/index.html">
+<meta property="og:url" content="http://flandre-zhu.github.io/2026/01/09/nvim_config/index.html">
 <meta property="og:site_name" content="Flandre 的小屋">
 <meta property="og:description" content="本文会先介绍一下 nvim 的配置文件的结构, 然后讲我自己的配置, 纯新手向.  我的配置思路是, 导入 vim 中已经有的基础配置, 并延续使用某些插件. 而nvim有更多更加强大的插件（主要是语言支持之类的）, 我们另外折腾.  本配置已同步发布于 github仓库">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-12-17T11:00:41.202Z">
-<meta property="article:modified_time" content="2025-12-17T11:00:41.202Z">
+<meta property="article:published_time" content="2026-01-09T06:05:01.783Z">
+<meta property="article:modified_time" content="2026-01-09T06:05:01.783Z">
 <meta property="article:author" content="Flandre Zhu">
-<meta property="article:tag" content="配置">
 <meta property="article:tag" content="nvim">
 <meta property="article:tag" content="lua">
+<meta property="article:tag" content="配置">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://flandre-zhu.github.io/2025/12/17/nvim_config/">
+<link rel="canonical" href="http://flandre-zhu.github.io/2026/01/09/nvim_config/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://flandre-zhu.github.io/2025/12/17/nvim_config/","path":"2025/12/17/nvim_config/","title":"nvim 的配置"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://flandre-zhu.github.io/2026/01/09/nvim_config/","path":"2026/01/09/nvim_config/","title":"nvim 的配置"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>nvim 的配置 | Flandre 的小屋</title>
@@ -113,7 +113,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#nvim-%E6%98%AF%E6%80%8E%E4%B9%88%E9%85%8D%E7%BD%AE%E7%9A%84"><span class="nav-number">1.</span> <span class="nav-text">nvim 是怎么配置的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%BC%E5%85%A5vim%E5%B7%B2%E6%9C%89%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">导入vim已有配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nvim-%E8%87%AA%E5%B7%B1%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">nvim 自己的配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86-packer-nvim"><span class="nav-number">3.1.</span> <span class="nav-text">插件管理: packer.nvim</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E6%8F%92%E4%BB%B6"><span class="nav-number">3.2.</span> <span class="nav-text">我的插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE"><span class="nav-number">3.3.</span> <span class="nav-text">主题配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6%E9%85%8D%E7%BD%AE"><span class="nav-number">3.4.</span> <span class="nav-text">插件配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%AD%E8%A8%80%E6%94%AF%E6%8C%81%EF%BC%9Alsp"><span class="nav-number">3.5.</span> <span class="nav-text">语言支持：lsp</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8"><span class="nav-number">3.5.1.</span> <span class="nav-text">关于自动补全</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E-coc-%E7%9A%84%E4%B8%80%E4%B8%AA%E5%9D%91-%E5%A4%B4%E6%96%87%E4%BB%B6%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8"><span class="nav-number">3.5.2.</span> <span class="nav-text">关于 coc 的一个坑: 头文件自动补全</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E-clangd-%E5%9C%A8%E5%A4%9A%E6%96%87%E4%BB%B6%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">3.5.3.</span> <span class="nav-text">关于 clangd 在多文件项目中的使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E6%B3%A8%E9%87%8A"><span class="nav-number">3.5.4.</span> <span class="nav-text">关于注释</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Markdown%E5%92%8CTex%E7%9A%84%E9%A2%84%E8%A7%88"><span class="nav-number">3.6.</span> <span class="nav-text">Markdown和Tex的预览</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E9%AB%98%E6%95%88%E7%9A%84-latex"><span class="nav-number">3.7.</span> <span class="nav-text">更高效的 latex</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE%E3%80%81%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8C%E6%96%B9%E5%BC%8F%E7%9A%84%E4%BF%AE%E6%94%B9"><span class="nav-number">3.8.</span> <span class="nav-text">快捷键、编译运行方式的修改</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#nvim-%E6%98%AF%E6%80%8E%E4%B9%88%E9%85%8D%E7%BD%AE%E7%9A%84"><span class="nav-number">1.</span> <span class="nav-text">nvim 是怎么配置的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%BC%E5%85%A5vim%E5%B7%B2%E6%9C%89%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">导入vim已有配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nvim-%E8%87%AA%E5%B7%B1%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">nvim 自己的配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86-packer-nvim"><span class="nav-number">3.1.</span> <span class="nav-text">插件管理: packer.nvim</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E6%8F%92%E4%BB%B6"><span class="nav-number">3.2.</span> <span class="nav-text">我的插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE"><span class="nav-number">3.3.</span> <span class="nav-text">主题配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6%E9%85%8D%E7%BD%AE"><span class="nav-number">3.4.</span> <span class="nav-text">插件配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%AD%E8%A8%80%E6%94%AF%E6%8C%81%EF%BC%9Alsp"><span class="nav-number">3.5.</span> <span class="nav-text">语言支持：lsp</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8"><span class="nav-number">3.5.1.</span> <span class="nav-text">关于自动补全</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E-coc-%E7%9A%84%E4%B8%80%E4%B8%AA%E5%9D%91-%E5%A4%B4%E6%96%87%E4%BB%B6%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8"><span class="nav-number">3.5.2.</span> <span class="nav-text">关于 coc 的一个坑: 头文件自动补全</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E-clangd-%E5%9C%A8%E5%A4%9A%E6%96%87%E4%BB%B6%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">3.5.3.</span> <span class="nav-text">关于 clangd 在多文件项目中的使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E6%B3%A8%E9%87%8A"><span class="nav-number">3.5.4.</span> <span class="nav-text">关于注释</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Markdown%E5%92%8CTex%E7%9A%84%E9%A2%84%E8%A7%88"><span class="nav-number">3.6.</span> <span class="nav-text">Markdown和Tex的预览</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E9%AB%98%E6%95%88%E7%9A%84-latex"><span class="nav-number">3.7.</span> <span class="nav-text">更高效的 latex</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE%E3%80%81%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8C%E6%96%B9%E5%BC%8F%E7%9A%84%E4%BF%AE%E6%94%B9"><span class="nav-number">3.8.</span> <span class="nav-text">快捷键、编译运行方式的修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E-kitty-%E4%B8%AD%E7%9A%84%E9%94%AE%E4%BD%8D%E9%97%AE%E9%A2%98"><span class="nav-number">3.9.</span> <span class="nav-text">关于 kitty 中的键位问题</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -159,7 +159,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://flandre-zhu.github.io/2025/12/17/nvim_config/">
+    <link itemprop="mainEntityOfPage" href="http://flandre-zhu.github.io/2026/01/09/nvim_config/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -188,7 +188,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2025-12-17 19:00:41" itemprop="dateCreated datePublished" datetime="2025-12-17T19:00:41+08:00">2025-12-17</time>
+      <time title="创建时间：2026-01-09 14:05:01" itemprop="dateCreated datePublished" datetime="2026-01-09T14:05:01+08:00">2026-01-09</time>
     </span>
 
   
@@ -287,6 +287,9 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">function Create_term_buf(_type, size)</span><br><span class="line">  set splitbelow</span><br><span class="line">  set splitright</span><br><span class="line">  if a:_type ==# &#x27;v&#x27;</span><br><span class="line">    vnew</span><br><span class="line">  else</span><br><span class="line">    new</span><br><span class="line">  endif</span><br><span class="line">  execute &#x27;resize &#x27; . a:size</span><br><span class="line">endfunction</span><br><span class="line">&quot; 这个用来新建一个窗口</span><br><span class="line"></span><br><span class="line">function NewBufRunCmd(cmd)</span><br><span class="line">	exec &#x27;w&#x27;</span><br><span class="line">	call Create_term_buf(&#x27;v&#x27;, 80)</span><br><span class="line">	execute printf(&quot;term %s&quot;,a:cmd)</span><br><span class="line">	startinsert</span><br><span class="line">endfunction</span><br><span class="line">&quot; 这个用在自动化的编译运行中, 进终端再运行命令 cmd</span><br></pre></td></tr></table></figure>
 <p>然后, 比如, C++ 的配置就是调用 <code>NewBufRunCmd(&quot;g++ ... -o ... &amp;&amp; ./...&quot;)</code> 就可以了</p>
 <p>同时, 这个开终端也是非常好用的功能. 我绑定了快捷键 F1 表示开一个空的终端, 然后手动输入命令来运行. 这个东西在跑 python 的时候可以 F1 然后 <code>python -i ..</code>, 非常好用</p>
+<h3 id="关于-kitty-中的键位问题"><a href="#关于-kitty-中的键位问题" class="headerlink" title="关于 kitty 中的键位问题"></a>关于 kitty 中的键位问题</h3><p>kitty 对按键事件的处理和传统的终端是不一样的, 它有自己的一套协议</p>
+<p>因此在 kitty 里面有些配置会出现问题, 比如之前提到在传统终端中识别 <code>ctrl+/</code> 这个键位, 要写成 <code>ctrl+_</code>, 这是终端特色, 但是在 kitty 里面就应该直接写 <code>ctrl+/</code>, 因为它会 <strong>原样</strong> 的识别出按键组合</p>
+<p>此外还有各种杂七杂八的问题, 最终的写法请参考目前版本的 github 仓库, 这个写法是适配 kitty 的</p>
 
     </div>
 
@@ -296,23 +299,20 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E9%85%8D%E7%BD%AE/" rel="tag"># 配置</a>
               <a href="/tags/nvim/" rel="tag"># nvim</a>
               <a href="/tags/lua/" rel="tag"># lua</a>
+              <a href="/tags/%E9%85%8D%E7%BD%AE/" rel="tag"># 配置</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2025/12/16/Linux-config/" rel="prev" title="关于我的 Linux 系统的配置">
-                  <i class="fa fa-angle-left"></i> 关于我的 Linux 系统的配置
+                <a href="/2026/01/04/linear_algebra_note/" rel="prev" title="线性代数笔记">
+                  <i class="fa fa-angle-left"></i> 线性代数笔记
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2025/12/17/terminal_config/" rel="next" title="终端的配置 (kitty, zsh)">
-                  终端的配置 (kitty, zsh) <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>
