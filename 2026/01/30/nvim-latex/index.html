@@ -19,15 +19,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"flandre-zhu.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500}},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="通过配置获得非常舒服的 latex 编写体验。 主要做的是编译支持，还有实现一堆简写。毕竟 latex 很长。   准备工作： 软件：apt 安装 texlive, zathura 插件：nvim 中安装 vimtex, ultisnips 编译支持采用 latexmk 进行编译，这里面可以非常灵活的加很多参数，比如其中一个厉害的功能就是可以在源文件更新的时候自动编译更新 pdf 采用 zathu">
+    <meta name="description" content="通过配置获得非常舒服的 latex 编写体验。 主要做的是编译支持，还有实现一堆简写。毕竟 latex 很长。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nvim 和 latex 的配合工作">
 <meta property="og:url" content="http://flandre-zhu.github.io/2026/01/30/nvim-latex/index.html">
 <meta property="og:site_name" content="Flandre 的小屋">
-<meta property="og:description" content="通过配置获得非常舒服的 latex 编写体验。 主要做的是编译支持，还有实现一堆简写。毕竟 latex 很长。   准备工作： 软件：apt 安装 texlive, zathura 插件：nvim 中安装 vimtex, ultisnips 编译支持采用 latexmk 进行编译，这里面可以非常灵活的加很多参数，比如其中一个厉害的功能就是可以在源文件更新的时候自动编译更新 pdf 采用 zathu">
+<meta property="og:description" content="通过配置获得非常舒服的 latex 编写体验。 主要做的是编译支持，还有实现一堆简写。毕竟 latex 很长。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-01-29T19:32:54.204Z">
-<meta property="article:modified_time" content="2026-01-29T19:59:46.650Z">
+<meta property="article:modified_time" content="2026-01-29T20:00:51.700Z">
 <meta property="article:author" content="Flandre Zhu">
 <meta property="article:tag" content="nvim">
 <meta property="article:tag" content="latex">
@@ -212,7 +212,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2026-01-30 03:32:54 / 修改时间：03:59:46" itemprop="dateCreated datePublished" datetime="2026-01-30T03:32:54+08:00">2026-01-30</time>
+      <time title="创建时间：2026-01-30 03:32:54 / 修改时间：04:00:51" itemprop="dateCreated datePublished" datetime="2026-01-30T03:32:54+08:00">2026-01-30</time>
     </span>
 
   
@@ -226,7 +226,9 @@
     
     <div class="post-body" itemprop="articleBody"><p>通过配置获得非常舒服的 latex 编写体验。</p>
 <p>主要做的是编译支持，还有实现一堆简写。毕竟 latex 很长。</p>
-<!-- more --->
+<span id="more"></span>
+
+
 
 <p>准备工作：</p>
 <p>软件：apt 安装 texlive, zathura</p>
