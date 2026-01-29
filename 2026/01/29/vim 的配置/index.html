@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"flandre-zhu.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500}},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="记一下我的vim是怎样配置的，顺便讲一些 vimrc 的语法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vim的配置">
+<meta property="og:url" content="http://flandre-zhu.github.io/2026/01/29/vim%20%E7%9A%84%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:site_name" content="Flandre 的小屋">
+<meta property="og:description" content="记一下我的vim是怎样配置的，顺便讲一些 vimrc 的语法。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-01-29T15:35:30.956Z">
+<meta property="article:modified_time" content="2025-02-04T06:17:50.610Z">
+<meta property="article:author" content="Flandre Zhu">
+<meta property="article:tag" content="vim">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://flandre-zhu.github.io/2026/01/29/vim%20%E7%9A%84%E9%85%8D%E7%BD%AE/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://flandre-zhu.github.io/2026/01/29/vim%20%E7%9A%84%E9%85%8D%E7%BD%AE/","path":"2026/01/29/vim 的配置/","title":"vim的配置"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>vim的配置 | Flandre 的小屋</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/bookmark.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Flandre 的小屋</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-guestbook"><a href="/guestbook/" rel="section"><i class="fa fa-book fa-fw"></i>留言板</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#vimrc-%E8%AF%AD%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">vimrc 语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E8%AE%BE%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">基础设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E8%A1%A5%E5%85%A8%E8%AE%BE%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">代码补全设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E8%AF%86%E5%88%AB%E8%AF%AD%E8%A8%80%E7%9A%84%E8%AE%BE%E7%BD%AE"><span class="nav-number">4.</span> <span class="nav-text">自动识别语言的设置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%99%E4%B8%80%E4%B8%AA%E8%AF%AD%E8%A8%80%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="nav-number">4.1.</span> <span class="nav-text">写一个语言的配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%86%E5%88%AB%E8%AF%AD%E8%A8%80%E5%B9%B6%E5%AF%BC%E5%85%A5%E9%85%8D%E7%BD%AE"><span class="nav-number">4.2.</span> <span class="nav-text">识别语言并导入配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6"><span class="nav-number">5.</span> <span class="nav-text">插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81"><span class="nav-number">6.</span> <span class="nav-text">完整代码</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Flandre Zhu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://flandre-zhu.github.io/2026/01/29/vim%20%E7%9A%84%E9%85%8D%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Flandre Zhu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Flandre 的小屋">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="vim的配置 | Flandre 的小屋">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          vim的配置
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-01-29 23:35:30" itemprop="dateCreated datePublished" datetime="2026-01-29T23:35:30+08:00">2026-01-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-02-04 14:17:50" itemprop="dateModified" datetime="2025-02-04T14:17:50+08:00">2025-02-04</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>记一下我的vim是怎样配置的，顺便讲一些 vimrc 的语法。</p>
+<span id="more"></span>
+
+<p>vim 的配置，主要由 vimrc 文件控制，它在 <code>~/.vimrc</code></p>
+<p>vimrc 文件也可以导入别的 vim 配置文件，一般我们写别的配置文件，使用 <code>.vim</code> 后缀，并把这些文件放在 <code>~/.vim</code> 里面。一些插件的配置也在这个目录里</p>
+<p>可以用 <code>source /path/to/xxx.vim</code> 导入某个 <code>.vim</code> 文件中的配置</p>
+<h2 id="vimrc-语法"><a href="#vimrc-语法" class="headerlink" title="vimrc 语法"></a>vimrc 语法</h2><ol>
+<li><p><code>set 某个参数</code> 可以设置 vim 的某个参数，例如 <code>set nu</code> 表示设置显示行号。这个设置也可以在 vim 中手动调，在 normal 模式下输入 <code>:set nu</code> 也是同样的效果，区别在于它是临时的设置，需要每次都调一下，但放在 vimrc 里面就可以永久生效。如果想取消掉，就在后面加上 <code>!</code>，例如 <code>set nu!</code> 就可以取消显示行号</p>
+</li>
+<li><p><code>inoremap, nnoremap</code> 表示映射。它是这样断句的：<code>i或n | nore | map</code>， i或n表示它在insert模式生效还是normal模式生效，nore表示非递归（它其实是 no-recurrent），map表示映射。这个东西可以用来绑定按键，比如把 F8 设置成编译；也可以用来进行代码补全，例如把 <code>(</code> 映射成 <code>()</code> 从而实现自动匹配括号，也可以写一长段代码进去从而实现代码补全。写多行的代码时，用 <code>&lt;CR&gt;</code> 表示一个换行</p>
+</li>
+<li><p><code>exec</code> 命令。相当于在 normal 里面先输入一个 <code>:</code> 然后执行后面的东西。例如，<code>exec &quot;w&quot;</code> 就相当于 <code>:w</code>，就是保存。可以在命令前面加上 <code>!</code> 表示在 Linux 命令行中运行某个命令。例如 <code>exec &quot;! g++ a.cpp -o a&quot;</code> 就可以编译 <code>a.cpp</code> </p>
+</li>
+<li><p>定义变量：用 <code>:let 变量名=...</code> 来声明一个变量</p>
+</li>
+<li><p>定义函数：先写一个 <code>function 函数名()</code>，写完以后要写一个 <code>endfunc</code>，在中间写上函数的内容。调用函数的时候写 <code>:call 函数名()</code> ，和上面一行，这个可以直接在 normal 模式下手动输入，也可以写在 vimrc 文件里面永久生效</p>
+</li>
+<li><p>if选择分支：也是 <code>if(...) 做某事</code> 的语法，也有 <code>else</code>，但是在这些 if else的最后要写一个 <code>endif</code></p>
+</li>
+<li><p>注释：在语句前面加上一个 <code>&quot;</code> 表示注释</p>
+</li>
+</ol>
+<p>这些是基础语法，后面有啥再说</p>
+<h2 id="基础设置"><a href="#基础设置" class="headerlink" title="基础设置"></a>基础设置</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">set nu rnu</span><br><span class="line">&quot; nu是显示行号，rnu是显示相对行号（例如，在上面多少行，这玩意配合 数字+j/k 特别好用）</span><br><span class="line">set mouse=a</span><br><span class="line">&quot; 这样就可以鼠标点了</span><br><span class="line">set laststatus=2</span><br><span class="line">set tabstop=4</span><br><span class="line">set shiftwidth=4</span><br><span class="line">&quot; 这三行用来设置tab宽度为4，具体啥意思我也不是很懂</span><br><span class="line">set autoindent</span><br><span class="line">set smartindent</span><br><span class="line">&quot; 这两行用来自动对齐缩进</span><br><span class="line">set backspace=indent,eol,start</span><br><span class="line">&quot; 这样的话，按backspace可以把行首删除，并且使这一行并入上一行（这样就和vscode一样了）</span><br><span class="line"></span><br><span class="line">set timeoutlen=300</span><br><span class="line">inoremap ( ()&lt;esc&gt;i</span><br><span class="line">inoremap [ []&lt;esc&gt;i</span><br><span class="line">inoremap &#123; &#123;&#125;&lt;esc&gt;i</span><br><span class="line">inoremap &#123;&lt;CR&gt; &#123;&lt;CR&gt;&#125;&lt;esc&gt;O</span><br><span class="line">inoremap &#x27; &#x27;&#x27;&lt;esc&gt;i</span><br><span class="line">inoremap &quot; &quot;&quot;&lt;esc&gt;i</span><br><span class="line">&quot; 这几个用来设置括号和引号自动匹配，其中大括号后面如果紧跟着换行的话，会变成 &#123; &lt;换行&gt; &#125;</span><br><span class="line">&quot; timeoutlen 设置延迟，单位是毫秒，300ms 可以让它不需要输入的那么快也可以识别并映射</span><br><span class="line">&quot; 关于为啥先 &lt;esc&gt; 一下：这个就是进入 normal 模式，然后再按下 i，这样做的话光标会停留在两个括号的中间，如果不这么干，光标会在括号的后面</span><br></pre></td></tr></table></figure>
+
+<h2 id="代码补全设置"><a href="#代码补全设置" class="headerlink" title="代码补全设置"></a>代码补全设置</h2><p>用 inoremap 实现这个</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">inoremap INIT #include&lt;bits/stdc++.h&gt;&lt;CR&gt;using namespace std;&lt;CR&gt;#define F(i,l,r) for(int i=(l);i&lt;=(r);++i)&lt;CR&gt;#define D(i,l,r) for(int i=(r);i&gt;=(l);--i)&lt;CR&gt;#define MEM(x,a) memset(x,a,sizeof(x))&lt;CR&gt;int I()&#123;int x=0,f=0;char c=getchar(); while(!isdigit(c))f=(c==&#x27;-&#x27;),c=getchar(); while(isdigit(c))x=x*10+c-&#x27;0&#x27;,c=getchar(); return f?-x:x;&#125;&lt;CR&gt;&lt;CR&gt;void flandre()&lt;CR&gt;&#123;&lt;CR&gt;&lt;CR&gt;&#125;&lt;CR&gt;#undef int&lt;CR&gt;int main()&lt;CR&gt;&#123;&lt;CR&gt;flandre();&lt;CR&gt;return 0;&lt;CR&gt;&#125;&lt;CR&gt;</span><br><span class="line">inoremap DEFS #define vi vector&lt;int&gt;&lt;CR&gt;#define eb emplace_back&lt;CR&gt;#define sz(x) ((int)x.size())&lt;CR&gt;#define al(x) x.begin(),x.end()&lt;CR&gt;#define pii pair&lt;int,int&gt;&lt;CR&gt;#define fi first&lt;CR&gt;#define se second&lt;CR&gt;#define lwrb lower_bound&lt;CR&gt;#define uprb upper_bound&lt;CR&gt;</span><br></pre></td></tr></table></figure>
+
+<p>其中这个 INIT 展开出来是</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> F(i,l,r) for(int i=(l);i&lt;=(r);++i)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> D(i,l,r) for(int i=(r);i&gt;=(l);--i)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MEM(x,a) memset(x,a,sizeof(x))</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">I</span><span class="params">()</span></span>&#123;<span class="type">int</span> x=<span class="number">0</span>,f=<span class="number">0</span>;<span class="type">char</span> c=<span class="built_in">getchar</span>(); <span class="keyword">while</span>(!<span class="built_in">isdigit</span>(c))f=(c==<span class="string">&#x27;-&#x27;</span>),c=<span class="built_in">getchar</span>(); <span class="keyword">while</span>(<span class="built_in">isdigit</span>(c))x=x*<span class="number">10</span>+c-<span class="string">&#x27;0&#x27;</span>,c=<span class="built_in">getchar</span>(); <span class="keyword">return</span> f?-x:x;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">flandre</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="keyword">undef</span> int</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">flandre</span>();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>被压缩成了上面的样子。</p>
+<h2 id="自动识别语言的设置"><a href="#自动识别语言的设置" class="headerlink" title="自动识别语言的设置"></a>自动识别语言的设置</h2><p>主要包含快捷编译、快速注释。由于不同语言的编译和注释方式不一样，所以需要识别它是啥语言，再决定怎样做。我这里主要是 cpp 和 python，也可以再加入别的语言</p>
+<h3 id="写一个语言的配置"><a href="#写一个语言的配置" class="headerlink" title="写一个语言的配置"></a>写一个语言的配置</h3><p>先写个cpp的。我们在 <code>~/.vim</code> 中新建一个 <code>cpp.vim</code>，然后在这里面这样写</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">function Comp()</span><br><span class="line">	exec &#x27;w&#x27;</span><br><span class="line">	exec &#x27;! clear &amp;&amp; g++ % -o %&lt; &amp;&amp; ./%&lt;&#x27;</span><br><span class="line">endfunc</span><br><span class="line">&quot; 编译并运行</span><br><span class="line">&quot; %表示文件名，%&lt;表示去掉后缀的文件名</span><br><span class="line">function CompZ()</span><br><span class="line">	exec &#x27;w&#x27;</span><br><span class="line">	exec &#x27;! clear &amp;&amp; g++ % -o %&lt; &amp;&amp; ./%&lt; &lt; z&#x27;</span><br><span class="line">endfunc</span><br><span class="line">&quot; 编译运行，以z为输入文件（这是我本地的一个专门用来放输入的文件）</span><br><span class="line">function ToggleCmt()</span><br><span class="line">	:let s=getline(&#x27;.&#x27;)</span><br><span class="line">	if(s[0]==&#x27;/&#x27; &amp;&amp; s[1]==&#x27;/&#x27;)</span><br><span class="line">		exec &#x27;s/^\/\///g&#x27;</span><br><span class="line">	else</span><br><span class="line">		exec &#x27;s/^/\/\//g&#x27;</span><br><span class="line">	endif</span><br><span class="line">endfunc</span><br><span class="line">&quot; 这个玩意用来注释</span><br></pre></td></tr></table></figure>
+
+<p>讲一下注释里面的那个抽象字符串，它实在是比较抽象，慢慢来。</p>
+<p>首先 vim 有一个替换文本的命令：<code>s/a/b/g</code>，可以把这一行里面的所有 a 字符串换成 b 字符串（s表示范围是当前行，g表示满足条件的全都替换），a可以用正则匹配</p>
+<p>我们的逻辑是：先读取这一行，如果开头是 <code>//</code> 就删掉，否则就加上一个 <code>//</code></p>
+<p>这个 <code>getline</code> 就是读取了这一行，然后我们用替换命令来实现上述功能。vim 的正则匹配中，<code>^</code> 表示行首。然后，对于第一种情况，我们相当于要把 <code>^//</code> 替换成空串，这样就可以删掉了。</p>
+<p>但我们如果直接写的话，<code>/</code> 会歧义，需要转义，vim 用 <code>\/</code> 转义，表示文本串中的一个字符 <code>/</code>。所以就写出了上面这一坨。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">s / ^\/\/ / / g</span><br><span class="line">  *       * *</span><br><span class="line">*号位置表示 s/a/b/g 中具有结构意义的这个 /</span><br><span class="line">^\/\/ 就是 ^//</span><br></pre></td></tr></table></figure>
+
+<p>同理 <code>s/^/\/\//g</code> 意思就是把 <code>^</code> 替换成一个 <code>//</code> ，就是在行首加入 <code>//</code></p>
+<h3 id="识别语言并导入配置"><a href="#识别语言并导入配置" class="headerlink" title="识别语言并导入配置"></a>识别语言并导入配置</h3><p>可以用 <code>augroup</code> 实现。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">augroup cpp</span><br><span class="line">	autocmd!</span><br><span class="line">	autocmd FileType cpp source ~/.vim/cpp.vim</span><br><span class="line">augroup END</span><br></pre></td></tr></table></figure>
+
+<p>具体原理我也不太懂，总之这样就可以识别一个 cpp 文件，并调用我们写的 cpp 的配置了</p>
+<p>似乎 <code>FileType</code> 后面的那个 <code>cpp</code> 起关键作用，是对文件后缀进行识别的。<code>augroup</code> 后面那个是一个“组的名称”，随便起一个都行</p>
+<p>同理，把 cpp 换成 python 之类的就可以用 python 的配置了。</p>
+<p>这是我的 python 的配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">function Comp()</span><br><span class="line">	exec &#x27;w&#x27;</span><br><span class="line">	exec &#x27;! clear &amp;&amp; pyinstaller --onefile % &amp;&amp; ./dist/%&lt;&#x27;</span><br><span class="line">endfunc</span><br><span class="line">&quot; 这是用 pyinstaller 把它打包成可执行文件（这样干挺脑残的，我主要是为了契合我平常搞C++时候的习惯才这么干）</span><br><span class="line"></span><br><span class="line">function CompZ()</span><br><span class="line">	exec &#x27;w&#x27;</span><br><span class="line">	exec &#x27;! clear &amp;&amp; pyinstaller --onefile % &amp;&amp; ./dist/%&lt; &lt; ./z&#x27;</span><br><span class="line">endfunc</span><br><span class="line"></span><br><span class="line">function ToggleCmt()</span><br><span class="line">	:let s=getline(&#x27;.&#x27;)</span><br><span class="line">	if(s[0]==&#x27;#&#x27;)</span><br><span class="line">		exec &#x27;s/^#//g&#x27;</span><br><span class="line">	else</span><br><span class="line">		exec &#x27;s/^/#/g&#x27;</span><br><span class="line">	endif</span><br><span class="line">endfunc</span><br><span class="line">&quot; 这里是把行首替换成 #，它看起来比C++的那坨大便要好懂的多</span><br><span class="line"></span><br><span class="line">function RunPy()</span><br><span class="line">	exec &#x27;w&#x27;</span><br><span class="line">	exec &#x27;! clear &amp;&amp; python3 %&#x27;</span><br><span class="line">endfunc</span><br><span class="line">&quot; 这个是直接跑</span><br><span class="line"></span><br><span class="line">nnoremap &lt;F7&gt; :call RunPy()&lt;CR&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><p>关于怎样安装插件，这里不细讲，百度一堆</p>
+<p>我目前没使用太多插件，就一个 NERDTree 用来看文件目录，一个 coc.nvim 用来提示代码</p>
+<p>coc的话需要再装点别的包，用来对某个语言进行针对性的提示。<code>python</code> 用 <code>coc-jedi</code>，<code>C++</code> 用 <code>coc-clangd</code></p>
+<p>导入插件部分</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">call plug#begin(&#x27;~/.vim/plugged&#x27;)</span><br><span class="line">Plug &#x27;preservim/NERDTree&#x27;</span><br><span class="line">Plug &#x27;neoclide/coc.nvim&#x27;, &#123;&#x27;branch&#x27;: &#x27;release&#x27;&#125;</span><br><span class="line">Plug &#x27;pappasam/coc-jedi&#x27;, &#123; &#x27;do&#x27;: &#x27;yarn install --frozen-lockfile &amp;&amp; yarn build&#x27;, &#x27;branch&#x27;: &#x27;main&#x27; &#125;</span><br><span class="line">&quot; coc-clangd 我是另外安装的，用 CocInstall 命令</span><br><span class="line">call plug#end()</span><br></pre></td></tr></table></figure>
+
+<p>插件的配置部分（这个代码是抄的）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">nnoremap &lt;F3&gt; :NERDTreeToggle&lt;CR&gt;</span><br><span class="line">inoremap &lt;expr&gt; &lt;cr&gt; coc#pum#visible() ? coc#pum#confirm() : &quot;\&lt;CR&gt;&quot;</span><br><span class="line">&quot; use &lt;tab&gt; to trigger completion and navigate to the next complete item</span><br><span class="line">function! CheckBackspace() abort</span><br><span class="line">  let col = col(&#x27;.&#x27;) - 1</span><br><span class="line">  return !col || getline(&#x27;.&#x27;)[col - 1]  =~# &#x27;\s&#x27;</span><br><span class="line">endfunction</span><br><span class="line">inoremap &lt;silent&gt;&lt;expr&gt; &lt;Tab&gt;</span><br><span class="line">      \ coc#pum#visible() ? coc#pum#next(1) :</span><br><span class="line">      \ CheckBackspace() ? &quot;\&lt;Tab&gt;&quot; :</span><br><span class="line">      \ coc#refresh()</span><br></pre></td></tr></table></figure>
+
+<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><p><code>~/.vimrc</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">call plug#begin(&#x27;~/.vim/plugged&#x27;)</span><br><span class="line">Plug &#x27;preservim/NERDTree&#x27;</span><br><span class="line">Plug &#x27;neoclide/coc.nvim&#x27;, &#123;&#x27;branch&#x27;: &#x27;release&#x27;&#125;</span><br><span class="line">Plug &#x27;pappasam/coc-jedi&#x27;, &#123; &#x27;do&#x27;: &#x27;yarn install --frozen-lockfile &amp;&amp; yarn build&#x27;, &#x27;branch&#x27;: &#x27;main&#x27; &#125;</span><br><span class="line">call plug#end()</span><br><span class="line"></span><br><span class="line">set nu rnu</span><br><span class="line">set mouse=a</span><br><span class="line">set laststatus=2</span><br><span class="line">set tabstop=4</span><br><span class="line">set shiftwidth=4</span><br><span class="line">set autoindent</span><br><span class="line">set smartindent</span><br><span class="line">set backspace=indent,eol,start</span><br><span class="line"></span><br><span class="line">set timeoutlen=300</span><br><span class="line">inoremap ( ()&lt;esc&gt;i</span><br><span class="line">inoremap [ []&lt;esc&gt;i</span><br><span class="line">inoremap &#123; &#123;&#125;&lt;esc&gt;i</span><br><span class="line">inoremap &#123;&lt;CR&gt; &#123;&lt;CR&gt;&#125;&lt;esc&gt;O</span><br><span class="line">inoremap &#x27; &#x27;&#x27;&lt;esc&gt;i</span><br><span class="line">inoremap &quot; &quot;&quot;&lt;esc&gt;i</span><br><span class="line"></span><br><span class="line">inoremap INIT #include&lt;bits/stdc++.h&gt;&lt;CR&gt;using namespace std;&lt;CR&gt;#define F(i,l,r) for(int i=(l);i&lt;=(r);++i)&lt;CR&gt;#define D(i,l,r) for(int i=(r);i&gt;=(l);--i)&lt;CR&gt;#define MEM(x,a) memset(x,a,sizeof(x))&lt;CR&gt;int I()&#123;int x=0,f=0;char c=getchar(); while(!isdigit(c))f=(c==&#x27;-&#x27;),c=getchar(); while(isdigit(c))x=x*10+c-&#x27;0&#x27;,c=getchar(); return f?-x:x;&#125;&lt;CR&gt;&lt;CR&gt;void flandre()&lt;CR&gt;&#123;&lt;CR&gt;&lt;CR&gt;&#125;&lt;CR&gt;#undef int&lt;CR&gt;int main()&lt;CR&gt;&#123;&lt;CR&gt;flandre();&lt;CR&gt;return 0;&lt;CR&gt;&#125;&lt;CR&gt;</span><br><span class="line">inoremap DEFS #define vi vector&lt;int&gt;&lt;CR&gt;#define eb emplace_back&lt;CR&gt;#define sz(x) ((int)x.size())&lt;CR&gt;#define al(x) x.begin(),x.end()&lt;CR&gt;#define pii pair&lt;int,int&gt;&lt;CR&gt;#define fi first&lt;CR&gt;#define se second&lt;CR&gt;#define lwrb lower_bound&lt;CR&gt;#define uprb upper_bound&lt;CR&gt;</span><br><span class="line"></span><br><span class="line">nnoremap &lt;F8&gt; :call Comp()&lt;CR&gt;</span><br><span class="line">nnoremap &lt;F9&gt; :call CompZ()&lt;CR&gt;</span><br><span class="line">nnoremap &lt;C-A&gt; ggVG</span><br><span class="line">nnoremap &lt;C-P&gt; :call ToggleCmt()&lt;CR&gt;</span><br><span class="line"></span><br><span class="line">nnoremap &lt;F3&gt; :NERDTreeToggle&lt;CR&gt;</span><br><span class="line">inoremap &lt;expr&gt; &lt;cr&gt; coc#pum#visible() ? coc#pum#confirm() : &quot;\&lt;CR&gt;&quot;</span><br><span class="line">&quot; use &lt;tab&gt; to trigger completion and navigate to the next complete item</span><br><span class="line">function! CheckBackspace() abort</span><br><span class="line">  let col = col(&#x27;.&#x27;) - 1</span><br><span class="line">  return !col || getline(&#x27;.&#x27;)[col - 1]  =~# &#x27;\s&#x27;</span><br><span class="line">endfunction</span><br><span class="line">inoremap &lt;silent&gt;&lt;expr&gt; &lt;Tab&gt;</span><br><span class="line">      \ coc#pum#visible() ? coc#pum#next(1) :</span><br><span class="line">      \ CheckBackspace() ? &quot;\&lt;Tab&gt;&quot; :</span><br><span class="line">      \ coc#refresh()</span><br><span class="line"></span><br><span class="line">augroup cpp</span><br><span class="line">	autocmd!</span><br><span class="line">	autocmd FileType cpp source ~/.vim/cpp.vim</span><br><span class="line">augroup END</span><br><span class="line"></span><br><span class="line">augroup python</span><br><span class="line">	autocmd!</span><br><span class="line">	autocmd FileType python source ~/.vim/python.vim</span><br><span class="line">augroup END</span><br><span class="line"></span><br><span class="line">augroup html</span><br><span class="line">	autocmd!</span><br><span class="line">	autocmd FileType html source ~/.vim/html.vim</span><br><span class="line">augroup END</span><br></pre></td></tr></table></figure>
+
+<p><code>~/.vim/cpp.vim</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function Comp()</span><br><span class="line">	exec &#x27;w&#x27;</span><br><span class="line">	exec &#x27;! clear &amp;&amp; g++ % -o %&lt; &amp;&amp; ./%&lt;&#x27;</span><br><span class="line">endfunc</span><br><span class="line">function CompZ()</span><br><span class="line">	exec &#x27;w&#x27;</span><br><span class="line">	exec &#x27;! clear &amp;&amp; g++ % -o %&lt; &amp;&amp; ./%&lt; &lt; z&#x27;</span><br><span class="line">endfunc</span><br><span class="line">function ToggleCmt()</span><br><span class="line">	:let s=getline(&#x27;.&#x27;)</span><br><span class="line">	if(s[0]==&#x27;/&#x27; &amp;&amp; s[1]==&#x27;/&#x27;)</span><br><span class="line">		exec &#x27;s/^\/\///g&#x27;</span><br><span class="line">	else</span><br><span class="line">		exec &#x27;s/^/\/\//g&#x27;</span><br><span class="line">	endif</span><br><span class="line">endfunc</span><br></pre></td></tr></table></figure>
+
+<p><code>~/.vim/python.vim</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">function Comp()</span><br><span class="line">	exec &#x27;w&#x27;</span><br><span class="line">	exec &#x27;! clear &amp;&amp; pyinstaller --onefile % &amp;&amp; ./dist/%&lt;&#x27;</span><br><span class="line">endfunc</span><br><span class="line"></span><br><span class="line">function CompZ()</span><br><span class="line">	exec &#x27;w&#x27;</span><br><span class="line">	exec &#x27;! clear &amp;&amp; pyinstaller --onefile % &amp;&amp; ./dist/%&lt; &lt; ./z&#x27;</span><br><span class="line">endfunc</span><br><span class="line"></span><br><span class="line">function ToggleCmt()</span><br><span class="line">	:let s=getline(&#x27;.&#x27;)</span><br><span class="line">	if(s[0]==&#x27;#&#x27;)</span><br><span class="line">		exec &#x27;s/^#//g&#x27;</span><br><span class="line">	else</span><br><span class="line">		exec &#x27;s/^/#/g&#x27;</span><br><span class="line">	endif</span><br><span class="line">endfunc</span><br><span class="line"></span><br><span class="line">function RunPy()</span><br><span class="line">	exec &#x27;w&#x27;</span><br><span class="line">	exec &#x27;! clear &amp;&amp; python3 %&#x27;</span><br><span class="line">endfunc</span><br><span class="line"></span><br><span class="line">nnoremap &lt;F7&gt; :call RunPy()&lt;CR&gt;</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/vim/" rel="tag"># vim</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2026/01/29/%E5%85%B3%E4%BA%8E%E6%9C%AChexo%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA/" rel="prev" title="关于本hexo博客的搭建">
+                  <i class="fa fa-angle-left"></i> 关于本hexo博客的搭建
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2026/01/29/nvim_config/" rel="next" title="nvim 的配置">
+                  nvim 的配置 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Flandre Zhu</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"Flandre-Zhu/Flandre-Zhu.github.io","issue_term":"pathname","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js" defer></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

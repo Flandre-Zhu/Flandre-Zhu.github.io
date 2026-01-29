@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"flandre-zhu.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500}},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="ubuntu 22.04 面向本人. 以下操作基于安装好系统以后">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于我的 Linux 系统的配置">
+<meta property="og:url" content="http://flandre-zhu.github.io/2026/01/29/Linux-config/index.html">
+<meta property="og:site_name" content="Flandre 的小屋">
+<meta property="og:description" content="ubuntu 22.04 面向本人. 以下操作基于安装好系统以后">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-01-29T15:35:30.957Z">
+<meta property="article:modified_time" content="2025-12-16T15:40:15.870Z">
+<meta property="article:author" content="Flandre Zhu">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://flandre-zhu.github.io/2026/01/29/Linux-config/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://flandre-zhu.github.io/2026/01/29/Linux-config/","path":"2026/01/29/Linux-config/","title":"关于我的 Linux 系统的配置"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>关于我的 Linux 系统的配置 | Flandre 的小屋</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/bookmark.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Flandre 的小屋</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-guestbook"><a href="/guestbook/" rel="section"><i class="fa fa-book fa-fw"></i>留言板</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%A7%E6%A6%82%E6%93%8D%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text">大概操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E7%BB%86%E8%8A%82"><span class="nav-number">2.</span> <span class="nav-text">具体细节</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#zsh-%E7%BB%88%E7%AB%AF"><span class="nav-number">2.1.</span> <span class="nav-text">zsh 终端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zsh-%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="nav-number">2.2.</span> <span class="nav-text">zsh 的配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%B3%95%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="nav-number">2.3.</span> <span class="nav-text">输入法的配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#markdown"><span class="nav-number">2.4.</span> <span class="nav-text">markdown</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#typora-%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="nav-number">2.5.</span> <span class="nav-text">typora 的配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python-pip%E5%8C%85"><span class="nav-number">2.6.</span> <span class="nav-text">python pip包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vim-nvim"><span class="nav-number">2.7.</span> <span class="nav-text">vim &amp;&amp; nvim</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nodejs-npm"><span class="nav-number">2.8.</span> <span class="nav-text">nodejs &#x2F; npm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hexo-blog"><span class="nav-number">2.9.</span> <span class="nav-text">hexo blog</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Qt"><span class="nav-number">2.10.</span> <span class="nav-text">Qt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vscode-%EF%BC%88apt%E5%AE%89%E8%A3%85%EF%BC%89"><span class="nav-number">2.11.</span> <span class="nav-text">vscode （apt安装）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9F%B3%E4%B9%90%E8%BD%AF%E4%BB%B6"><span class="nav-number">2.12.</span> <span class="nav-text">音乐软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E4%BD%8D%E6%9D%BF%E9%85%8D%E7%BD%AE"><span class="nav-number">2.13.</span> <span class="nav-text">数位板配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-lfs"><span class="nav-number">2.14.</span> <span class="nav-text">git-lfs</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%84%E7%A7%8D%E5%B0%8F%E6%9D%82%E9%A1%B9"><span class="nav-number">3.</span> <span class="nav-text">各种小杂项</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#exfat"><span class="nav-number">3.1.</span> <span class="nav-text">exfat</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WPS%E7%BC%BA%E5%A4%B1%E5%AD%97%E4%BD%93"><span class="nav-number">3.2.</span> <span class="nav-text">WPS缺失字体</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Flandre Zhu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://flandre-zhu.github.io/2026/01/29/Linux-config/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Flandre Zhu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Flandre 的小屋">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="关于我的 Linux 系统的配置 | Flandre 的小屋">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          关于我的 Linux 系统的配置
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-01-29 23:35:30" itemprop="dateCreated datePublished" datetime="2026-01-29T23:35:30+08:00">2026-01-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-12-16 23:40:15" itemprop="dateModified" datetime="2025-12-16T23:40:15+08:00">2025-12-16</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>ubuntu 22.04</p>
+<p>面向本人. 以下操作基于安装好系统以后</p>
+<span id="more"></span>
+
+<h2 id="大概操作"><a href="#大概操作" class="headerlink" title="大概操作"></a>大概操作</h2><p>从u盘弄好 clash</p>
+<p>换 sources.list (从u盘复制清华tuna源)</p>
+<p>sudo apt update, upgrade, 重启</p>
+<p>sudo apt install git vim vim-gtk fcitx curl wget </p>
+<p>安装 edge&#x2F;chrome, 换掉 firefox</p>
+<p>安装输入法: 见输入法一节</p>
+<p>安装其它软件: qq, 微信, 网易云, 腾讯会议, …</p>
+<h2 id="具体细节"><a href="#具体细节" class="headerlink" title="具体细节"></a>具体细节</h2><h3 id="zsh-终端"><a href="#zsh-终端" class="headerlink" title="zsh 终端"></a>zsh 终端</h3><p>sudo apt install zsh</p>
+<p><a target="_blank" rel="noopener" href="https://ohmyz.sh/#install">官网安装</a></p>
+<p>配置文件是: <code>~/.zshrc</code></p>
+<h3 id="zsh-的配置"><a href="#zsh-的配置" class="headerlink" title="zsh 的配置"></a>zsh 的配置</h3><p>终端用 vim 风格输入命令: 在 <code>~/.zshrc</code> 中加上: <code>bindkey -v</code></p>
+<p>zsh 中的插件: 在 zshrc 中写: <code>plugins = (....)</code></p>
+<p>对于内置的插件, 直接这样写然后 <code>source ~/.zshrc</code> 就能用了</p>
+<p>对于需要额外安装的插件, 需要先 clone 到 <code>~/.oh-my-zsh/custom/plugins</code> 中, 然后再启用</p>
+<p>我用的插件列表: <code>plugins=(git zsh-syntax-highlighting zsh-autosuggestions zsh-history-substring-search copyfile)</code></p>
+<h3 id="输入法的配置"><a href="#输入法的配置" class="headerlink" title="输入法的配置"></a>输入法的配置</h3><p>使用 fcitx5 pinyin</p>
+<p>由于当时没有记录遇到的问题和解决办法, 只好下次</p>
+<h3 id="markdown"><a href="#markdown" class="headerlink" title="markdown"></a>markdown</h3><p>typora: <a target="_blank" rel="noopener" href="https://zahui.fan/posts/64b52e0d/">https://zahui.fan/posts/64b52e0d/</a></p>
+<p>Obsidian: 直接官网安装</p>
+<h3 id="typora-的配置"><a href="#typora-的配置" class="headerlink" title="typora 的配置"></a>typora 的配置</h3><p>记得设置 inline math.</p>
+<p><strong>导出设置</strong>：</p>
+<p>勾选 “保留大纲侧边栏”</p>
+<p>配置 <code>在&lt;body&gt;中添加</code> ：（这个用来调整侧边框的大小）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">A1=document.getElementsByClassName(&quot;typora-export-sidebar&quot;)[0]</span><br><span class="line">A1.style.width=&quot;200px&quot;</span><br><span class="line">A2=document.getElementsByClassName(&quot;outline-content&quot;)[0]</span><br><span class="line">A2.style.width=&quot;200px&quot;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="python-pip包"><a href="#python-pip包" class="headerlink" title="python pip包"></a>python pip包</h3><p>pip的安装命令：<code>pip3 install xxx</code> ，<strong>不要用sudo！</strong></p>
+<p>可以用 <code>--user</code> 安装到本地(只安装给当前用户), 这样就可以直接在命令行运行</p>
+<p>安装: pyinstaller jupyter numpy pytorch(包名字为 torch)</p>
+<p>pyinstaller 转可执行程序：<code>pyinstaller --onefile [文件名]</code></p>
+<h3 id="vim-nvim"><a href="#vim-nvim" class="headerlink" title="vim &amp;&amp; nvim"></a>vim &amp;&amp; nvim</h3><p>sudo apt install vim vim-gtk （上面已完成）</p>
+<p>安装 nvim</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-add-repository ppa:neovim-ppa/stable</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install neovim</span><br></pre></td></tr></table></figure>
+
+<p>配置见 <a href="https://flandre-zhu.github.io/2025/06/15/nvim_config/">nvim的配置</a></p>
+<h3 id="nodejs-npm"><a href="#nodejs-npm" class="headerlink" title="nodejs &#x2F; npm"></a>nodejs &#x2F; npm</h3><p>参考 <a target="_blank" rel="noopener" href="https://nodejs.org/en/download/package-manager">官网安装方式</a></p>
+<h3 id="hexo-blog"><a href="#hexo-blog" class="headerlink" title="hexo blog"></a>hexo blog</h3><p>这个得先安装  nodejs&#x2F;npm</p>
+<p>然后</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd ~/blog</span><br><span class="line">sudo npm install hexo-cli -g</span><br><span class="line">hexo init &amp;&amp; sudo npm install</span><br></pre></td></tr></table></figure>
+
+<p>这时试试看 hexo s -p 4000 如果行就是成功了</p>
+<p>安装deployer从而可以 hexo d: <code>sudo npm install hexo-deployer-git --save</code></p>
+<p>后续的配置见 <a href="https://flandre-zhu.github.io/2025/02/04/%E5%85%B3%E4%BA%8E%E6%9C%AChexo%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA/">关于博客的搭建</a></p>
+<h3 id="Qt"><a href="#Qt" class="headerlink" title="Qt"></a>Qt</h3><p>安装依赖：<code>sudo apt-get install build-essential libgl1-mesa-dev</code></p>
+<p>配置环境变量。假如用的是 zsh 终端，就修改 <code>~/.zshrc</code>，否则修改 <code>~/.bashrc</code>。总之，加上如下配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export QTDIR=/opt/Qt(版本号)/(版本号)/gcc_64</span><br><span class="line">export PATH=$QTDIR/bin:$PATH</span><br><span class="line">export LD_LIBRARY_PATH=$QTDIR/lib:$LD_LIBRARY_PATH</span><br></pre></td></tr></table></figure>
+
+<p>比如版本号是 5.12.0，就把上述 “(版本号)” 替换为 5.12.0。然后 <code>source ~/.zshrc</code></p>
+<p>用 <code>qmake -v</code> 检查是否配置成功，如果成功的话应该显示 Qt 的版本号了。</p>
+<h3 id="vscode-（apt安装）"><a href="#vscode-（apt安装）" class="headerlink" title="vscode （apt安装）"></a>vscode （apt安装）</h3><p>来自 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/asialu/p/16002863.html">这里</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -</span><br><span class="line">sudo apt install software-properties-common apt-transport-https wget</span><br><span class="line">sudo add-apt-repository &quot;deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main&quot;</span><br><span class="line">sudo apt update </span><br><span class="line">sudo apt install code</span><br></pre></td></tr></table></figure>
+
+<h3 id="音乐软件"><a href="#音乐软件" class="headerlink" title="音乐软件"></a>音乐软件</h3><p>现在似乎很难直接用网易云了.</p>
+<p>可以用 <a target="_blank" rel="noopener" href="https://github.com/go-musicfox/go-musicfox">musicfox</a></p>
+<p>或者 <a target="_blank" rel="noopener" href="https://github.com/gmg137/netease-cloud-music-gtk">Netease Cloud Music GTK4</a></p>
+<h3 id="数位板配置"><a href="#数位板配置" class="headerlink" title="数位板配置"></a>数位板配置</h3><p>在 <a target="_blank" rel="noopener" href="https://github.com/DIGImend/digimend-kernel-drivers/releases">https://github.com/DIGImend/digimend-kernel-drivers/releases</a> 下载 digimend-dkms 并安装，然后lsusb找到设备的id。我这里是 <code>256c:006d</code>。</p>
+<p>然后修改文件 &#x2F;usr&#x2F;share&#x2F;X11&#x2F;xorg.conf.d&#x2F;50-digimend.conf，在 <code>Identifier &quot;Huion tablets with Wacom driver&quot;</code> 那个条目的 <code>MatchUSBID</code> 中加入设备的id <code>256c:006d</code>。（很可能此时里面已经有了）</p>
+<p>如果要调整鼠标模式，用 <code>xsetwacom set [设备名称] Mode Relative</code>。这一项的默认值是 <code>Absolute</code>，就是 “笔模式”。</p>
+<p>设备有数位板本板，和那个笔。这个设置是针对笔的设置。</p>
+<p>需要用 <code>xsetwacom --list devices</code> 来找设备以获取设备名称。如果找不到，重启试试。</p>
+<p>按键绑定: <code>xsetwacom set [设备名称] Button [编号] &quot;key 按键&quot;</code></p>
+<p>编号可以是 1,2,3… 可以用 <code>xsetwacom get [设备名称] all</code> 来看这一个设备的参数，看里面 “Button” 重复了多少次就知道有几个 Button 了，按道理这和硬件上的按钮数量应该是一样的。</p>
+<p>关于 key 的写法：用 <code>+xxx -xxx</code> 表示 “按着xxx”，“松开xxx”，如果不带加减号就默认是 “按一下再松开”。比如，写一个 ctrl-s 就写 <code>key +ctrl s</code>。还有一些 </p>
+<h3 id="git-lfs"><a href="#git-lfs" class="headerlink" title="git-lfs"></a>git-lfs</h3><p>先 curl -s <a target="_blank" rel="noopener" href="https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh">https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh</a> | sudo bash</p>
+<p>然后就 apt install</p>
+<h2 id="各种小杂项"><a href="#各种小杂项" class="headerlink" title="各种小杂项"></a>各种小杂项</h2><h3 id="exfat"><a href="#exfat" class="headerlink" title="exfat"></a>exfat</h3><p>要把u盘格式化为exfat，是需要安装的</p>
+<p><code>sudo apt install exfat-fuse</code></p>
+<h3 id="WPS缺失字体"><a href="#WPS缺失字体" class="headerlink" title="WPS缺失字体"></a>WPS缺失字体</h3><p>sudo apt install ttf-mscorefonts-installer 安装包括Times New Roman在内多数字体</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2026/01/29/keyboard-funfact/" rel="prev" title="关于终端键盘输入, ctrl,alt,shift 做了什么？">
+                  <i class="fa fa-angle-left"></i> 关于终端键盘输入, ctrl,alt,shift 做了什么？
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2026/01/29/linear_algebra_note/" rel="next" title="线性代数笔记">
+                  线性代数笔记 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Flandre Zhu</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"Flandre-Zhu/Flandre-Zhu.github.io","issue_term":"pathname","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js" defer></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
