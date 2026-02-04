@@ -1,0 +1,1294 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>圆锥曲线 - math</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+  
+  
+    
+      
+      
+    
+  
+    
+      
+      
+    
+  
+    
+      
+      
+    
+  
+    
+      
+      
+    
+  
+  
+  <style>:root{--md-admonition-icon--info:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M13%209h-2V7h2m0%2010h-2v-6h2m-1-9A10%2010%200%200%200%202%2012a10%2010%200%200%200%2010%2010%2010%2010%200%200%200%2010-10A10%2010%200%200%200%2012%202%22/%3E%3C/svg%3E');--md-admonition-icon--tip:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M12%202a7%207%200%200%200-7%207c0%202.38%201.19%204.47%203%205.74V17a1%201%200%200%200%201%201h6a1%201%200%200%200%201-1v-2.26c1.81-1.27%203-3.36%203-5.74a7%207%200%200%200-7-7M9%2021a1%201%200%200%200%201%201h4a1%201%200%200%200%201-1v-1H9z%22/%3E%3C/svg%3E');--md-admonition-icon--warning:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M13%2014h-2V9h2m0%209h-2v-2h2M1%2021h22L12%202z%22/%3E%3C/svg%3E');--md-admonition-icon--danger:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M12%202a9%209%200%200%200-9%209%208.99%208.99%200%200%200%204%207.47V22h2v-3h2v3h2v-3h2v3h2v-3.54c2.47-1.65%204-4.46%204-7.46a9%209%200%200%200-9-9m-4%209a2%202%200%200%201%202%202%202%202%200%200%201-2%202%202%202%200%200%201-2-2%202%202%200%200%201%202-2m8%200a2%202%200%200%201%202%202%202%202%200%200%201-2%202%202%202%200%200%201-2-2%202%202%200%200%201%202-2m-4%203%201.5%203h-3z%22/%3E%3C/svg%3E');}</style>
+
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="math" class="md-header__button md-logo" aria-label="math" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            math
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              圆锥曲线
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="math" class="md-nav__button md-logo" aria-label="math" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    math
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    解析几何
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    解析几何
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    圆锥曲线
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    圆锥曲线
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基础知识
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        焦半径
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="焦半径">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        广义焦准式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        极坐标式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        焦点弦中的公式
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        焦点三角形
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        光学性质
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="光学性质">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第一种证明
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第二种证明
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        伸缩变换
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        极点极线
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        斜率积和过定点
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        其它
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="其它">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        十字
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        外准圆/蒙日圆
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基础知识
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        焦半径
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="焦半径">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        广义焦准式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        极坐标式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        焦点弦中的公式
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        焦点三角形
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        光学性质
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="光学性质">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第一种证明
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第二种证明
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        伸缩变换
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        极点极线
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        斜率积和过定点
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        其它
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="其它">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        十字
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        外准圆/蒙日圆
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">圆锥曲线</h1>
+<p>圆锥曲线的定义, 包含: 圆, 椭圆, 抛物线, 双曲线</p>
+<p>这里主要关注圆以外的三种</p>
+<h2 id="_2">基础知识</h2>
+<p>椭圆 (ellipse): </p>
+<ul>
+<li>原始定义: 到两点距离和为定值的点的轨迹, 是一个椭圆</li>
+<li>圆锥定义: 斜着切一个圆锥, 倾斜度不超过母线的切, 截得曲线是椭圆</li>
+<li>标准方程: <span class="arithmatex">\(\dfrac{x^2}{a^2}+\dfrac{y^2}{b^2}=1(a&gt;b&gt;0)\)</span>, 半焦距 <span class="arithmatex">\(c=\sqrt{a^2-b^2}\)</span></li>
+<li>离心率 <span class="arithmatex">\(e=\dfrac{c}{a}&lt;1\)</span></li>
+</ul>
+<p>抛物线 (parabola): </p>
+<ul>
+<li>原始定义: 到定点和定直线距离相等的点的轨迹, 是一个抛物线</li>
+<li>圆锥定义: 斜着切一个圆锥, 和母线平行的切, 截得曲线是抛物线</li>
+<li>标准方程: <span class="arithmatex">\(y^2=2px(p&gt;0)\)</span></li>
+<li>离心率 <span class="arithmatex">\(e=1\)</span></li>
+</ul>
+<p>双曲线 (hyperbola): </p>
+<ul>
+<li>原始定义: 到两点距离差的绝对值为定值的点的轨迹, 是一个双曲线</li>
+<li>圆锥定义: 斜着切一个圆锥, 倾斜度大于母线的切(比如竖直的切), 截得曲线是双曲线的一支</li>
+<li>将圆锥反向延伸, 切这个反向延伸的圆锥得到的曲线, 是双曲线的另一支 (看不懂可以看图)</li>
+<li>标准方程: <span class="arithmatex">\(\dfrac{x^2}{a^2}-\dfrac{y^2}{b^2}=1(a&gt;0,b&gt;0)\)</span>, <span class="arithmatex">\(c=\sqrt{a^2+b^2}\)</span></li>
+<li>离心率 <span class="arithmatex">\(e=\dfrac{c}{a}&gt;1\)</span></li>
+<li>双曲线有渐近线: <span class="arithmatex">\(y=\pm \frac{b}{a}x\)</span>, 它和双曲线之间会离的越来越近</li>
+<li>渐近线的方程可以看成把标准方程右侧的 <span class="arithmatex">\(1\)</span> 变成 <span class="arithmatex">\(0\)</span></li>
+</ul>
+<p>关于圆锥中的定义, 可以参考下图, 来自 <a href="https://mathworld.wolfram.com/ConicSection.html">wolfram mathworld</a></p>
+<p><img src="../img/conic-sections-cut.png" style="zoom:50%;" /></p>
+<p>离心率是一个圆锥曲线的特征参数, 它大概描述的是一个 "扁平程度". </p>
+<ul>
+<li>对于椭圆而言, 离心率越接近 0, 则越接近圆 (越 "圆润"); 离心率越接近 1, 则越接近直线 (越 "扁平"). </li>
+<li>椭圆也可以用字面意思理解 "离心率", 就是看焦点偏离其中心 (标准方程的椭圆, 中心就是原点) 偏离了多少</li>
+<li>对于双曲线而言, e 越大, 其开口越大, 或者说其渐近线的夹角越大</li>
+<li><strong>离心率相同的圆锥曲线都相似</strong>, 相似意味着可以通过缩放变成相同的. 这也说明, <strong>所有抛物线都相似</strong></li>
+</ul>
+<p>关于标准方程: 这三个方程都是横过来的, 竖过来只需交换 <span class="arithmatex">\(x,y\)</span> 即可. 若无特殊说明, 下面讨论曲线默认按这三种方程讨论, 即我们默认焦点在 <span class="arithmatex">\(x\)</span> 轴上, 抛物线开口向右</p>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>大家一般确实都习惯这样的, 横过来的标准方程. </p>
+<p><strong>但是考试的时候一定要小心竖过来的情况!!!!!</strong></p>
+</div>
+<p>通径: 过焦点作垂直于对称轴的直线, 交曲线于 <span class="arithmatex">\(AB\)</span> 两点, <span class="arithmatex">\(AB\)</span> 为通径, 通径长度的一半为半通径, 记为 <span class="arithmatex">\(p\)</span></p>
+<ul>
+<li>对于抛物线来说就是它参数的那个 <span class="arithmatex">\(p\)</span>, 对于椭圆和抛物线, 不难算出 <span class="arithmatex">\(p=\dfrac{b^2}{a}\)</span></li>
+<li>高中的课本里面没有直接提到这个定义, 但它会在极坐标里面用到, 后面我们会见到它</li>
+</ul>
+<h2 id="_3">焦半径</h2>
+<p>对于曲线上的点 <span class="arithmatex">\(P\)</span>, <span class="arithmatex">\(P\)</span> 到焦点距离称为焦半径</p>
+<p>椭圆: <span class="arithmatex">\(PF_1=a+ex,\quad PF_2=a-ex\)</span></p>
+<p>抛物线: <span class="arithmatex">\(PF=x+\dfrac{p}{2}\)</span> </p>
+<p>双曲线: <span class="arithmatex">\(PF_1=|a+ex|,\quad PF_2=|a-ex|\)</span></p>
+<div class="admonition note">
+<p class="admonition-title">证明</p>
+<p>对于抛物线, 显然可以利用基本定义得到</p>
+<p>对于椭圆和双曲线, 道理一样, 以椭圆为例</p>
+<p>根据椭圆方程, <span class="arithmatex">\(P(x,y)\)</span> 满足 <span class="arithmatex">\(\frac{x^2}{a^2}+\frac{y^2}{b^2}=1\)</span>, 并且 <span class="arithmatex">\(c=ae\)</span>, 且 <span class="arithmatex">\(a^2=b^2+c^2\)</span> 从而:</p>
+<p><span class="arithmatex">\(PF_1^2=(x-c)^2+y^2=(x-c)^2+b^2(1-\frac{x^2}{a^2})=(1-\frac{b^2}{a^2})x^2-2cx+(b^2+c^2)\)</span></p>
+<p><span class="arithmatex">\(=e^2x^2-2cx+a^2=(ex+a)^2\)</span>. <span class="arithmatex">\(PF_2\)</span> 可以同理得到.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">关于记忆</p>
+<p>其实可以统一的记成 <span class="arithmatex">\(PF_1=|a+ex|, PF_2=|a-ex|\)</span></p>
+<p>对于椭圆而言, 这俩一定都正的, 所以上面绝对值可以去掉, 绝对值是为了兼容双曲线, 里面可能会有负的</p>
+</div>
+<h3 id="_4">广义焦准式</h3>
+<p>我们可以从上面的焦半径, 推导出一些有趣的东西</p>
+<p>以椭圆为例, 任取点 <span class="arithmatex">\(A\)</span>, <span class="arithmatex">\(AF_2=a-ex=e(\dfrac{a}{e}-x)=e(\dfrac{a^2}{c}-x)\)</span></p>
+<p>这个 <span class="arithmatex">\(\dfrac{a^2}{c}-x\)</span> 可以看成直线 <span class="arithmatex">\(x=\dfrac{a^2}{c}\)</span> 到 <span class="arithmatex">\(A\)</span> 的距离. 这个距离, 和 <span class="arithmatex">\(A\)</span> 到 <span class="arithmatex">\(F_2\)</span> 的距离, 比例为定值.</p>
+<p>这样, 就可以像抛物线一样的定义椭圆的准线和焦点: 椭圆上的点, 到焦点的距离比上到准线的距离 (焦准距离比), 为定值 <span class="arithmatex">\(e\)</span></p>
+<div class="admonition tip">
+<p class="admonition-title">关于记忆</p>
+<p>注意到 "焦准距离比" 里面 "焦" 在前面, "准" 在后面</p>
+<p>所以 <span class="arithmatex">\(e=\dfrac{\text{焦距}}{\text{准距}}\)</span></p>
+</div>
+<p>上面取的是 <span class="arithmatex">\(AF_2\)</span>, 得到了一个右边的准线. 也可以取 <span class="arithmatex">\(AF_1\)</span>, 这样得到一个左边的准线 <span class="arithmatex">\(x=-\dfrac{a^2}{c}\)</span>.</p>
+<p>是的, 椭圆和双曲线的准线, 有<strong>两条</strong>, 称为左准线和右准线, 它们与左焦点和右焦点是对应的.</p>
+<p>椭圆和双曲线的左右准线, 都是 <span class="arithmatex">\(x=-\dfrac{a^2}{c}\)</span> 和 <span class="arithmatex">\(x=\dfrac{a^2}{c}\)</span></p>
+<p>这可以用来作一个 <strong>统一的</strong> 圆锥曲线定义:</p>
+<ul>
+<li>到定直线 <span class="arithmatex">\(l\)</span> 的距离, 和到定点 <span class="arithmatex">\(F\)</span> 的距离的比值为定值 <span class="arithmatex">\(e\)</span> 的点, 轨迹为圆锥曲线</li>
+<li><span class="arithmatex">\(0\lt e\lt 1\)</span> 时为椭圆, <span class="arithmatex">\(e=1\)</span> 为抛物线, <span class="arithmatex">\(e&gt;1\)</span> 为双曲线</li>
+</ul>
+<h3 id="_5">极坐标式</h3>
+<p>标准方程里, 我们是以椭圆和双曲线的中心, 抛物线的顶点为原点建系的</p>
+<p>假如我们换成以焦点为原点建系, 会如何?</p>
+<p>以焦点为原点时, 性质更好的不是直角坐标系, 而是 <strong>极坐标系</strong></p>
+<div class="admonition tip">
+<p class="admonition-title">什么是极坐标系</p>
+<p>极坐标系用方向和距离描述点的位置. 通常我们用 <span class="arithmatex">\(r\)</span> 表示距离, <span class="arithmatex">\(\theta\)</span> 表示方向角 (弧度制), 一个极坐标就写成 <span class="arithmatex">\((r,\theta)\)</span></p>
+<p>极坐标系可以转换成直角坐标系: 极坐标 <span class="arithmatex">\((r,\theta)\to\)</span> 直角坐标 <span class="arithmatex">\((r\cos \theta, r\sin \theta)\)</span></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">推导椭圆的极坐标式</p>
+<p>我们不妨以左焦点 <span class="arithmatex">\(F_1\)</span> 为极坐标系原点, 考虑点 <span class="arithmatex">\(A\)</span>, 假设标准的直角坐标系里, <span class="arithmatex">\(A\)</span> 在 <span class="arithmatex">\((x,y)\)</span></p>
+<p>那么极坐标系的 <span class="arithmatex">\(r=AF_1=a+ex\)</span>, 根据上面的焦点弦公式</p>
+<p>假设角度是 <span class="arithmatex">\(\theta\)</span>, 则有 <span class="arithmatex">\(-c + r\cos \theta = x\)</span>, 考虑 <span class="arithmatex">\(F_1\)</span> 和 <span class="arithmatex">\(A\)</span> 的 <span class="arithmatex">\(x\)</span> 坐标差</p>
+<p>变形, <span class="arithmatex">\(-c+(a+ex)\cos \theta=x\)</span>, 得 <span class="arithmatex">\(\cos \theta=\dfrac{x+c}{ex+a}\)</span></p>
+<p>为了表达出 <span class="arithmatex">\(r\)</span> 和 <span class="arithmatex">\(\theta\)</span> 关系, 我们需要消掉 <span class="arithmatex">\(x\)</span>, 考虑 <span class="arithmatex">\(e\cos\theta=\dfrac{ex+ec}{ex+a}\)</span>, 可以提一个 <span class="arithmatex">\(1\)</span> 之后分子的 <span class="arithmatex">\(ex\)</span> 就没了, 分母的 <span class="arithmatex">\(ex+a\)</span> 可以替换成 <span class="arithmatex">\(r\)</span>, 得:</p>
+<p><span class="arithmatex">\(e\cos \theta=1+\dfrac{ec-a}{r}\)</span></p>
+<p>变形得 <span class="arithmatex">\(r=\dfrac{a-ec}{1-e\cos \theta}\)</span>. 好巧不巧, 可以发现 <span class="arithmatex">\(a-ec\)</span> 正好是 <span class="arithmatex">\(\dfrac{b^2}{a}\)</span>, 就是我们之前求过的半通径 <span class="arithmatex">\(p\)</span></p>
+<p>所以: <span class="arithmatex">\(r=\dfrac{p}{1-e\cos \theta}\)</span></p>
+</div>
+<p>试着推双曲线, 发现双曲线的式子竟然 <strong>一模一样</strong>! 甚至抛物线(开口向右时) 也一样!</p>
+<p>但是, 如果换成另一边的焦点, 可以推导发现, 可能会出现 <span class="arithmatex">\(r=\dfrac{p}{1+e\cos \theta}\)</span> 的情况</p>
+<p>那么, 什么时候取 <span class="arithmatex">\(+\)</span>, 什么时候取 <span class="arithmatex">\(-\)</span> 呢? 见下表</p>
+<table>
+<thead>
+<tr>
+<th>何时取？</th>
+<th><span class="arithmatex">\(r=\dfrac{p}{1+e\cos \theta}\)</span></th>
+<th><span class="arithmatex">\(r=\dfrac{p}{1-e\cos\theta}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>椭圆</td>
+<td>右焦点</td>
+<td>左焦点</td>
+</tr>
+<tr>
+<td>双曲线</td>
+<td>左焦点</td>
+<td>右焦点</td>
+</tr>
+<tr>
+<td>抛物线</td>
+<td>开口朝左</td>
+<td>开口朝右</td>
+</tr>
+</tbody>
+</table>
+<p>可以看图像帮助理解. 对于 <span class="arithmatex">\(r=\dfrac{p}{1-e\cos\theta}\)</span> 的情况, 固定焦点为原点, 随着 <span class="arithmatex">\(e\)</span> 的增加, 呈现这样的图像:</p>
+<p><img src="../img/polar-coord.png" style="zoom:50%;" /></p>
+<div class="admonition tip">
+<p class="admonition-title">关于记忆</p>
+<p>其实椭圆和双曲线也可以看成 “开口朝左/右” (只看局部), 可以感受到, 然后只要记抛物线的即可</p>
+<p>就比如这个图, 很清楚的看到它从 "椭圆左焦点", 变成 "开口向右抛物线", 再变成 "双曲线右焦点". </p>
+<p><strong>但原点附近的这一段图像, 永远是 "开口向右" 的</strong></p>
+<p>实在不行, 把 <span class="arithmatex">\(\theta=0\)</span> 代入看看对不对即可</p>
+</div>
+<p>注意到双曲线中可能有 <span class="arithmatex">\(r&lt;0\)</span> 的情况, 此时是跑到反方向上去了. 例如左焦点建系, <span class="arithmatex">\(r&gt;0\)</span> 的是左支, <span class="arithmatex">\(r&lt;0\)</span> 的就是右支</p>
+<h3 id="_6">焦点弦中的公式</h3>
+<p>焦点弦的意思是, 一条过焦点的直线和圆锥曲线交出来的弦</p>
+<p>可以看成两条相对的焦半径拼起来, 那焦半径就可以用极坐标做</p>
+<p>可以看出, 学会极坐标的工具以后, 就能轻松证明焦点弦里的结论</p>
+<p>结论:</p>
+<ul>
+<li>三种曲线均满足: 过焦点 <span class="arithmatex">\(F\)</span> 的弦 <span class="arithmatex">\(A,B\)</span>, <span class="arithmatex">\(\dfrac{1}{FA}+\dfrac{1}{FB}=\dfrac{2}{p}\)</span></li>
+<li>对于抛物线, 还有: 设 <span class="arithmatex">\(A(x_1,y_1),B(x_2,y_2)\)</span>, <span class="arithmatex">\(x_1x_2=\dfrac{1}{4}p^2,y_1y_2=-p^2\)</span></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">证明</p>
+<p>第一个: <span class="arithmatex">\(FA,FB\)</span> 是 <span class="arithmatex">\(\dfrac{p}{1+e\cos \theta}, \dfrac{p}{1-e\cos \theta}\)</span></p>
+<p>从而 <span class="arithmatex">\(\dfrac{1}{FA}+\dfrac{1}{FB}=\dfrac{1+e\cos \theta+1-e\cos \theta}{p}=\dfrac{2}{p}\)</span></p>
+<p>第二个: <span class="arithmatex">\(e=1\)</span>, <span class="arithmatex">\(y_1y_2=-FA\cdot FB\cdot \sin ^2\theta=-\dfrac{p^2}{1-\cos ^2\theta}\cdot \sin ^2\theta=-p^2\)</span></p>
+<p>然后根据 <span class="arithmatex">\(y^2=2px\)</span> 得到 <span class="arithmatex">\(x_1x_2=\dfrac{1}{4}p^2\)</span></p>
+</div>
+<p>此外, 当看到题目里有焦点弦的时候, 尤其涉及到长度, 就可以考虑用极坐标来做, 会很方便</p>
+<h2 id="_7">焦点三角形</h2>
+<p>仅限椭圆和双曲线</p>
+<p>对于曲线上的点 <span class="arithmatex">\(P\)</span>, 焦点三角形即为 <span class="arithmatex">\(\triangle PF_1F_2\)</span></p>
+<p>设 <span class="arithmatex">\(\theta\)</span> 为顶角 <span class="arithmatex">\(\angle F_1PF_2; \quad \alpha,\beta\)</span> 为两个底角</p>
+<p>则有结论：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>面积</th>
+<th><span class="arithmatex">\(\cos\theta\)</span></th>
+<th><span class="arithmatex">\(\sin\theta\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>椭圆</td>
+<td><span class="arithmatex">\(b^2\tan(\theta/2)\)</span></td>
+<td><span class="arithmatex">\(\dfrac{2b^2}{PF_1PF_2}-1\)</span></td>
+<td><span class="arithmatex">\(e(\sin\alpha+\sin\beta)\)</span></td>
+</tr>
+<tr>
+<td>双曲线</td>
+<td><span class="arithmatex">\(\dfrac{b^2}{\tan(\theta/2)}\)</span></td>
+<td><span class="arithmatex">\(1-\dfrac{2b^2}{PF_1PF_2}\)</span></td>
+<td><span class="arithmatex">\(e\vert\sin\alpha-\sin\beta\vert\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>对于双曲线, 还有: 焦点三角形内切圆的 <span class="arithmatex">\(x\)</span> 坐标为 <span class="arithmatex">\(a\)</span> (根据切线性质设切线长即可)</p>
+<p>来说这个结论一般有什么用.</p>
+<ul>
+<li>面积是最有用的, 说明面积只和顶角 <span class="arithmatex">\(\theta\)</span> 有关. </li>
+<li><span class="arithmatex">\(\cos \theta\)</span> 通常是求面积的一个步骤. </li>
+<li><span class="arithmatex">\(\sin \theta\)</span> 和 <span class="arithmatex">\(e\)</span> 挂钩, 当知道底角的 <span class="arithmatex">\(\sin\)</span> 的时候, 可以用该公式快速求离心率</li>
+<li>内切圆这个, 常出现在选择题里, 如果知道就可以秒</li>
+</ul>
+<p>证明面积的公式, 有两种做法</p>
+<div class="admonition tip">
+<p class="admonition-title">在开始证明之前</p>
+<p>椭圆中有一个常用的恒等式: 假设椭圆上点 <span class="arithmatex">\(P(x,y)\)</span>, 焦点为 <span class="arithmatex">\(F_1,F_2\)</span>, 那么</p>
+<p><span class="arithmatex">\(PF_1\cdot PF_2=a^2+b^2-x^2-y^2\)</span></p>
+<p>对于双曲线, 则是</p>
+<p><span class="arithmatex">\(PF_1\cdot PF_2=b^2-a^2+x^2+y^2\)</span></p>
+<p>用焦半径公式结合圆锥曲线标准方程即可证明</p>
+</div>
+<p>接下来正式开始证明, 我们以椭圆为例</p>
+<div class="admonition note">
+<p class="admonition-title">第一种: 先求cos</p>
+<p>大概是, 用余弦定理解方程求出 <span class="arithmatex">\(\cos\)</span>, 然后用 <span class="arithmatex">\(\dfrac{1}{2}\sin\theta \cdot PF_1PF_2\)</span> 求面积, <span class="arithmatex">\(PF_1PF_2\)</span> 可以被 <span class="arithmatex">\(\cos\)</span> 表示, 就出来了</p>
+<p>余弦定理: <span class="arithmatex">\(PF_1^2+PF_2^2-2\cos \theta PF_1PF_2=4c^2\)</span></p>
+<p><span class="arithmatex">\(\cos \theta=\dfrac{PF_1^2+PF_2^2-4c^2}{2PF_1\cdot PF_2}\)</span></p>
+<p>分子 <span class="arithmatex">\(=(x+c)^2+y^2+(x-c)^2+y^2-4c^2=2x^2+2y^2-2c^2\)</span></p>
+<p>从而 <span class="arithmatex">\(\cos \theta=\dfrac{x^2+y^2-c^2}{PF_1PF_2}=\dfrac{x^2+y^2-c^2}{a^2+b^2-x^2-y^2}\)</span></p>
+<p>拿一个 <span class="arithmatex">\(-1\)</span> 出来, 消掉分子的 <span class="arithmatex">\(x^2+y^2\)</span>, 得:</p>
+<p><span class="arithmatex">\(\cos \theta=\dfrac{a^2+b^2-c^2}{a^2+b^2-x^2-y^2}-1=\dfrac{2b^2}{PF_1PF_2}-1\)</span></p>
+<p>反过来, <span class="arithmatex">\(PF_1PF_2=\dfrac{2b^2}{1+\cos \theta}\)</span></p>
+<p><span class="arithmatex">\(S=\dfrac{1}{2}\sin\theta \cdot PF_1PF_2=\dfrac{1}{2}\sin\theta \cdot\dfrac{2b^2}{1+\cos \theta}=b^2\tan (\frac{\theta}{2})\)</span></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">第二种: 直接对三角形下手</p>
+<p>对于任意三角形 <span class="arithmatex">\(ABC\)</span>, 都有: 面积 <span class="arithmatex">\(S=\dfrac{1}{4}((b+c)^2-a^2)\tan (\dfrac{1}{2}A)\)</span></p>
+<p>其中角 <span class="arithmatex">\(A,B,C\)</span> 所对的边长度依次为 <span class="arithmatex">\(a,b,c\)</span></p>
+<p>然后, 把三角形放在椭圆里, 取 <span class="arithmatex">\(A\)</span> 为椭圆周上的一点, <span class="arithmatex">\(B,C\)</span> 为两个焦点, 得到的就是该结论</p>
+<p>那这个三角形本身的结论如何证明呢? 考虑余弦定理: <span class="arithmatex">\(a^2=b^2+c^2-2bc\cos A\)</span>, 所以</p>
+<p><span class="arithmatex">\((b+c)^2-a^2=(b^2+c^2-a^2)+2bc=2bc(1+\cos A)\)</span></p>
+<p>然后相信聪明的读者已经知道了, 依然是利用 <span class="arithmatex">\(\tan \dfrac{1}{2}A=\dfrac{\sin A}{1+\cos A}\)</span>, 最终变为 <span class="arithmatex">\(\dfrac{1}{2}bc\sin A\)</span>, 即为面积</p>
+</div>
+<p>两种做法有相似之处: 都利用了余弦定理和半角公式</p>
+<p>但是, 就思维方式而言, 是截然不同的. 笔者最先学会的是第一种方法, 第二种方法是在灵光一现中想到的.</p>
+<p>接下来是 <span class="arithmatex">\(\sin\)</span> 公式的证明</p>
+<div class="admonition note">
+<p class="admonition-title">证明 sin 的公式</p>
+<p>设 <span class="arithmatex">\(PF_1=x, PF_2=2a-x\)</span>, 根据正弦定理: <span class="arithmatex">\(\dfrac{x}{\sin\beta}=\dfrac{2a-x}{\sin\alpha}=\dfrac{2c}{\sin\theta}\)</span></p>
+<p>1和2相等, 解得 <span class="arithmatex">\(x=2a\dfrac{\sin\beta}{\sin\alpha+\sin\beta}\)</span></p>
+<p>1和3相等, <span class="arithmatex">\(\sin\theta=\dfrac{2c\sin\beta}{x}=\dfrac{2c\sin\beta}{2a\sin\beta}(\sin\alpha+\sin\beta)=e(\sin\alpha+\sin\beta)\)</span></p>
+</div>
+<h2 id="_8">光学性质</h2>
+<p>圆锥曲线光学性质: </p>
+<ul>
+<li>对于椭圆, 焦点出发任意光线经曲线壁反射必过另一个焦点</li>
+<li>对于双曲线, 焦点出发任意光线经曲线壁反射, 反向延长线过另一个焦点</li>
+<li>对于抛物线, 焦点出发任意光线经曲线壁反射, 平行于对称轴出射</li>
+</ul>
+<p>这个 "经曲线壁反射", 等价于: 假设光线打到了曲线上的 <span class="arithmatex">\(A\)</span> 点, 相当于有一面平面镜沿着 <span class="arithmatex">\(A\)</span> 点切线放在这里. 就是说, 入射光线和出射光线, 关于切线的夹角是相等的.</p>
+<p>我们有两种证明. 一种证明是利用圆和中垂线, 另一种则结合了物理知识</p>
+<h3 id="_9">第一种证明</h3>
+<div class="admonition note">
+<p class="admonition-title">第一种证明</p>
+<p>考虑圆 <span class="arithmatex">\(O\)</span> 和不在圆上的一点 <span class="arithmatex">\(A\)</span>, 假设 <span class="arithmatex">\(B\)</span> 为圆上动点, <span class="arithmatex">\(AB\)</span> 的中垂线, 会形成什么形状?</p>
+<p>先考虑 <span class="arithmatex">\(A\)</span> 在圆内部的情况. 如图, 连接 <span class="arithmatex">\(OB\)</span> 交中垂线于 <span class="arithmatex">\(C\)</span>. 那么有 <span class="arithmatex">\(AC=BC\)</span>. <span class="arithmatex">\(OB\)</span> 为圆的半径, 是定值. 但又有 <span class="arithmatex">\(OB=OC+CB=OC+AC\)</span>, 所以 <span class="arithmatex">\(OC+AC\)</span> 是个定值, 所以 <span class="arithmatex">\(C\)</span> 在以 <span class="arithmatex">\(O,A\)</span> 为焦点的 <strong>椭圆</strong> 上.</p>
+<p>并且, 考虑中垂线上除了 <span class="arithmatex">\(C\)</span> 以外的点. 由将军饮马问题的结论, <span class="arithmatex">\(C\)</span> 满足 <span class="arithmatex">\(OC+AC\)</span> 的值最小, 那么其它位置的 <span class="arithmatex">\(OC+AC\)</span> 都大于定值, 所以直线上其它点都不在椭圆上. 所以中垂线和椭圆仅有 <span class="arithmatex">\(C\)</span> 一个交点. 所以这个中垂线恒为椭圆的 <strong>切线</strong>!</p>
+<p>然后用很简单的几何知识可以知道, <span class="arithmatex">\(OC\)</span> 和 <span class="arithmatex">\(CA\)</span> 关于这条切线的夹角相等, 所以 <span class="arithmatex">\(O\to C\to A\)</span> 是一条关于中垂线反射的光路, 就证明了光学性质</p>
+<p>如果 <span class="arithmatex">\(A\)</span> 在圆外部, 形成的是双曲线, 同样可以证明双曲线的光学性质.</p>
+<p><img src="../img/zhongchuituoyuan.png" style="zoom:50%;" /></p>
+</div>
+<h3 id="_10">第二种证明</h3>
+<div class="admonition info">
+<p class="admonition-title">开始第二种证明之前</p>
+<p>我们需要讲到物理学中关联速度的概念, 只需要其中一个就行</p>
+<p>假如平面直角坐标系上有一个点 <span class="arithmatex">\(A\)</span>, 它正以速度 <span class="arithmatex">\(v\)</span> 运动, <span class="arithmatex">\(v\)</span> 是一个向量</p>
+<p>这个速度可以被分解到: 平行 <span class="arithmatex">\(OA\)</span> 和 垂直 <span class="arithmatex">\(OA\)</span>, 两个分量</p>
+<p>其中, 前者的作用是让 <span class="arithmatex">\(OA\)</span> 长度变化(方向不变), 而后者的作用是让 <span class="arithmatex">\(OA\)</span> 的方向改变(长度不变)</p>
+<p>假设 <span class="arithmatex">\(v\)</span> 和 <span class="arithmatex">\(OA\)</span> 夹角为 <span class="arithmatex">\(\theta\)</span>, 则前者分量为 <span class="arithmatex">\(v\cos \theta\)</span>, 后者分量为 <span class="arithmatex">\(v\sin \theta\)</span></p>
+<p>就像这样分解, 紫色的速度 <span class="arithmatex">\(v\)</span> 被分解到沿 <span class="arithmatex">\(OA\)</span> 方向 (红色) 和垂直 <span class="arithmatex">\(OA\)</span> 方向 (蓝色)</p>
+<p><img src="../img/decompose.png" style="zoom: 50%"></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">第二种证明</p>
+<p>假设一个点 <span class="arithmatex">\(A\)</span> 在椭圆上沿着椭圆的轨迹运动, 速度为 <span class="arithmatex">\(v\)</span>, 时刻沿着切线方向</p>
+<p>我们知道, 运动过程中, <span class="arithmatex">\(F_1A+F_2A\)</span> 是一个定值</p>
+<p>然后我们发现, 假设切线和 <span class="arithmatex">\(F_1A, F_2A\)</span> 的夹角为 <span class="arithmatex">\(\alpha, \beta\)</span>, 则这两条线段变大的速度为 <span class="arithmatex">\(v\cos \alpha, -v\cos \beta\)</span>. 哪个正哪个负其实不重要, 取决于 <span class="arithmatex">\(A\)</span> 在靠近哪一端. 但必定一正一负.</p>
+<p><span class="arithmatex">\(F_1A+F_2A\)</span> 的和为定值, 因此这两条线段变大的速度必须相互抵消. 所以 <span class="arithmatex">\(\cos \alpha=\cos \beta\)</span>. 两个角都在 <span class="arithmatex">\((0,\pi)\)</span>, 所以必然有: <span class="arithmatex">\(\alpha=\beta\)</span>. 从而证明了光学性质.</p>
+</div>
+<p>光学性质或许不怎么会直接用在做题中, 但是! 它的证明过程充满智慧, 尤其是第一个证明的这张图, 会经常在选择题和解答题里见到类似的图.</p>
+<h2 id="_11">伸缩变换</h2>
+<p>仅针对椭圆而言. 椭圆可以看成: 一个单位圆, <span class="arithmatex">\(x\)</span> 坐标变 <span class="arithmatex">\(a\)</span> 倍, <span class="arithmatex">\(y\)</span> 坐标变 <span class="arithmatex">\(b\)</span> 倍, 得到.</p>
+<div class="admonition warning">
+<p class="admonition-title">注意: 什么可以伸缩, 什么不能伸缩?</p>
+<p>这件事情一定要注意</p>
+<p>可以伸缩的: (假如 <span class="arithmatex">\(x,y\)</span> 坐标变为 <span class="arithmatex">\(m,n\)</span> 倍)</p>
+<ul>
+<li>平行关系: 不变, 该平行还是平行, 不平行还是不平行</li>
+<li>相切关系: 不变, 切线依然是切线</li>
+<li>相似, 全等关系: 不变</li>
+<li>共线线段的长度比: 不变 (例如中点还是中点, 三等分点还是三等分点)</li>
+<li>面积: 变为 <span class="arithmatex">\(mn\)</span> 倍</li>
+<li>斜率: 变为 <span class="arithmatex">\(\dfrac{n}{m}\)</span> 倍</li>
+</ul>
+<p>不能伸缩的:</p>
+<ul>
+<li>线段长度</li>
+<li>垂直关系</li>
+<li>角度</li>
+<li>不共线的线段长度比</li>
+</ul>
+</div>
+<p>可以快速得到如下推论:</p>
+<ul>
+<li>椭圆面积为 <span class="arithmatex">\(\pi ab\)</span></li>
+<li>椭圆上取两点 <span class="arithmatex">\(A,B\)</span>, <span class="arithmatex">\(S_{\Delta OAB}\)</span> 的面积最大为 <span class="arithmatex">\(\frac{1}{2}ab\)</span> (考虑单位圆上最大为 <span class="arithmatex">\(\frac{1}{2}\)</span>)</li>
+<li>椭圆上 <span class="arithmatex">\(AM,AN\)</span> 斜率积为 <span class="arithmatex">\(-\frac{b^2}{a^2}\)</span>, 则 <span class="arithmatex">\(MN\)</span> 过原点. 因为单位圆上斜率积为 <span class="arithmatex">\(-1\)</span> 的过原点 (斜率积为 <span class="arithmatex">\(-1\)</span> 即垂直)</li>
+</ul>
+<p>以及, 一些椭圆问题可以考虑缩放到圆上来做, 然后再变回椭圆得到答案. 但这个技巧是不被允许写在过程里的, 可能需要一些写过程的技巧 (装模作样, 偷鸡摸狗, 暗渡陈仓, 瞒天过海 ...)</p>
+<p>可以简单提一个: 就是用参数方程 <span class="arithmatex">\((a\cos \theta, b\sin \theta)\)</span> 来书写, 因为它里面蕴含了一个伸缩变换的思想, 又是一个可以写在试卷上的东西</p>
+<h2 id="_12">极点极线</h2>
+<p>这一部分没有证明. 因为要么是暴力计算, 要么需要用射影几何的知识: 都没有在这里说明的必要</p>
+<p>结论挺好记的, 记下来即可</p>
+<p>二次曲线 <span class="arithmatex">\(Ax^2+By^2+Cx+Dy+E=0\)</span> , 则 <strong>平面上任意一点</strong> <span class="arithmatex">\(P\)</span> 关于曲线的极线方程为: </p>
+<p><span class="arithmatex">\(Axx_P+Byy_P+C\dfrac{x+x_P}{2}+D\dfrac{y+y_P}{2}+E=0\)</span></p>
+<p>也就是说把曲线方程中 <span class="arithmatex">\(x^2\)</span> 换成 <span class="arithmatex">\(xx_P\)</span>, 把 <span class="arithmatex">\(x\)</span> 换成 <span class="arithmatex">\(\dfrac{x+x_P}{2}\)</span>, <span class="arithmatex">\(y\)</span> 同理, 得到的方程就是极线方程</p>
+<p>发现圆锥曲线全都可以写成这种二次的形式. 从而得到, 圆锥曲线的极线方程: </p>
+<ul>
+<li>圆: <span class="arithmatex">\(xx_P+yy_P=r^2\)</span></li>
+<li>椭圆: <span class="arithmatex">\(\dfrac{xx_P}{a^2}+\dfrac{yy_P}{b^2}=1\)</span></li>
+<li>抛物线: <span class="arithmatex">\(yy_P=p(x+x_P)\)</span></li>
+<li>双曲线: <span class="arithmatex">\(\dfrac{xx_P}{a^2}-\dfrac{yy_P}{b^2}=1\)</span></li>
+</ul>
+<p>圆锥曲线的极线性质: </p>
+<ul>
+<li>如果 <span class="arithmatex">\(P\)</span> 在曲线 <strong>上</strong>, 极线就是过 <span class="arithmatex">\(P\)</span> <strong>切线</strong>. <strong>最常用!</strong></li>
+<li>如果 <span class="arithmatex">\(P\)</span> 在曲线 <strong>外部</strong>, 极线就是 <span class="arithmatex">\(P\)</span> 的切点弦所在直线</li>
+<li>如果 <span class="arithmatex">\(P\)</span> 在曲线 <strong>内部</strong>, 那么 <span class="arithmatex">\(P\)</span> 的极线上任意一点 <span class="arithmatex">\(Q\)</span> 都满足 <span class="arithmatex">\(Q\)</span> 的极线过 <span class="arithmatex">\(P\)</span></li>
+<li>
+<ul>
+<li>关于这个 "内部": 椭圆显然, 抛物线和双曲线就是指开口的里面</li>
+</ul>
+</li>
+</ul>
+<p>活用极线, 可以在解决切线或者切点相关的问题时, 让计算更简洁</p>
+<h2 id="_13">斜率积和过定点</h2>
+<p>假设 <span class="arithmatex">\(A,M,N\)</span> 都在圆锥曲线 <span class="arithmatex">\(C\)</span> 上, <span class="arithmatex">\(A\)</span> 为定点, <span class="arithmatex">\(M,N\)</span> 为动点 </p>
+<p>当 <span class="arithmatex">\(AM,AN\)</span> 的斜率积, 或者斜率和, 为定值的时候, <span class="arithmatex">\(MN\)</span> 过定点.</p>
+<p>特殊情况: 斜率和为 <span class="arithmatex">\(0\)</span> 时, <span class="arithmatex">\(MN\)</span> 不过定点, 而是 <span class="arithmatex">\(MN\)</span> 的斜率为定值</p>
+<p>以及，斜率积为正的或负的（取决于椭圆或抛物线） <span class="arithmatex">\(\dfrac{b^2}{a^2}\)</span> 时，同样不过定点而是 <span class="arithmatex">\(MN\)</span> 斜率为定值</p>
+<div class="admonition info">
+<p class="admonition-title">知识拓展</p>
+<p>这种情况在射影几何中, 认为是 "MN 过一个无穷远的定点", 这样结论就统一了</p>
+<p>射影几何中认为两条平行的直线相交在无穷远处, 而且 "无穷远点" 还有类别之分, 倾斜程度相同的直线的无穷远点相同, 否则不同</p>
+<p>不过我们学的毕竟不是射影几何, 所以需要做一个分类讨论</p>
+</div>
+<p>具体的, 假设 <span class="arithmatex">\(A(x_0,y_0)\)</span>, 斜率的积或和为定值 <span class="arithmatex">\(t\)</span>. 则:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>积为 <span class="arithmatex">\(t\)</span> 时过定点</th>
+<th>和为 <span class="arithmatex">\(t\)</span> 时过定点</th>
+<th>积为特殊值时定斜率</th>
+<th>和为 <span class="arithmatex">\(0\)</span> 时定斜率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>椭圆</td>
+<td><span class="arithmatex">\(\dfrac{b^2+a^2t}{b^2-a^2t}(-x_0,y_0)\)</span></td>
+<td><span class="arithmatex">\((x_0-\dfrac{2}{t}y_0, -y_0-\dfrac{2b^2}{ta^2}x_0)\)</span></td>
+<td><span class="arithmatex">\(-\dfrac{y_0}{x_0}\)</span></td>
+<td><span class="arithmatex">\(\dfrac{b^2x_0}{a^2y_0}\)</span></td>
+</tr>
+<tr>
+<td>抛物线</td>
+<td><span class="arithmatex">\((x_0-\dfrac{2p}{t},-y_0)\)</span></td>
+<td><span class="arithmatex">\((x_0-\dfrac{2y_0}{t},\dfrac{2p}{t}-y_0)\)</span></td>
+<td>积为 <span class="arithmatex">\(0\)</span> 时，无意义</td>
+<td><span class="arithmatex">\(-\dfrac{p}{y_0}\)</span></td>
+</tr>
+<tr>
+<td>双曲线</td>
+<td><span class="arithmatex">\(\dfrac{b^2-a^2t}{b^2+a^2t}(-x_0,y_0)\)</span></td>
+<td><span class="arithmatex">\((x_0-\dfrac{2}{t}y_0, -y_0+\dfrac{2b^2}{ta^2}x_0)\)</span>，和椭圆有正负区别</td>
+<td><span class="arithmatex">\(-\dfrac{y_0}{x_0}\)</span></td>
+<td><span class="arithmatex">\(-\dfrac{b^2x_0}{a^2y_0}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>其中，记号 <span class="arithmatex">\(k(x,y)\)</span> 表示坐标 <span class="arithmatex">\((x,y)\)</span> 的 <span class="arithmatex">\(k\)</span> 倍，即 <span class="arithmatex">\((kx,ky)\)</span></p>
+<div class="admonition tip">
+<p class="admonition-title">关于记忆</p>
+<p>这一部分的作用是帮助你在不背公式的情况下, 知道怎样把他们搞出来.</p>
+<p>首先是 "和为0": 这个很简单, 就是 <strong>负的切线斜率</strong>, 容易验证的确如此</p>
+<p>因为, 可以取两条直线斜率都为 <span class="arithmatex">\(0\)</span>, 发现 <span class="arithmatex">\(M,N\)</span> 都是 "A对面的点" 记为 <span class="arithmatex">\(A'\)</span>, <span class="arithmatex">\(MN\)</span> 斜率也近似于 <span class="arithmatex">\(A'\)</span> 的切线斜率, 容易证明这个切线斜率是负的 <span class="arithmatex">\(A\)</span> 切线斜率</p>
+<p>然后, 积的特殊情况, 也可以取: <span class="arithmatex">\(AM,AN\)</span> 斜率为 <span class="arithmatex">\(0,\infty\)</span>, 然后发现 <span class="arithmatex">\(M,N\)</span> 就是 <span class="arithmatex">\(A\)</span> 关于 <span class="arithmatex">\(x,y\)</span> 轴对称的点, 自然有 <span class="arithmatex">\(MN\)</span> 斜率为 <span class="arithmatex">\(-\frac{y_0}{x_0}\)</span></p>
+<p>最后是两个不特殊的情况. </p>
+<p>其中较为容易的是积为定值的定点: 取 <span class="arithmatex">\(M\)</span> 靠近 <span class="arithmatex">\(A\)</span>, <span class="arithmatex">\(AM\)</span> 就接近 <span class="arithmatex">\(A\)</span> 的切线, 同时 <span class="arithmatex">\(N\)</span> 满足 <span class="arithmatex">\(AN\)</span> 斜率和切线斜率的积为 <span class="arithmatex">\(t\)</span>. 那定点一定位于此时的 <span class="arithmatex">\(AN\)</span> 上, 也就是斜率为 <span class="arithmatex">\(\dfrac{t}{\text{切线斜率}}\)</span> 的直线. 然后同上取一个 <span class="arithmatex">\(0,\infty\)</span> 的一组斜率, 得到定点过 <span class="arithmatex">\(y=-\frac{y_0}{x_0}x\)</span>, 两条直线相交之处就是该定点.</p>
+<p>有点困难的是和为定值的定点: 取 <span class="arithmatex">\(AM,AN\)</span> 的斜率都是 <span class="arithmatex">\(\dfrac{t}{2}\)</span>, 假设 <span class="arithmatex">\(M,N\)</span> 都在 <span class="arithmatex">\(A'\)</span> 位置, 那么 <span class="arithmatex">\(A'\)</span> 的切线中包含这个定点. 然后再取 <span class="arithmatex">\(M\)</span> 靠近 <span class="arithmatex">\(A\)</span>, <span class="arithmatex">\(N\)</span> 满足 <span class="arithmatex">\(AN\)</span> 的斜率为 <span class="arithmatex">\(t-\text{过A切线斜率}\)</span>. 这两个特殊直线求交点, 即可得到定点</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">关于过程书写</p>
+<p>上面的记忆方法告诉了我们, 假如这些公式你背不下来, 怎样在考场上重新得到他们</p>
+<p>但这里的推理过程显然不能写在试卷上, 它过于的 "狂野" 了. 试卷上大概要这样写:</p>
+<p>(直接声明) "过的定点为 <span class="arithmatex">\((xxx, yyy)\)</span>. 下证:"</p>
+<p>"设直线MN ..., 联立圆锥曲线方程得到 ..., 表达出 MN 的直线方程为 ..."</p>
+<p>"代入定点的坐标 ... 进直线方程, 结合韦达定理, 变形 ..., 最后等于 0. 从而直线过定点"</p>
+</div>
+<p>最后, 即使这样依然记不住公式, 请记得一件事: 就是它会过定点</p>
+<p>很多时候, 光是 "知道过定点", 就有不少用处了</p>
+<h2 id="_14">其它</h2>
+<h3 id="_15">十字</h3>
+<p>对于椭圆 <strong>内部</strong> 的 <strong>任意一点</strong> <span class="arithmatex">\(P\)</span>, 作平行于 <span class="arithmatex">\(x\)</span> 轴的直线交椭圆于 <span class="arithmatex">\(A,B\)</span>, 平行于 <span class="arithmatex">\(y\)</span> 轴的直线交椭圆于 <span class="arithmatex">\(C,D\)</span></p>
+<p>则: <span class="arithmatex">\(\dfrac{PA\cdot PB}{PC\cdot PD}=\dfrac{a^2}{b^2}\)</span></p>
+<p>证明: 只需要用椭圆的标准方程就能证明了, easy</p>
+<p>应用: 不少时候, 会有意外的用处. 比如这个的一个推论是 <span class="arithmatex">\(AC,BD\)</span> 的斜率积为 <span class="arithmatex">\(\dfrac{a^2}{b^2}\)</span></p>
+<h3 id="_16">外准圆/蒙日圆</h3>
+<p>结论:</p>
+<ul>
+<li>椭圆: 对于圆 <span class="arithmatex">\(x^2+y^2=a^2+b^2\)</span> 上任意点 <span class="arithmatex">\(P\)</span>, 作两条到椭圆的切线, 两条切线垂直. 这个圆为椭圆的外准圆, 或者叫蒙日圆</li>
+<li>抛物线: 对于准线上的任意点 <span class="arithmatex">\(P\)</span>, 作两条切线, 两条切线垂直, 且两个切点连线过焦点, 中点和 <span class="arithmatex">\(P\)</span> 等高（<span class="arithmatex">\(y\)</span> 坐标相同）</li>
+<li>双曲线: 对于圆 <span class="arithmatex">\(x^2+y^2=a^2-b^2\)</span> 上任意点 <span class="arithmatex">\(P\)</span>, 作两条切线, 两条切线垂直. 当且仅当 <span class="arithmatex">\(a&gt;b\)</span> 时存在</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">开始之前: 两个小结论</p>
+<p>(1) 光学性质的推论: 椭圆上一点 <span class="arithmatex">\(P\)</span>, 作切线 <span class="arithmatex">\(l\)</span>, 过任意一个焦点 <span class="arithmatex">\(F\)</span> 到 <span class="arithmatex">\(l\)</span> 作垂线, 垂足为 <span class="arithmatex">\(H\)</span>, 则 <span class="arithmatex">\(OH=a\)</span> 为定值</p>
+<p>证明: 如图, 不妨设是 <span class="arithmatex">\(F_1\)</span>, 发现 <span class="arithmatex">\(OH\)</span> 是 <span class="arithmatex">\(F_1'F_2\)</span> 的中位线, <span class="arithmatex">\(F_1'\)</span> 是 <span class="arithmatex">\(F_1\)</span> 关于切线的对称点. 联想刚才光学性质证明1的那个图, 容易发现 <span class="arithmatex">\(F_1'F_2=2a\)</span>, 所以 <span class="arithmatex">\(OH=a\)</span></p>
+<p><img src="../img/mengri-1.png" style="zoom: 40%"></p>
+<p>(2) 矩形大法: 矩形 <span class="arithmatex">\(ABCD\)</span> 和任意一点 <span class="arithmatex">\(P\)</span>, 满足: <span class="arithmatex">\(PA^2+PC^2=PB^2+PD^2\)</span>. 初中数学, 做点辅助线随便证</p>
+</div>
+<p>注意, 这个 <strong>矩形大法</strong>, 在其它很多地方都有用</p>
+<div class="admonition note">
+<p class="admonition-title">证明: 椭圆/双曲线</p>
+<p>接下来证明原结论, 如下图</p>
+<p><img src="../img/image-20230112235721343.png" alt="image-20230112235721343" style="zoom:60%;" /></p>
+<p>假设点 <span class="arithmatex">\(A\)</span> 满足两个切线垂直. 过 <span class="arithmatex">\(F_1\)</span> 向两切线作垂线, 形成矩形 <span class="arithmatex">\(ABF_1C\)</span>.</p>
+<p>根据上述结论 (1), <span class="arithmatex">\(OB=OC=a\)</span>. 显然 <span class="arithmatex">\(OF_1=c\)</span>. 由矩形大法: </p>
+<p><span class="arithmatex">\(OA^2=OB^2+OC^2-OF_1^2=2a^2-c^2=a^2+b^2\)</span> 为定值, <span class="arithmatex">\(A\)</span> 在圆上.</p>
+<p>双曲线可以用类似办法证明. 整个式子几乎都是一样的, 只是最后 <span class="arithmatex">\(2a^2-c^2\)</span> 变成的是 <span class="arithmatex">\(a^2-b^2\)</span></p>
+</div>
+<p>接下来证明抛物线的情况. 抛物线这里结论形式和它俩都不一样, 证法也不是很一样</p>
+<div class="admonition note">
+<p class="admonition-title">证明</p>
+<p>采用暴力计算就行, 不难算</p>
+<p>设 <span class="arithmatex">\(P(-\dfrac{p}{2},a)\)</span> 在准线上, <span class="arithmatex">\(a\)</span> 任意. 它的极线为 <span class="arithmatex">\(ay=p(x-\frac{p}{2})\)</span>, 恒过 <span class="arithmatex">\((\frac{p}{2},0)\)</span>, 即过焦点</p>
+<p>将 <span class="arithmatex">\(ay=p(x-\frac{p}{2}),y^2=2px\)</span> 联立, 解得 <span class="arithmatex">\(y=a\pm \sqrt{a^2+p^2}\)</span>为了方便, 设 <span class="arithmatex">\(\sqrt{a^2+p^2}=t\)</span></p>
+<p>则两个交点为 <span class="arithmatex">\(A(\dfrac{(a+t)^2}{2p},a+t),B(\dfrac{(a-t)^2}{2p},a-t)\)</span>根据极线性质, <span class="arithmatex">\(PA,PB\)</span> 就是两条切线</p>
+<p>首先注意到中点的 <span class="arithmatex">\(y\)</span> 坐标 <span class="arithmatex">\(=\dfrac{y_A+y_B}{2}=a\)</span>, 所以与 <span class="arithmatex">\(P\)</span> 等高</p>
+<p>然后计算 <span class="arithmatex">\(\vec{PA}\cdot \vec{PB}=\dfrac{a^2+2at+t^2+p^2}{2p}\cdot \dfrac{a^2-2at+t^2+p^2}{2p}+t\cdot (-t)\)</span></p>
+<p><span class="arithmatex">\(=\dfrac{(2t^2)^2-(2at)^2}{4p^2}-t^2=\dfrac{4(a^2+p^2)^2-4a^2(a^2+p^2)-4p^2(a^2+p^2)}{4p^2}=0\)</span></p>
+<p>所以 <span class="arithmatex">\(PA\perp PB\)</span></p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">进一步观察</p>
+<p>我们发现中点 <span class="arithmatex">\(M(\dfrac{2a^2+p^2}{2p}, a)\)</span> 满足 <span class="arithmatex">\(p(x-\dfrac{p}{2})=y^2\)</span>, 因此它在一个顶点为 <span class="arithmatex">\(F=(\dfrac{p}{2},0)\)</span> 且参数为 <span class="arithmatex">\(\dfrac{p}{2}\)</span> 的开口向右的抛物线上</p>
+<p>对于椭圆和双曲线也有类似结论: <span class="arithmatex">\(P\)</span> 在蒙日圆上, 作 <span class="arithmatex">\(P\)</span> 到 <span class="arithmatex">\(P\)</span> 的切点弦的垂线, 垂足为 <span class="arithmatex">\(H\)</span>, 则 <span class="arithmatex">\(H\)</span> 的轨迹是一个小椭圆, 与原来的曲线共享两个焦点</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.indexes", "navigation.instant", "navigation.sections", "navigation.expand", "navigation.top", "toc.follow", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
