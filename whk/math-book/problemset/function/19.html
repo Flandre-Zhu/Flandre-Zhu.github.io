@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>problem</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" type="text/javascript"></script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">problem</h1>
+</header>
+<p>已知 <span class="math inline">\(\tan x-x \ge a(x-\sin x)\)</span> 在 <span class="math inline">\((0,\frac{\pi}{2})\)</span> 恒成立, 求 <span class="math inline">\(a\)</span> 范围</p>
+<details>
+<p><summary>解答</summary></p>
+<p><span class="math inline">\((-\infty,2]\)</span>. 首先分参发现 <span class="math inline">\(x=0\)</span> 处取最值但是取不到, 所以用共起点.</p>
+<p>求一次导发现依然都为 <span class="math inline">\(0\)</span>, 求两次还是 <span class="math inline">\(0\)</span>, 直到求了三次导以后, 左导为 <span class="math inline">\(\frac{2\cos ^2(x)+6\sin ^2(x)}{\cos ^4(x)}=2\)</span>, 右导为 <span class="math inline">\(\cos(x)=1\)</span>, 得到 <span class="math inline">\(a\le 2\)</span>, 必要, 并且可以证明其充分. 从而 <span class="math inline">\(a\le 2\)</span></p>
+<p>tags: 恒成立, 恒成立-共起点求导, 多次求导</p>
+</details>
+</body>
+</html>

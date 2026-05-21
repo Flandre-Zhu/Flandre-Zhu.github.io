@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>problem</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" type="text/javascript"></script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">problem</h1>
+</header>
+<p>数列 <span class="math inline">\(\{a_n\}\)</span> 是首项为 <span class="math inline">\(3\)</span> 的等差数列, 前 <span class="math inline">\(n\)</span> 项和为 <span class="math inline">\(S_n\)</span>. 数列 <span class="math inline">\(\{b_n\}\)</span> 是首项为 <span class="math inline">\(1\)</span> 的等比数列. <span class="math inline">\(a_2-b_2=a_3-b_3=3\)</span>.</p>
+<ol type="1">
+<li><p>求 <span class="math inline">\(a_n,b_n\)</span>;</p></li>
+<li><p>设 <span class="math inline">\(c_n=b_na_n^2+b_{n+1}a_{n+1}-b_{n+2}S_n\)</span>, 证明 <span class="math inline">\(c_n\)</span> 为等比数列;</p></li>
+<li><p>求 <span class="math inline">\(a_{n-1}\cdot b_{n+1}\)</span> 的前 <span class="math inline">\(n\)</span> 项和 <span class="math inline">\(T_n\)</span>.</p></li>
+</ol>
+<details>
+<p><summary>解答</summary></p>
+<ol type="1">
+<li><span class="math inline">\(a_n=2n+1, b_n=2^{n-1}\)</span> (2) <span class="math inline">\(S_n=n^2+2n\)</span>. <span class="math inline">\(c_n=2^{n-1}\cdot (4n^2+4n+1+2(2n+3)-4(n^2+2n))=10\cdot 2^{n-1}\)</span> 为等比 (3) 就是求和 <span class="math inline">\((2n-1)\cdot 2^n\)</span>. <span class="math inline">\(=(4n-6)2^n+6\)</span></li>
+</ol>
+<p>tags: 等差乘等比, 代数变形</p>
+</details>
+</body>
+</html>

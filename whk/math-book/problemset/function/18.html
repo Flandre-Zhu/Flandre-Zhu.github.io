@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>problem</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" type="text/javascript"></script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">problem</h1>
+</header>
+<p><span class="math inline">\(f(x)=x^2+a\ln x-(a+2)x\ge 0\)</span> 在 <span class="math inline">\(x&gt;0\)</span> 时恒成立, 求 <span class="math inline">\(a\)</span> 范围</p>
+<details>
+<p><summary>解答</summary></p>
+<p><span class="math inline">\(a\le -1\)</span>. 解:</p>
+<p><span class="math inline">\(x^2-2x+a(\ln x-x)\ge 0, a\le \frac{x^2-2x}{x-\ln x}\)</span></p>
+<p>求导, 为 <span class="math inline">\(\dfrac{(x-1)(x+2-2\ln x)}{(x-\ln x)^2}\)</span>, 容易发现 <span class="math inline">\(x=1\)</span> 为最小值点</p>
+<p>因此 <span class="math inline">\(a\le \frac{1^2-2\cdot 1}{1-\ln 1}=-1\)</span></p>
+<p>tags: 恒成立, 恒成立-直接分参</p>
+</details>
+</body>
+</html>
