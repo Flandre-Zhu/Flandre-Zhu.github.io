@@ -629,12 +629,38 @@
 
   <h1>5</h1>
 
-<p>数列 <span class="arithmatex">\(a_n\)</span> 满足 $a_n=\begin{cases} n, &amp; (n \text{为奇数})</p>
-<p>a_{\frac{n}{2}}, &amp; (n \text{为偶数})\end{cases}$. 设 <span class="arithmatex">\(S_n\)</span> 为 <span class="arithmatex">\(a_n\)</span> 的前 n 项和, <span class="arithmatex">\(m=2^{2024}\)</span>, 求 <span class="arithmatex">\(S_{2m-1} - S_{m-1}\)</span> 的值</p>
+<p>数列 <span class="arithmatex">\(a_n\)</span> 满足 <span class="arithmatex">\(a_n=\begin{cases} n, &amp; (n \text{为奇数})\\ a_{n / 2}, &amp; (n \text{为偶数})\end{cases}\)</span></p>
+<p>设 <span class="arithmatex">\(S_n\)</span> 为 <span class="arithmatex">\(a_n\)</span> 的前 n 项和, <span class="arithmatex">\(m=2^{2024}\)</span>, 求 <span class="arithmatex">\(S_{2m-1} - S_{m-1}\)</span> 的值</p>
 <details>
 <summary>解答</summary>
 
-本题需要观察: 发现 $a_i$ 在 $[2^k,2^{k+1})$ 之间, 正好是把前 $2^k$ 个奇数全都出现一遍, 因此和为 $2^{2k}$. 代入 $k=2024$, 本题答案为 $2^{4048}$
+本题需要观察: 发现 $i\in [2^k,2^{k+1})$ 之间的 $a_i$, 正好是把前 $2^k$ 个奇数全都出现一遍
+
+比如我们列出 $a_i$ 的前几项:
+
+$$[1],[1,3],[1,5,3,7],[1,9,5,11,3,13,7,15], \ldots$$
+
+每个用中括号框起来的, 都是 $i\in [2^k,2^{k+1})$ 的一组
+
+则:
+
+- 第一组里面有 $1$
+
+- 第二组里面有 $1,3$
+
+- 第三组里面有 $1,3,5,7$ (顺序不重要, 毕竟只需要求和)
+
+- 第四组里面有 $1,3,5 \ldots 15$
+
+- ...
+
+而这个 $S_{2m-1}-S_{m-1}$, 正好是 $i\in [2^{2024}, 2^{2025})$ 的一组 $a_i$ 的和
+
+根据上述观察, 这个和就等于: 前 $2^{2024}$ 个奇数之和
+
+前 $n$ 个奇数的和为 $n^2$, 因此本题答案为:
+
+$$(2^{2024})^2=2^{4048}$$
 
 tags: 强思维
 

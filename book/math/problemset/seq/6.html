@@ -24,16 +24,19 @@
 <ol type="1">
 <li><p>求 <span class="math inline">\(S_n=\sum\limits_{i=1}^{n} a_ib_i\)</span> 的通项公式</p></li>
 <li><p>将 <span class="math inline">\(\{a_n\},\{b_n\}\)</span> 所有项按照从小到大的顺序排列 (重复的算多次) 组成新的数列 <span class="math inline">\(\{c_n\}\)</span>, <span class="math inline">\(c_n\)</span> 的前几项为 <span class="math inline">\(1,2,2,4,4,6,8,8,10,12,14,16 \ldots\)</span>. 求 <span class="math inline">\(\{c_n\}\)</span> 前 50 项和</p></li>
-<li><p>设 $d_n=\begin{cases} a_{n+1}, &amp; (n )</p></li>
+<li><p>设 <span class="math inline">\(d_n=\begin{cases} a_{n+1}, &amp; (n \text{为奇数})\\ \dfrac{b_n}{2}+2, &amp;(n \text{为偶数}) \end{cases}\)</span>, 记 <span class="math inline">\(d_n\)</span> 的和为 <span class="math inline">\(T_n\)</span>, 若 <span class="math inline">\(3T_{2n-1}\ge 2^{2n+1}+3nt-14\)</span> 恒成立, 求正数 <span class="math inline">\(t\)</span> 的取值范围</p></li>
 </ol>
-<p>+2, &amp;(n ) \end{cases}$, 记 <span class="math inline">\(d_n\)</span> 的和为 <span class="math inline">\(T_n\)</span>, 若 <span class="math inline">\(3T_{2n-1}\ge 2^{2n+1}+3nt-14\)</span> 恒成立, 求正数 <span class="math inline">\(t\)</span> 的取值范围</p>
 <details>
 <p><summary>解答</summary></p>
 <ol type="1">
 <li><p>等差乘等比. <span class="math inline">\(S_n=2\frac{n2^{n+1}-(n+1)2^n+1}{(2-1)^2}=(2n-2)2^n+2\)</span></p></li>
 <li><p>前50项多数是 <span class="math inline">\(b_n=2,4,6,8\ldots 100\)</span>, 混有少量 <span class="math inline">\(a_n=1,2,4,8,16,32,64\)</span>, 就这 7 个 <span class="math inline">\(a_n\)</span>. 发现 <span class="math inline">\(100\)</span> 往前数 7 个这些不算. 因此和为 <span class="math inline">\((2+4+6\ldots+84+86)+(1+2+4+8+16+32+64)=2019\)</span></p></li>
-<li><p>奇数 <span class="math inline">\(2^n\)</span>, 偶数 <span class="math inline">\(n+2\)</span>. <span class="math inline">\(T_{2n-1}=\frac{2}{3}(4^n-1)+(n^2+n-2)\)</span>. 因此 <span class="math inline">\(3T_{2n-1}-2^{2n+1}-3nt+14=\ldots=3(n^2+n-nt+2)\ge 0\)</span>. 即 <span class="math inline">\(t\le n+\frac{2}{n}+1\)</span> 对任意正整数 <span class="math inline">\(n\)</span> 成立. 解得 <span class="math inline">\(t\le 4\)</span>. 所以 <span class="math inline">\(t\in (0,4]\)</span></p></li>
+<li><p>奇数 <span class="math inline">\(2^n\)</span>, 偶数 <span class="math inline">\(n+2\)</span>. 分类讨论, 然后加起来求和, 得到:</p></li>
 </ol>
+<p><span class="math display">\[T_{2n-1}=\frac{2}{3}(4^n-1)+(n^2+n-2)\]</span></p>
+<p>因此</p>
+<p><span class="math display">\[3T_{2n-1}-2^{2n+1}-3nt+14=\ldots=3(n^2+n-nt+2)\ge 0\]</span></p>
+<p>即 <span class="math inline">\(t\le n+\dfrac{2}{n}+1\)</span> 对任意正整数 <span class="math inline">\(n\)</span> 成立. 解得 <span class="math inline">\(t\le 4\)</span>. 所以 <span class="math inline">\(t\in (0,4]\)</span></p>
 <p>tags: 等差乘等比, 奇偶项数列, 不等式</p>
 </details>
 </body>

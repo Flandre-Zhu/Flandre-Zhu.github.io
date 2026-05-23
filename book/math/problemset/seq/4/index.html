@@ -629,16 +629,19 @@
 
   <h1>4</h1>
 
-<p>正项数列 <span class="arithmatex">\(\{a_n\}\)</span> 满足 <span class="arithmatex">\(a_1=1\)</span>, <span class="arithmatex">\(T_n\)</span> 为 <span class="arithmatex">\(\frac{1}{a_n}\)</span> 的前 <span class="arithmatex">\(n\)</span> 项和, <span class="arithmatex">\(T_n=\frac{1+a_n}{2a_n^2}\)</span></p>
+<p>正项数列 <span class="arithmatex">\(\{a_n\}\)</span> 满足 <span class="arithmatex">\(a_1=1\)</span>, <span class="arithmatex">\(T_n\)</span> 为 <span class="arithmatex">\(\dfrac{1}{a_n}\)</span> 的前 <span class="arithmatex">\(n\)</span> 项和, <span class="arithmatex">\(T_n=\dfrac{1+a_n}{2a_n^2}\)</span></p>
 <p>(1) 求 <span class="arithmatex">\(a_n\)</span> 的通项</p>
 <p>(2) 设 <span class="arithmatex">\(b_n=(1+a_n)^n\)</span>, 证明: <span class="arithmatex">\(\{b_n\}\)</span> 是递增的数列</p>
-<p>(3) 证明: <span class="arithmatex">\(\forall n, \sum\limits_{i=1}^{n} b_i &lt; 3\)</span></p>
+<p>(3) 证明: <span class="arithmatex">\(\forall n, b_n &lt; 3\)</span></p>
 <details>
 <summary>解答</summary>
 
-(1) 将n和n-1代入并相减, 变形, 因式分解, 得到 $a_n=\frac{1}{n}$
+(1) 将n和n-1代入并相减, 变形, 因式分解, 得到 $a_n=\dfrac{1}{n}$
 
- (2) 就是证明 $e$ 的这个极限递增, 有很多方法, 一种是二项式定理打开, 一种是均值不等式 (3) 极限是 $e$, 放缩到 $3$ 不难, 比如二项式定理打开放缩为阶乘然后放缩为 $\frac{1}{n(n+1)}$
+(2) 见 **下放的高等内容: 关于 $e$** 一节里提到的证明, 在 [这里](../../sl/#e)
+
+(3) 同上
+
 
 tags: 代数变形, 调和级数, 放缩, 高级内容-极限, 高级内容-级数
 

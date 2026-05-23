@@ -20,11 +20,7 @@
 <header id="title-block-header">
 <h1 class="title">problem</h1>
 </header>
-已知数列 <span class="math inline">\(\{a_n\}\)</span> 满足 $a_1=1, a_{n+1}=
-<span class="math display">\[\begin{cases}a_n+2 &amp; \text{(n为奇数)} 
-
- 2a_n+1 &amp; \text{(n为偶数)}\end{cases}\]</span>
-<p>$</p>
+<p>已知数列 <span class="math inline">\(\{a_n\}\)</span> 满足 <span class="math inline">\(a_1=1, a_{n+1}=\begin{cases}a_n+2 &amp; \text{(n为奇数)} \\2a_n+1 &amp; \text{(n为偶数)}\end{cases}\)</span></p>
 <ol type="1">
 <li><p>设 <span class="math inline">\(b_n=a_{2n}\)</span>, 求 <span class="math inline">\(b_n\)</span> 通项;</p></li>
 <li><p>求数列 <span class="math inline">\(a_n\)</span> 的前 <span class="math inline">\(2n\)</span> 项和 <span class="math inline">\(S_{2n}\)</span>.</p></li>
@@ -32,7 +28,9 @@
 <details>
 <p><summary>解答</summary></p>
 <ol type="1">
-<li><span class="math inline">\(b_n=3(2^n-1)\)</span> (2) <span class="math inline">\(S_{2n}\)</span> 就是 <span class="math inline">\(b_1+b_2\ldots+b_n\)</span> 的两倍再减去 <span class="math inline">\(2n\)</span>, 得到 <span class="math inline">\(S_{2n}=12\cdot 2^n-12-8n\)</span></li>
+<li><p><span class="math inline">\(b_n=3(2^n-1)\)</span></p></li>
+<li><p><span class="math inline">\(S_{2n}\)</span> 就是 <span class="math inline">\(b_1+b_2+\ldots+b_n\)</span> 的两倍再减去 <span class="math inline">\(2n\)</span>, 得到</p>
+<p><span class="math display">\[S_{2n}=12\cdot 2^n-12-8n\]</span></p></li>
 </ol>
 <p>tags: 线性递推, 奇偶项数列</p>
 </details>
