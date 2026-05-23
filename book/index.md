@@ -4,4 +4,4 @@
 
 [数学](./math/index.html)
 
-[数学](./chem/index.html)
+[化学](./chem/index.html)
