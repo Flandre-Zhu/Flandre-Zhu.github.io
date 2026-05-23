@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>problem</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="../style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" type="text/javascript"></script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">problem</h1>
+</header>
+<p>你玩一个游戏, 一开始, 你有 <span class="math inline">\(0\)</span> 分</p>
+<p>每一局, 等概率获得 <span class="math inline">\(1\)</span> 分或者 <span class="math inline">\(2\)</span> 分</p>
+<p>当你的分数 <span class="math inline">\(\ge 6\)</span> 的时候, 获胜</p>
+<p>求: 期望经过多少局获胜?</p>
+<details>
+<p><summary>解答</summary></p>
+<p><span class="math inline">\(\dfrac{135}{32}\)</span></p>
+<p>我们采用递推的方法. 设 <span class="math inline">\(f_n\)</span> 表示:</p>
+<ul>
+<li><p>假设你已经有了 <span class="math inline">\(n\)</span> 分</p></li>
+<li><p>在此基础上继续游戏</p></li>
+<li><p>期望多少局以后 <span class="math inline">\(\ge 6\)</span> 分</p></li>
+</ul>
+<p>根据这个定义, 我们知道:</p>
+<ul>
+<li><p><span class="math inline">\(f_0\)</span> 就是答案</p></li>
+<li><p><span class="math inline">\(f_6\)</span> 为 <span class="math inline">\(0\)</span></p></li>
+</ul>
+<p>然后, 我们考虑 <strong>反向递推</strong>, 从 <span class="math inline">\(6\)</span> 到 <span class="math inline">\(0\)</span> 求解</p>
+<p>考虑 <span class="math inline">\(f_5\)</span>: 它等于 <span class="math inline">\(1\)</span>, 因为从 <span class="math inline">\(5\)</span> 开始, 无论得 <span class="math inline">\(1\)</span> 分还是 <span class="math inline">\(2\)</span> 分, 都会赢, 只要一局</p>
+<p>考虑 <span class="math inline">\(f_n(n&lt;5)\)</span>:</p>
+<ul>
+<li><p>我们有 <span class="math inline">\(\frac{1}{2}\)</span> 的概率变成 <span class="math inline">\(n+1\)</span> 分, 另外 <span class="math inline">\(\frac{1}{2}\)</span> 的概率变成 <span class="math inline">\(n+2\)</span> 分</p></li>
+<li><p>变成 <span class="math inline">\(n+1\)</span> 分后, 还需要的局的数量, 期望为: <span class="math inline">\(f_{n+1}\)</span>, <span class="math inline">\(n+2\)</span> 分同理</p></li>
+<li><p>然后这个 <span class="math inline">\(+1\)</span> 或 <span class="math inline">\(+2\)</span> 本身, 需要一局</p></li>
+<li><p>所以:</p></li>
+</ul>
+<p><span class="math display">\[f_n = 1 + \dfrac{f_{n+1}+f_{n+2}}{2}\]</span></p>
+<p>那么我们就可以递推:</p>
+<ul>
+<li><p><span class="math inline">\(f_4=1+\frac{f_5+f_6}{2}=\frac{3}{2}\)</span></p></li>
+<li><p><span class="math inline">\(f_3=1+\frac{f_4+f_5}{2}=\frac{9}{4}\)</span></p></li>
+<li><p><span class="math inline">\(f_2=1+\frac{f_3+f_4}{2}=\frac{23}{8}\)</span></p></li>
+<li><p><span class="math inline">\(f_1=1+\frac{f_2+f_3}{2}=\frac{57}{16}\)</span></p></li>
+<li><p><span class="math inline">\(f_0=1+\frac{f_1+f_2}{2}=\frac{135}{32}\)</span></p></li>
+</ul>
+<p>因此, 期望的局数为:</p>
+<p><span class="math display">\[f_0=\frac{135}{32}\]</span></p>
+</details>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>problem</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="../style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" type="text/javascript"></script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">problem</h1>
+</header>
+<p>已知圆 <span class="math inline">\(C_1: (x+2)^2+y^2=\frac{25}{4}\)</span>, 圆 <span class="math inline">\(C_2: (x-2)^2+y^2=\frac{1}{4}\)</span>, 动圆 <span class="math inline">\(C\)</span> 与 <span class="math inline">\(C_1,C_2\)</span> 都外切．</p>
+<ol type="1">
+<li><p>求圆心C的轨迹方程</p></li>
+<li><p>设 <span class="math inline">\(A(-1,0)\)</span>, <span class="math inline">\(M,N\)</span> 是圆心 <span class="math inline">\(C\)</span> 轨迹上的不同两点，过点 <span class="math inline">\(A\)</span> 作 <span class="math inline">\(AH\perp MN\)</span> 垂足为 <span class="math inline">\(H\)</span>, 若直线 <span class="math inline">\(AM\)</span> 与 <span class="math inline">\(AN\)</span> 的斜率之积等于 <span class="math inline">\(-2\)</span>, 求动点 <span class="math inline">\(H\)</span> 轨迹的长度</p></li>
+</ol>
+<details>
+<p><summary>解答</summary></p>
+<ol type="1">
+<li><p><span class="math inline">\(x^2-\dfrac{y^2}{3}=1(x&gt;0)\)</span>, 注意只有右半边</p></li>
+<li><p><span class="math inline">\(\dfrac{5}{3}\pi\)</span></p></li>
+</ol>
+<p><span class="math inline">\(MN\)</span> 过 <span class="math inline">\(Q(5,0)\)</span>, 所以 <span class="math inline">\(H\)</span> 一定在 <span class="math inline">\(AQ\)</span> 为直径的圆上, 半径为 <span class="math inline">\(\dfrac{5}{2}\)</span>.</p>
+<p>极限思想得到这个圆弧有 <span class="math inline">\(120^{\circ}\)</span>, 因此弧长为 <span class="math inline">\(\dfrac{5}{3}\pi\)</span></p>
+<p>这件事情来自双曲线的渐近线的性质:</p>
+<ul>
+<li><p>取一个定点, 比如这里的 <span class="math inline">\(Q\)</span>, 然后 <span class="math inline">\(M\)</span> 在双曲线上, 无穷远处, 那么 <span class="math inline">\(MQ\)</span> 的斜率就会趋向于渐近线的斜率</p></li>
+<li><p>因此, 可以在图上比划看看, 发现: <span class="math inline">\(MN\)</span> 的斜率, 要么大于 <span class="math inline">\(\sqrt{3}\)</span>, 要么小于 <span class="math inline">\(-\sqrt{3}\)</span>, 一边 <span class="math inline">\(60^{\circ}\)</span>, 两边加起来就 <span class="math inline">\(120^{\circ}\)</span></p></li>
+</ul>
+<p>如下图, <span class="math inline">\(MN\)</span> 一定会被夹在红色和蓝色直线之间, 这两条线就是渐近线过 <span class="math inline">\(Q\)</span> 的平行线</p>
+<p><img src="./4-1.png" /></p>
+<p>tags: 斜率积, 过定点, 隐藏的圆</p>
+</details>
+</body>
+</html>

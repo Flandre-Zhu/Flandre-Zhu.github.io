@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>problem</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="../style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" type="text/javascript"></script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">problem</h1>
+</header>
+<p><span class="math inline">\(f(x)=\frac{1+x}{1-x}\cdot e^{-x}\)</span>. 若 <span class="math inline">\(\forall x\in (0,1), f(x)&gt;e^{ax}\)</span>, 求 <span class="math inline">\(a\)</span> 范围.</p>
+<details>
+<p><summary>解答</summary></p>
+<p>两边同时开 <span class="math inline">\(\ln\)</span>, 转化为:</p>
+<p><span class="math display">\[\forall x\in (0,1),\quad ax &lt; \ln(1+x)-\ln(1-x)-x\]</span></p>
+<p>设 <span class="math inline">\(F(x)=\ln(1+x)-\ln(1-x)-x, G(x)=x\)</span></p>
+<p>尝试分参解 <span class="math inline">\(\dfrac{F(x)}{G(x)}\)</span>, 发现 <span class="math inline">\(x=0\)</span> 处取最小但是取不到</p>
+<p>因此使用端点效应做, 得到 <span class="math inline">\(a\le \dfrac{F&#39;(0)}{G&#39;(0)}=1\)</span></p>
+<p>tags: 恒成立, 恒成立-共起点求导</p>
+</details>
+</body>
+</html>

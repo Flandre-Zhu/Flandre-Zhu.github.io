@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>problem</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="../style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" type="text/javascript"></script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">problem</h1>
+</header>
+<p>已知 <span class="math inline">\(f(x)=\dfrac{(1+x)(1+\ln x)}{x}, g(x)=\dfrac{e^x}{x}+m\)</span>.</p>
+<p>若 <span class="math inline">\(\forall x_1\in [1,5], \exists x_2\in (0,+\infty)\)</span> 使得 <span class="math inline">\(f(x_1)&gt;g(x_2)\)</span></p>
+<p>求 <span class="math inline">\(m\)</span> 范围.</p>
+<details>
+<p><summary>解答</summary></p>
+<p><span class="math inline">\(m\le 2-e\)</span>.</p>
+<p>可以发现, 它等价于:</p>
+<p><span class="math display">\[f_{\min} [1,5] \gt g_{\min} (0,+\infty)\]</span></p>
+<p>因为:</p>
+<ul>
+<li><p>我们先处理 <span class="math inline">\(x_2\)</span>: 要存在一个 <span class="math inline">\(x_2\)</span> 使得 <span class="math inline">\(g(x_2)\lt f(x_1)\)</span>, 只需要 <span class="math inline">\(g_{\min}\lt f(x_1)\)</span></p></li>
+<li><p>那现在 <span class="math inline">\(g_{\min}\)</span> 是一个固定的数, 要求对任意 <span class="math inline">\(x_1\)</span>, <span class="math inline">\(f(x_1)\)</span> 都比这个数大</p></li>
+<li><p>那是不是, 要求, <span class="math inline">\(f\)</span> 的最小值, 得比这个大</p></li>
+<li><p>于是就变成: <span class="math inline">\(f_{\min}\gt g_{\min}\)</span>, 当然, 还需要注意 <span class="math inline">\(x_1\)</span> 和 <span class="math inline">\(x_2\)</span> 取值的范围不相同</p></li>
+</ul>
+<p>那接下来, 我们把 <span class="math inline">\(f,g\)</span> (在各自范围里的) 最小值分别求出来, 然后让它们满足 <span class="math inline">\(f_{\min}\gt g_{\min}\)</span> 即可</p>
+<ul>
+<li><span class="math inline">\(f\)</span> 这边:</li>
+</ul>
+<p><span class="math display">\[f&#39;(x)=\frac{(1+\frac{1}{x}+1+\ln x)\cdot x-(1+x+\ln x+x\ln x)}{x^2}=\frac{x-\ln x}{x^2}&gt;0\]</span></p>
+<p>因此 <span class="math inline">\(f\)</span> 是增的, 在最左边 <span class="math inline">\(x=1\)</span> 处取 <span class="math inline">\(f(1)=2\)</span></p>
+<ul>
+<li><span class="math inline">\(g\)</span> 这边:</li>
+</ul>
+<p><span class="math display">\[g&#39;(x)=\frac{(x-1)e^x}{x^2}\]</span></p>
+<p>在 <span class="math inline">\((0,1)\downarrow (1,+\infty)\uparrow\)</span>, 因此在 <span class="math inline">\(x=1\)</span> 处取最小值 <span class="math inline">\(g(1)=e+m\)</span></p>
+<p>因此就是要求 <span class="math inline">\(e+m\le 2\)</span>, <span class="math inline">\(m\le 2-e\)</span>.</p>
+<p>tags: 问题的转化, 导数</p>
+</details>
+</body>
+</html>

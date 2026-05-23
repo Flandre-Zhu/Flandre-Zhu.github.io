@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>problem</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="../style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" type="text/javascript"></script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">problem</h1>
+</header>
+<p><span class="math inline">\(f(x)=\dfrac{\ln x+1}{x}\)</span>, <span class="math inline">\(e^x\ge f(x)+m\)</span> 恒成立, 求 <span class="math inline">\(m\)</span> 范围</p>
+<details>
+<p><summary>解答</summary></p>
+<p><span class="math inline">\(m\le 1\)</span>.</p>
+<p>解:</p>
+<p>移项, 就变成 <span class="math inline">\(m\le e^x-\dfrac{\ln x+1}{x}\)</span>, 设右边为 <span class="math inline">\(F(x)\)</span>, 求其最小值即可</p>
+<p><strong>定义域:</strong> <span class="math inline">\(x&gt;0\)</span>. 求导:</p>
+<p><span class="math display">\[F&#39;(x)=e^x+\frac{\ln x}{x^2}\]</span></p>
+<p>尝试找其零点, 发现, 好像不太好解. 尝试一下, 好像 <span class="math inline">\(1\)</span> 不对, <span class="math inline">\(e\)</span> 不对, <span class="math inline">\(\frac{1}{e}\)</span> 之类的也不对.</p>
+<p>因此我们使用 <strong>隐零点</strong> 法, 设而不求, 我们设零点为 <span class="math inline">\(a\)</span></p>
+<p>那它应该满足:</p>
+<p><span class="math display">\[e^a+\frac{\ln a}{a^2}=0\]</span></p>
+<p>所以可以得到 <span class="math inline">\(e^a=-\dfrac{\ln a}{a^2}\)</span></p>
+<p>接下来, 我们对这个式子变形: 两边同时乘以 <span class="math inline">\(a\)</span></p>
+<p><span class="math display">\[ae^a = -\dfrac{\ln a}{a} = (\frac{1}{a}) \cdot \ln (\frac{1}{a})\]</span></p>
+<p>出现了 <strong>同构</strong> !</p>
+<p>设 <span class="math inline">\(g(x)=x\ln x\)</span>, 那它就是说:</p>
+<p><span class="math display">\[g(e^a)=g(\frac{1}{a})\]</span></p>
+<p>由 <span class="math inline">\(x\ln x\)</span> 的形状, 此时必须要 <span class="math inline">\(e^a=\frac{1}{a}\)</span></p>
+<p>所以</p>
+<p><span class="math display">\[ae^a=1,\ln a+a=0\]</span></p>
+<p>代入得最小值为</p>
+<p><span class="math display">\[F(a)=e^a-\frac{\ln a+1}{a}=1\]</span></p>
+<p>本题最妙的地方在于对隐零点的方程使用同构, 从而得出 <span class="math inline">\(e^x+\frac{\ln x}{x^2}=0\)</span> 的解就等于 <span class="math inline">\(x+\ln x=0\)</span> 的解</p>
+<p>tags: 精彩, 导数, 隐零点, 同构</p>
+</details>
+</body>
+</html>
