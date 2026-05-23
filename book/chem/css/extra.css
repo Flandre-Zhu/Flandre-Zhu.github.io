@@ -1,0 +1,42 @@
+/* =============================
+   全局正文
+   ============================= */
+.markdown-body,
+.md-content {
+  font-size: 18px;      /* 核心：放大正文 */
+  line-height: 1.75;
+}
+
+/* 段落间距 */
+.md-content p {
+  margin: 0.8em 0;
+}
+
+/* =============================
+   Admonition（提示框）
+   ============================= */
+.md-typeset .admonition,
+.md-typeset details {
+  font-size: 1em;       /* 关键：不要比正文小 */
+  line-height: 1.7;
+}
+
+/* Admonition 标题 */
+.md-typeset .admonition-title {
+  font-size: 0.95em;
+  font-weight: 600;
+}
+
+/* =============================
+   代码块
+   ============================= */
+.md-typeset pre,
+.md-typeset code {
+  font-size: 0.95em;
+}
+
+/* 行内代码别太跳 */
+.md-typeset code {
+  padding: 0.15em 0.3em;
+}
+
